@@ -1,0 +1,9 @@
+{
+  "name": "mycard-tarball",
+  "version": "0.0.1",
+  "dependencies": {
+    "koa": "latest",
+    "koa-bodyparser": "latest",
+    "koa-route": "latest"
+  }
+}
