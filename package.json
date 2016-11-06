@@ -1,0 +1,12 @@
+{
+  "name": "mycard-releases",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "aria2c --enable-rpc --rpc-allow-origin-all --continue --split=10 --min-split-size=1M --max-connection-per-server=10 --auto-file-renaming=false --daemon && node --harmony server.js"
+  },
+  "dependencies": {
+    "koa": "next",
+    "koa-router": "next",
+    "aria2": "latest"
+  }
+}
