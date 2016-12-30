@@ -1,2 +1,8 @@
-/.idea/
+# Created by .ignore support plugin (hsz.mobi)
+
 /node_modules/
+/.idea/
+*.js
+*.js.map
+
+!systemjs.config.js
