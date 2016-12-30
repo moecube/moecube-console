@@ -1,5 +1,6 @@
-<md-list *ngIf="apps">
-    <md-list-item *ngFor="let app of apps">
+<md-nav-list>
+    <h3 md-subheader>所有应用</h3>
+    <md-list-item *ngFor="let app of apps" [routerLink]="app.id">
         <img md-list-avatar src="https://mycard.moe/logo.png" alt="...">
         <h3 md-line> {{app.id}} </h3>
         <p md-line>
@@ -7,4 +8,4 @@
             <span class="demo-2"> -- {{app.id}} </span>
         </p>
     </md-list-item>
-</md-list>
+</md-nav-list>

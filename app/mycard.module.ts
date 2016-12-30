@@ -20,13 +20,14 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import {AppDetailComponent} from "./app-detail.component";
 
 
 @NgModule({
     imports: [
         BrowserModule, MaterialModule.forRoot(), FormsModule, RoutingModule, HttpModule,
     ],
-    declarations: [AppsComponent, MyCardComponent],
+    declarations: [AppsComponent, MyCardComponent, AppDetailComponent],
     bootstrap: [MyCardComponent],
     providers: [AppService],
 })

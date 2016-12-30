@@ -1,0 +1,11 @@
+.my-content {
+    min-height: 1000px;
+}
+
+md-sidenav {
+    width: 200px;
+}
+
+.example-full-width {
+    width: 100%;
+}

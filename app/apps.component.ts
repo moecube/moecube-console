@@ -3,7 +3,7 @@ import App from '../models/app';
 import {AppService} from './app.service';
 
 @Component({
-    selector: 'app',
+    selector: 'apps',
     moduleId: module.id,
     templateUrl: 'apps.component.html',
     styleUrls: ['apps.component.css']

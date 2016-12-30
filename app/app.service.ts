@@ -12,9 +12,10 @@ export class AppService {
     }
 
     getApps(): Promise<App[]> {
-        return this.http.get('http://localhost:8000/apps').map((response) => {
-            console.log({"id":"byabyabya"});
-            return [<App>{"id":"byabyabya"}]
-        }).toPromise();
+        return this.http.get('http://localhost:8000/apps').map((response) => response.json()).toPromise();
+    }
+
+    getApp(id: string): Promise<App> {
+        return this.http.get(`http://localhost:8000/apps/${id}`).map((response) => response.json()).toPromise();
     }
 }
