@@ -1,9 +1,11 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-/node_modules/
+/node_modules/*
+/node_modules/@types/*
 /.idea/
 *.js
 *.js.map
 
-!node_modules/@types/mongorito/
+!/node_modules/@types/
+!/node_modules/@types/mongorito/
 !systemjs.config.js
