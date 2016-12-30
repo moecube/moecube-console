@@ -1,5 +1,5 @@
 {
   "dbSettings": {
-    "connectionString": "mongodb://localhost:27017/mycard"
+    "connectionString": "mongodb://wudizhanche.mycard.moe:27017/mycard"
   }
 }

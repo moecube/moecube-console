@@ -1,11 +1,12 @@
 {
-  "name": "mycard-developer-console",
-  "version": "0.0.0",
+  "name": "mycard-console",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "tsc && concurrently \"node server.js\" \"lite-server\"",
     "tsc": "tsc",
-    "lint": "tslint -e ./node_modules/** ./**/*.ts -t verbose"
+    "lint": "tslint -e ./node_modules/** ./**/*.ts -t verbose",
+    "migrate": "tsc && mongo-migrate --runMongoMigrate --config mongodb_config.json --dbPropName dbSettings"
   },
   "dependencies": {
     "@angular/common": "~2.4.0",
@@ -42,6 +43,7 @@
     "@types/koa-router": "^7.0.21",
     "@types/mongodb": "^2.1.36",
     "@types/node": "^6.0.55",
+    "@types/pluralize": "0.0.27",
     "concurrently": "^3.1.0",
     "lite-server": "^2.2.2",
     "tslint": "^3.15.1",
