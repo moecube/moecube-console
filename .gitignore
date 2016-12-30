@@ -5,4 +5,5 @@
 *.js
 *.js.map
 
+!node_modules/@types/mongorito/
 !systemjs.config.js
