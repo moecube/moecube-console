@@ -1,8 +1,10 @@
-<div *ngIf="apps">
-    <ul>
-        <li *ngFor="let app of apps">
-            {{app.id}}
-        </li>
-
-    </ul>
-</div>
+<md-list *ngIf="apps">
+    <md-list-item *ngFor="let app of apps">
+        <img md-list-avatar src="https://mycard.moe/logo.png" alt="...">
+        <h3 md-line> {{app.id}} </h3>
+        <p md-line>
+            <span> {{app.id}} </span>
+            <span class="demo-2"> -- {{app.id}} </span>
+        </p>
+    </md-list-item>
+</md-list>

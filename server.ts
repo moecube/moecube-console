@@ -7,7 +7,7 @@ import packages from './routes/packages';
 import bodyParser = require('koa-bodyparser');
 import Mongorito = require('mongorito');
 
-const url = 'mongodb://127.0.0.1:27017/mycard';
+const url = require('./mongodb_config.json').dbSettings.connectionString;
 
 const app = new Koa();
 
@@ -47,5 +47,5 @@ app.use(users.routes());
 app.use(apps.routes());
 app.use(packages.routes());
 Mongorito.connect(url).then(() => {
-    app.listen(80);
+    app.listen(8000);
 });

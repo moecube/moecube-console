@@ -12,11 +12,10 @@ export class AppsComponent implements OnInit {
     apps: App[];
 
     constructor(private appService: AppService) {
-        console.log(module);
     }
 
     async ngOnInit() {
-        await this.getApps();
+        console.log(await this.getApps());
     }
 
     async getApps() {
