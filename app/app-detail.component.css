@@ -1,5 +1,7 @@
 .my-content {
     min-height: 1000px;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
 md-sidenav {
@@ -8,4 +10,16 @@ md-sidenav {
 
 .example-full-width {
     width: 100%;
+}
+
+#info {
+    display: flex;
+}
+
+h1 {
+    margin: 4px 0;
+}
+
+#info-contents {
+    margin-left: 8px;
 }
