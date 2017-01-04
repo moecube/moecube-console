@@ -25,7 +25,7 @@ export class AppPackagesComponent implements OnInit {
             });
     }
 
-    package_description(_package) {
-        _package.platform
+    package_description(_package: any) {
+        // _package.platform
     }
 }

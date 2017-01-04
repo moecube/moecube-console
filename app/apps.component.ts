@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import App from '../models/browserapp';
 import {AppService} from './app.service';
-import {MdDialog} from '@angular/material';
+import {MdDialog, MdSnackBar} from '@angular/material';
 import {AppCreateComponent} from './app-create.component';
 
 @Component({
@@ -13,7 +13,7 @@ import {AppCreateComponent} from './app-create.component';
 export class AppsComponent implements OnInit {
     apps: App[];
 
-    constructor(private appService: AppService, private dialog: MdDialog) {
+    constructor(private appService: AppService, private dialog: MdDialog, private snackBar: MdSnackBar) {
     }
 
     async ngOnInit() {
@@ -29,6 +29,11 @@ export class AppsComponent implements OnInit {
         let app: App | undefined = await dialogRef.afterClosed().toPromise();
         if (!app) {
             return;
+        }
+        try {
+            await this.appService.save(app);
+        } catch (error) {
+            this.snackBar.open(error.toString());
         }
     }
 }
