@@ -14,5 +14,10 @@ export class NotFound extends KoaError {
         super(msg, 404);
     }
 }
+export class BadRequest extends KoaError {
+    constructor(msg = STATUS_CODES[400]) {
+        super(msg, 400);
+    }
+}
 export const InternalError = new KoaError(STATUS_CODES[500], 500);
 
