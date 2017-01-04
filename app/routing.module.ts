@@ -6,7 +6,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppsComponent} from './apps.component';
 import {AppDetailComponent} from './app-detail.component';
 import {AppComponent} from './app.component';
-import {AppLocaleComponent} from './app-locale.component';
+import {AppLocalesComponent} from './app-locales.component';
+import {AppPackagesComponent} from './app-packages.component';
 
 
 const routes: Routes = [
@@ -16,8 +17,9 @@ const routes: Routes = [
         path: 'apps/:id',
         component: AppComponent,
         children: [
-            {path: '', component: AppDetailComponent},
-            {path: 'locale', component: AppLocaleComponent}
+            {path: 'detail', component: AppDetailComponent},
+            {path: 'locales', component: AppLocalesComponent},
+            {path: 'packages', component: AppPackagesComponent}
         ]
     }
 ];

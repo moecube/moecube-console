@@ -1,0 +1,17 @@
+<!--<h3 md-subheader>语言</h3>-->
+
+<md-tab-group>
+    <md-tab *ngFor="let locale of locales" [label]="locale">
+        <form class="example-form" style="margin-top:16px;">
+            <md-input-container class="example-full-width">
+                <input md-input name="name" placeholder="应用名称" [(ngModel)]="app.name[locale]">
+            </md-input-container>
+
+            <md-input-container class="example-full-width">
+                <textarea md-input name="description" placeholder="应用介绍" [(ngModel)]="app.description">1600 Amphitheatre Pkwy</textarea>
+            </md-input-container>
+
+            <button md-raised-button color="primary">提交</button>
+        </form>
+    </md-tab>
+</md-tab-group>

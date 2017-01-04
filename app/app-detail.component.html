@@ -1,23 +1,5 @@
- <div id="info">
-        <div>
-            <img src="https://lh6.ggpht.com/mUAFCY_JUfHQBlAE4JsnwyrghcxIldv-uk0iPPL66IpPxM8-KQCof6NN4usLm6LUpA=h80-rw" alt="喵帕斯~">
-        </div>
-        <div id="info-contents">
-            <h1>{{app.name['zh-CN']}}</h1>
-            <div>
-                <span>{{app.id}}</span>
-                <a target="_blank" href="https://mycard.moe"> 在商店中查看 </a>
-            </div>
-            <div class="IDWJ4SB-Yf-i">
-                <span style="color:#84a000;">已发布</span>
-                <span>2014年2月20日</span>
-                <a class="gwt-Anchor" href="javascript:">取消发布应用</a>
-                <a class="gwt-Anchor">删除应用</a>
-            </div>
-        </div>
-    </div>
-
-    <h3 md-subheader>基本信息</h3>
+<div *ngIf="app">
+    <!--<h3 md-subheader>基本信息</h3>-->
     <form class="example-form">
         <md-input-container class="example-full-width">
             <input md-input name="id" placeholder="ID" disabled [(ngModel)]="app.id">
@@ -59,3 +41,4 @@
 
         <button md-raised-button color="primary">提交</button>
     </form>
+</div>

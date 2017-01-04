@@ -8,10 +8,10 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'app-detail.component.html',
-    styleUrls: ['app-detail.component.css']
+    templateUrl: 'app-packages.component.html',
+    styleUrls: ['app-packages.component.css']
 })
-export class AppDetailComponent implements OnInit {
+export class AppPackagesComponent implements OnInit {
     app: App;
 
     constructor(private appService: AppService, private route: ActivatedRoute, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
