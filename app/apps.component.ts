@@ -17,7 +17,7 @@ export class AppsComponent implements OnInit {
     }
 
     async ngOnInit() {
-        console.log(await this.getApps());
+        await this.getApps();
     }
 
     async getApps() {
@@ -30,6 +30,5 @@ export class AppsComponent implements OnInit {
         if (!app) {
             return;
         }
-        console.log(app);
     }
 }

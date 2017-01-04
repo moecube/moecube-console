@@ -1,6 +1,6 @@
 <!--<h3 md-subheader>语言</h3>-->
 
-<md-tab-group>
+<md-tab-group *ngIf="app">
     <md-tab *ngFor="let locale of locales" [label]="locale">
         <form class="example-form" style="margin-top:16px;">
             <md-input-container class="example-full-width">
@@ -8,7 +8,16 @@
             </md-input-container>
 
             <md-input-container class="example-full-width">
-                <textarea md-input name="description" placeholder="应用介绍" [(ngModel)]="app.description">1600 Amphitheatre Pkwy</textarea>
+                <textarea md-input name="description" placeholder="应用介绍"
+                          [(ngModel)]="app.description[locale]"></textarea>
+                <md-hint align="end">支持 Markdown 语法</md-hint>
+            </md-input-container>
+
+            <md-input-container class="example-full-width">
+                <textarea md-input name="news" placeholder="新闻" [(ngModel)]="news[locale]"></textarea>
+                <md-hint align="end">JSON &#123;title: string, url: string, image: string&#125;[]，不会写请联系
+                    zh99998@gmail.com
+                </md-hint>
             </md-input-container>
 
             <button md-raised-button color="primary">提交</button>

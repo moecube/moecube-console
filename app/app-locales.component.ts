@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import App from '../models/browserapp';
+import App, {I18n} from '../models/browserapp';
 import {AppService} from './app.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/Rx';
@@ -14,6 +14,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class AppLocalesComponent implements OnInit {
     app: App;
     locales: string[];
+    news: I18n<string> = {};
 
     constructor(private appService: AppService, private route: ActivatedRoute, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
     }
@@ -23,7 +24,10 @@ export class AppLocalesComponent implements OnInit {
             .switchMap((params: Params) => this.appService.getApp(params['id']))
             .subscribe(app => {
                 this.app = app;
-                this.locales = Object.keys(this.app.name);
+                this.locales = Object.keys(app.name);
+                for (let [locale, news] of Object.entries(app.news)) {
+                    this.news[locale] = JSON.stringify(news);
+                }
             });
     }
 }

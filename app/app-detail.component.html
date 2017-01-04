@@ -1,43 +1,34 @@
 <div *ngIf="app">
     <!--<h3 md-subheader>基本信息</h3>-->
     <form class="example-form">
+
+        <md-select placeholder="类别" [(ngModel)]="app.category" name="category" class="example-full-width">
+            <md-option *ngFor="let l of ['game','runtime','emulator','module']" [value]="l">{{l}}</md-option>
+        </md-select>
+
         <md-input-container class="example-full-width">
-            <input md-input name="id" placeholder="ID" disabled [(ngModel)]="app.id">
+            <input md-input name="tags" placeholder="标签" [(ngModel)]="tags">
+            <md-hint align="end">JSON string[]，不会写请联系 zh99998@gmail.com</md-hint>
         </md-input-container>
 
         <md-input-container class="example-full-width">
-            <input md-input name="name" placeholder="First name" [(ngModel)]="app.name['zh-CN']">
+            <input md-input name="tags" placeholder="开发者" [(ngModel)]="app.author">
         </md-input-container>
 
-        <p>
-            <md-input-container class="example-full-width">
-                <textarea md-input placeholder="Address">1600 Amphitheatre Pkwy</textarea>
-            </md-input-container>
-            <md-input-container class="example-full-width">
-                <textarea md-input placeholder="Address 2"></textarea>
-            </md-input-container>
-        </p>
+        <md-input-container class="example-full-width">
+            <input md-input name="tags" placeholder="网站" [(ngModel)]="app.homepage">
+            <md-hint align="end">以 http:// 或 https:// 开头，没有可留空</md-hint>
+        </md-input-container>
 
-        <table class="example-full-width" cellspacing="0">
-            <tr>
-                <td>
-                    <md-input-container class="example-full-width">
-                        <input md-input placeholder="City">
-                    </md-input-container>
-                </td>
-                <td>
-                    <md-input-container class="example-full-width">
-                        <input md-input placeholder="State">
-                    </md-input-container>
-                </td>
-                <td>
-                    <md-input-container class="example-full-width">
-                        <input md-input #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-                        <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-                    </md-input-container>
-                </td>
-            </tr>
-        </table>
+        <md-input-container class="example-full-width">
+            <input md-input name="tags" placeholder="聊天室" [(ngModel)]="app.conference">
+            <md-hint align="end">游戏类应用通常与 ID 相同，其他类型的应用留空</md-hint>
+        </md-input-container>
+
+        <md-input-container class="example-full-width">
+            <input md-input name="tags" placeholder="应用支持的语言" [(ngModel)]="locales">
+            <md-hint align="end">JSON string[]，不会写请联系 zh99998@gmail.com</md-hint>
+        </md-input-container>
 
         <button md-raised-button color="primary">提交</button>
     </form>

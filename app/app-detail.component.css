@@ -1,3 +1,6 @@
 .example-full-width {
     width: 100%;
 }
+md-select {
+    margin: 16px 0;
+}
