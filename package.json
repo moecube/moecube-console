@@ -5,6 +5,7 @@
   "scripts": {
     "prestart": "tsc",
     "start": "concurrently \"node server.js\" \"lite-server\"",
+    "server": "node server.js",
     "tsc": "tsc",
     "lint": "tslint -e ./node_modules/** ./**/*.ts -t verbose",
     "migrate": "tsc && mongo-migrate --runMongoMigrate --config mongodb_config.json --dbPropName dbSettings"
@@ -26,8 +27,6 @@
     "koa": "^2.0.0",
     "koa-bodyparser": "^3.2.0",
     "koa-log4": "^2.1.0",
-    "koa-logger": "^2.0.0",
-    "koa-morgan": "^1.0.1",
     "koa-router": "^7.0.1",
     "material-design-icons": "^3.0.1",
     "mongodb": "^2.2.16",
@@ -43,8 +42,8 @@
     "@types/hammerjs": "^2.0.34",
     "@types/koa": "^2.0.37",
     "@types/koa-bodyparser": "^3.0.22",
-    "@types/koa-logger": "^2.0.2",
     "@types/koa-router": "^7.0.21",
+    "@types/log4js": "0.0.32",
     "@types/mongodb": "^2.1.36",
     "@types/node": "^6.0.55",
     "@types/pluralize": "0.0.27",
