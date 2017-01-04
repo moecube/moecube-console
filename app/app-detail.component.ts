@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import App from '../models/app';
 import {AppService} from './app.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/Rx';
 import {MdIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
+import {App} from '../models/app';
 
 @Component({
     selector: 'app-detail',

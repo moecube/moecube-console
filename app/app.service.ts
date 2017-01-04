@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import App from '../models/app';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import {App} from '../models/app';
 /**
  * Created by weijian on 2016/12/30.
  */
