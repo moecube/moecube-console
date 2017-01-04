@@ -5,7 +5,7 @@
 /.idea/
 *.js
 *.js.map
-
+node-debug.log
 !/node_modules/@types/
 !/node_modules/@types/mongorito/
 !systemjs.config.js

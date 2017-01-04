@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import App from '../models/app';
 import {AppService} from './app.service';
-import {App} from '../models/app';
+import {MdDialog} from '@angular/material';
+import {AppCreateComponent} from './app-create.component';
 
 @Component({
     selector: 'apps',
@@ -11,7 +13,7 @@ import {App} from '../models/app';
 export class AppsComponent implements OnInit {
     apps: App[];
 
-    constructor(private appService: AppService) {
+    constructor(private appService: AppService, private dialog: MdDialog) {
     }
 
     async ngOnInit() {
@@ -21,5 +23,13 @@ export class AppsComponent implements OnInit {
     async getApps() {
         this.apps = await this.appService.getApps();
     }
-}
 
+    async create_app() {
+        let dialogRef = this.dialog.open(AppCreateComponent);
+        let app: App | undefined = await dialogRef.afterClosed().toPromise();
+        if (!app) {
+            return;
+        }
+        console.log(app);
+    }
+}

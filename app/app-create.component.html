@@ -1,0 +1,23 @@
+<h1 md-dialog-title>创建应用</h1>
+
+<form class="example-form">
+    <md-dialog-content>
+        <md-input-container class="example-full-width">
+            <input md-input placeholder="应用 ID (创建应用后无法修改)" [(ngModel)]="id" name="id">
+        </md-input-container>
+
+        <md-select placeholder="主要语言" [(ngModel)]="locale" name="locale" class="example-full-width">
+            <md-option *ngFor="let l of locales" [value]="l">{{l}}</md-option>
+        </md-select>
+
+        <md-input-container class="example-full-width">
+            <input md-input placeholder="名称" [(ngModel)]="name" name="name">
+        </md-input-container>
+
+    </md-dialog-content>
+</form>
+
+<md-dialog-actions>
+    <button md-button md-dialog-close>取消</button>
+    <button md-button (click)="submit(id, locale, name)">确定</button>
+</md-dialog-actions>

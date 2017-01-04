@@ -21,14 +21,17 @@ import {AppDetailComponent} from './app-detail.component';
 import {AppComponent} from './app.component';
 import {AppLocalesComponent} from './app-locales.component';
 import {AppPackagesComponent} from './app-packages.component';
+import {AppCreateComponent} from './app-create.component';
 
 
 @NgModule({
     imports: [
         BrowserModule, MaterialModule.forRoot(), FormsModule, RoutingModule, HttpModule,
     ],
-    declarations: [AppsComponent, MyCardComponent, AppComponent, AppDetailComponent, AppLocalesComponent, AppPackagesComponent],
+    declarations: [AppsComponent, MyCardComponent, AppComponent, AppDetailComponent, AppLocalesComponent, AppPackagesComponent,
+        AppCreateComponent],
     bootstrap: [MyCardComponent],
+    entryComponents: [AppCreateComponent],
     providers: [AppService, MdIconRegistry],
 })
 export class AppModule {
