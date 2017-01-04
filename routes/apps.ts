@@ -27,7 +27,7 @@ router.post('/apps/:id', async(ctx, next) => {
         ctx.body = await app.save();
     } catch (e) {
         if (e instanceof ModelExistsError) {
-            throw new BadRequest();
+            throw new BadRequest(`App ${ctx.params.id} already exists`);
         } else {
             throw InternalError;
         }
