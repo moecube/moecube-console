@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import App from '../models/app';
+import App from '../models/browserapp';
 import {AppService} from './app.service';
 import {MdDialog} from '@angular/material';
 import {AppCreateComponent} from './app-create.component';
