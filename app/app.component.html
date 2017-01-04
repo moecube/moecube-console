@@ -2,7 +2,7 @@
     <md-sidenav mode="side" opened="true">
         <h3>信息中心</h3>
         <ul>
-            <li><a md-list-item href="#">概览</a></li>
+            <li><a md-list-item href="#" disabled>概览</a></li>
         </ul>
         <h3>编辑应用</h3>
         <ul>
@@ -14,7 +14,10 @@
 
     <md-toolbar *ngIf="app" id="info" color="primary">
         <div>
-            <img src="https://lh6.ggpht.com/mUAFCY_JUfHQBlAE4JsnwyrghcxIldv-uk0iPPL66IpPxM8-KQCof6NN4usLm6LUpA=h80-rw" alt="喵帕斯~">
+            <label id="icon">
+                <img [src]="app.icon">
+                <input type="file" (change)="change_icon(app, $event.target.files[0])"/>
+            </label>
         </div>
         <div id="info-contents">
             <h1>{{app.name['zh-CN']}}</h1>
@@ -22,11 +25,11 @@
                 <span>{{app.id}}</span>
                 <a md-button target="_blank" href="https://mycard.moe">在商店中查看</a>
             </div>
-            <div class="IDWJ4SB-Yf-i">
+            <div>
                 <span style="color:#84a000;">已发布</span>
-                <span>2014年2月20日</span>
-                <a md-button href="#">取消发布应用</a>
-                <a md-button href="#">删除应用</a>
+                <span lang="zh-CN">{{app.created_at | date}}</span>
+                <a md-button (click)="unpublish(app)">取消发布应用</a>
+                <a md-button (click)="remove(app)">删除应用</a>
             </div>
         </div>
     </md-toolbar>

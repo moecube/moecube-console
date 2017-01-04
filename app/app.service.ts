@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import App from '../models/app';
+import App from '../models/browserapp';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 /**
@@ -12,10 +12,10 @@ export class AppService {
     }
 
     getApps(): Promise<App[]> {
-        return this.http.get('http://localhost:8000/apps').map((response) => response.json()).toPromise();
+        return this.http.get('http://localhost:8000/apps').map((response) => response.json().map((app: any) => new App(app))).toPromise();
     }
 
     getApp(id: string): Promise<App> {
-        return this.http.get(`http://localhost:8000/apps/${id}`).map((response) => response.json()).toPromise();
+        return this.http.get(`http://localhost:8000/apps/${id}`).map((response) => new App(response.json())).toPromise();
     }
 }

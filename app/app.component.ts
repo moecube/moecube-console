@@ -20,4 +20,20 @@ export class AppComponent implements OnInit {
                 this.app = app;
             });
     }
+
+    change_icon(app: App, file: File) {
+        if (!file) {
+            return;
+        }
+        console.log(app, file);
+    }
+
+    remove() {
+
+    }
+
+    unpublish() {
+
+    }
+
 }

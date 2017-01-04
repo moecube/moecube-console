@@ -65,6 +65,7 @@ h1 {
 #info-contents {
     margin-left: 12px;
 }
+
 #info-contents a, #info-contents span {
     line-height: 20px;
     padding: 0 4px;
@@ -78,4 +79,13 @@ md-toolbar {
 
 md-toolbar /deep/ md-toolbar-row {
     height: auto;
+}
+
+#icon img {
+    width: 80px;
+    height: 80px;
+}
+
+#icon input {
+    display: none;
 }

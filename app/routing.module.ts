@@ -17,6 +17,7 @@ const routes: Routes = [
         path: 'apps/:id',
         component: AppComponent,
         children: [
+            {path: '', redirectTo: 'detail', pathMatch: 'full'},
             {path: 'detail', component: AppDetailComponent},
             {path: 'locales', component: AppLocalesComponent},
             {path: 'packages', component: AppPackagesComponent}
