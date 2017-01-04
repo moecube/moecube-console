@@ -1,101 +1,44 @@
-<md-sidenav-container *ngIf="app">
-    <md-sidenav mode="side" opened="true">
-        <h3 md-subheader>信息中心</h3>
-        <md-nav-list>
-            <a md-list-item href="#">概览</a>
-        </md-nav-list>
-        <h3 md-subheader>编辑应用</h3>
-        <md-nav-list>
-            <a md-list-item href="#">详情</a>
-            <a md-list-item href="#">文件</a>
-        </md-nav-list>
-    </md-sidenav>
-    <div class="my-content">
+<div *ngIf="app">
+    <!--<h3 md-subheader>基本信息</h3>-->
+    <form class="example-form">
+        <md-input-container class="example-full-width">
+            <input md-input name="id" placeholder="ID" disabled [(ngModel)]="app.id">
+        </md-input-container>
 
-        <div id="info">
-            <div>
-            <img src="https://lh6.ggpht.com/mUAFCY_JUfHQBlAE4JsnwyrghcxIldv-uk0iPPL66IpPxM8-KQCof6NN4usLm6LUpA=h80-rw" alt="喵帕斯~">
-            </div>
-            <div id="info-contents">
-                <h1>{{app.name['zh-CN']}}</h1>
-                <div>
-                    <span>{{app.id}}</span>
-                    <a target="_blank" href="https://mycard.moe"> 在商店中查看 </a>
-                </div>
-                <div class="IDWJ4SB-Yf-i">
-                    <span style="color:#84a000;">已发布</span>
-                    <span>2014年2月20日</span>
-                    <a class="gwt-Anchor" href="javascript:">取消发布应用</a>
-                    <a class="gwt-Anchor">删除应用</a>
-                </div>
-            </div>
-        </div>
+        <md-input-container class="example-full-width">
+            <input md-input name="name" placeholder="First name" [(ngModel)]="app.name['zh-CN']">
+        </md-input-container>
 
-        <h3 md-subheader>基本信息</h3>
-        <form class="example-form">
+        <p>
             <md-input-container class="example-full-width">
-                <input md-input name="id" placeholder="ID" disabled [(ngModel)]="app.id">
+                <textarea md-input placeholder="Address">1600 Amphitheatre Pkwy</textarea>
             </md-input-container>
-
             <md-input-container class="example-full-width">
-                <input md-input name="name" placeholder="First name" [(ngModel)]="app.name['zh-CN']">
+                <textarea md-input placeholder="Address 2"></textarea>
             </md-input-container>
+        </p>
 
-            <p>
-                <md-input-container class="example-full-width">
-                    <textarea md-input placeholder="Address">1600 Amphitheatre Pkwy</textarea>
-                </md-input-container>
-                <md-input-container class="example-full-width">
-                    <textarea md-input placeholder="Address 2"></textarea>
-                </md-input-container>
-            </p>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <md-input-container class="example-full-width">
+                        <input md-input placeholder="City">
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container class="example-full-width">
+                        <input md-input placeholder="State">
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container class="example-full-width">
+                        <input md-input #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+                        <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+                    </md-input-container>
+                </td>
+            </tr>
+        </table>
 
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <md-input-container class="example-full-width">
-                            <input md-input placeholder="City">
-                        </md-input-container>
-                    </td>
-                    <td>
-                        <md-input-container class="example-full-width">
-                            <input md-input placeholder="State">
-                        </md-input-container>
-                    </td>
-                    <td>
-                        <md-input-container class="example-full-width">
-                            <input md-input #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-                            <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-                        </md-input-container>
-                    </td>
-                </tr>
-            </table>
-
-            <button md-raised-button color="primary">提交</button>
-        </form>
-
-        <h3 md-subheader>语言</h3>
-
-        <md-tab-group>
-            <md-tab>
-                <template md-tab-label>
-                    The <em>best</em> pasta
-                </template>
-                <h1>Best pasta restaurants</h1>
-                <p>...</p>
-            </md-tab>
-            <md-tab>
-                <template md-tab-label>
-                    <md-icon>home</md-icon> The worst sushi
-                </template>
-                <h1>Terrible sushi restaurants</h1>
-                <p>...</p>
-            </md-tab>
-        </md-tab-group>
-
-        Main content
-        <!--<md-icon class="md-24 fa-lg" fontSet="fa" fontIcon="fa-trophy"></md-icon>-->
-    </div>
-</md-sidenav-container>
-
-<md-icon fontSet="fa" fontIcon="fa-square"></md-icon>
+        <button md-raised-button color="primary">提交</button>
+    </form>
+</div>

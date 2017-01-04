@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "tsc && concurrently \"node server.js\" \"lite-server\"",
+    "prestart": "tsc",
+    "start": "concurrently \"node server.js\" \"lite-server\"",
     "tsc": "tsc",
     "lint": "tslint -e ./node_modules/** ./**/*.ts -t verbose",
     "migrate": "tsc && mongo-migrate --runMongoMigrate --config mongodb_config.json --dbPropName dbSettings"

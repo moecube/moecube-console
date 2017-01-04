@@ -8,11 +8,12 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'app-detail.component.html',
-    styleUrls: ['app-detail.component.css']
+    templateUrl: 'app-locales.component.html',
+    styleUrls: ['app-locales.component.css']
 })
-export class AppDetailComponent implements OnInit {
+export class AppLocalesComponent implements OnInit {
     app: App;
+    locales: string[];
 
     constructor(private appService: AppService, private route: ActivatedRoute, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
     }
@@ -22,6 +23,7 @@ export class AppDetailComponent implements OnInit {
             .switchMap((params: Params) => this.appService.getApp(params['id']))
             .subscribe(app => {
                 this.app = app;
+                this.locales = Object.keys(this.app.name);
             });
     }
 }

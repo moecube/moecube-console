@@ -18,13 +18,16 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import {AppDetailComponent} from './app-detail.component';
+import {AppComponent} from './app.component';
+import {AppLocalesComponent} from './app-locales.component';
+import {AppPackagesComponent} from './app-packages.component';
 
 
 @NgModule({
     imports: [
         BrowserModule, MaterialModule.forRoot(), FormsModule, RoutingModule, HttpModule,
     ],
-    declarations: [AppsComponent, MyCardComponent, AppDetailComponent],
+    declarations: [AppsComponent, MyCardComponent, AppComponent, AppDetailComponent, AppLocalesComponent, AppPackagesComponent],
     bootstrap: [MyCardComponent],
     providers: [AppService, MdIconRegistry],
 })

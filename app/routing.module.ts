@@ -5,12 +5,23 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppsComponent} from './apps.component';
 import {AppDetailComponent} from './app-detail.component';
+import {AppComponent} from './app.component';
+import {AppLocalesComponent} from './app-locales.component';
+import {AppPackagesComponent} from './app-packages.component';
 
 
 const routes: Routes = [
     {path: '', redirectTo: '/apps', pathMatch: 'full'},
     {path: 'apps', component: AppsComponent},
-    {path: 'apps/:id', component: AppDetailComponent}
+    {
+        path: 'apps/:id',
+        component: AppComponent,
+        children: [
+            {path: 'detail', component: AppDetailComponent},
+            {path: 'locales', component: AppLocalesComponent},
+            {path: 'packages', component: AppPackagesComponent}
+        ]
+    }
 ];
 
 @NgModule({

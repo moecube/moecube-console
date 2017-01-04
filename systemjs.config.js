@@ -39,6 +39,12 @@
             },
             rxjs: {
                 defaultExtension: 'js'
+            },
+            models: {
+                defaultExtension: 'js'
+            },
+            db: {
+                defaultExtension: 'js'
             }
         }
     });
