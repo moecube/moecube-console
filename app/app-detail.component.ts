@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import App from '../models/app';
 import {AppService} from './app.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import 'rxjs/Rx';
 import {MdIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
-    selector: 'app-detail',
     moduleId: module.id,
     templateUrl: 'app-detail.component.html',
     styleUrls: ['app-detail.component.css']
 })
 export class AppDetailComponent implements OnInit {
+    @Input()
     app: App;
 
     constructor(private appService: AppService, private route: ActivatedRoute, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
@@ -26,9 +26,11 @@ export class AppDetailComponent implements OnInit {
     }
 
     async ngOnInit() {
-        this.route.params
-            .switchMap((params: Params) => this.appService.getApp(params['id']))
-            .subscribe(app => this.app = app);
+        // this.route.params
+        //     .switchMap((params: Params) => this.appService.getApp(params['id']))
+        //     .subscribe(app => {
+        //         this.app = app;
+        //         this.locales = Object.keys(this.app.name);
+        //     });
     }
-
 }
