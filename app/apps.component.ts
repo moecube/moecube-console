@@ -3,6 +3,7 @@ import App from '../models/browserapp';
 import {AppService} from './app.service';
 import {MdDialog, MdSnackBar} from '@angular/material';
 import {AppCreateComponent} from './app-create.component';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'apps',
@@ -13,7 +14,7 @@ import {AppCreateComponent} from './app-create.component';
 export class AppsComponent implements OnInit {
     apps: App[];
 
-    constructor(private appService: AppService, private dialog: MdDialog, private snackBar: MdSnackBar) {
+    constructor(private appService: AppService, private dialog: MdDialog, private snackBar: MdSnackBar, private router: Router) {
     }
 
     async ngOnInit() {
@@ -32,6 +33,7 @@ export class AppsComponent implements OnInit {
         }
         try {
             await this.appService.save(app);
+            await this.router.navigate(['/apps', app.id]);
         } catch (error) {
             this.snackBar.open(error.toString());
         }

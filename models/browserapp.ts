@@ -15,6 +15,7 @@ class App {
     data: any;
     icon = 'http://www.immersion-3d.com/wp-content/uploads/2015/12/image-placeholder-500x500.jpg';
     created_at: Date;
+    status = '已发布';
 
     // TODO: 实现进 Model 里
     constructor(o: any) {
