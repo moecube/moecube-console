@@ -10,3 +10,5 @@
 !/node_modules/@types/mongorito/
 !systemjs.config.js
 /mongodb_config.json
+
+.DS_Store
