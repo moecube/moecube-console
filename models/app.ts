@@ -28,7 +28,7 @@ export class App extends Model {
     async checkExists() {
         let app = await App.findOne({id: this.id});
         if (app) {
-            throw new ModelExistsError(this.id);
+            throw new ModelExistsError(`App ${this.id} exists`);
         }
     }
 

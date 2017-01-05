@@ -28,8 +28,11 @@ app.use(async(ctx, next) => {
         // will only respond with JSON
         ctx.status = err.status || 500;
         ctx.body = {
-            message: err.message
+            message: err.message,
         };
+        if (err.errCode) {
+            ctx.body['errCode'] = err.errCode;
+        }
         if (ctx.response.status >= 400) {
             logger.warn(err);
         } else if (ctx.response.status >= 500) {

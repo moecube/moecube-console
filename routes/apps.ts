@@ -5,7 +5,7 @@ import Router = require('koa-router');
 import {NotFound, BadRequest, InternalError} from '../koa/errors';
 import {Model} from '../db/mongo';
 import {App} from '../models/app';
-import {ModelExistsError} from '../models/errors';
+import {ModelExistsError, ModelError} from '../models/errors';
 const router = new Router();
 
 router.get('/apps', async(ctx, next) => {
@@ -26,10 +26,10 @@ router.post('/apps/:id', async(ctx, next) => {
     try {
         ctx.body = await app.save();
     } catch (e) {
-        if (e instanceof ModelExistsError) {
-            throw new BadRequest(`App ${ctx.params.id} already exists`);
+        if (e instanceof ModelError) {
+            throw e;
         } else {
-            throw InternalError;
+            throw new InternalError(e);
         }
     }
 });

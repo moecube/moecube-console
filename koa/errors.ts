@@ -19,5 +19,9 @@ export class BadRequest extends KoaError {
         super(msg, 400);
     }
 }
-export const InternalError = new KoaError(STATUS_CODES[500], 500);
+export class InternalError extends KoaError {
+    constructor(public error: Error) {
+        super(STATUS_CODES[500], 500);
+    }
+}
 
