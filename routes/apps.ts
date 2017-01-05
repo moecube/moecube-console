@@ -5,7 +5,7 @@ import Router = require('koa-router');
 import {NotFound, BadRequest, InternalError} from '../koa/errors';
 import {Model} from '../db/mongo';
 import {App} from '../models/app';
-import {ModelExistsError, ModelError} from '../models/errors';
+import {ModelExistsError, ModelError, ModelInvalidError} from '../models/errors';
 const router = new Router();
 
 router.get('/apps', async(ctx, next) => {
@@ -22,6 +22,9 @@ router.get('/apps/:id', async(ctx, next) => {
 });
 
 router.post('/apps/:id', async(ctx, next) => {
+    if (!ctx.request.body.id || ctx.params.id !== ctx.request.body.id) {
+        throw new ModelInvalidError('App id not same');
+    }
     let app = new App(ctx.request.body);
     try {
         ctx.body = await app.save();

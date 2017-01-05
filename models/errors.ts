@@ -19,3 +19,10 @@ export class ModelExistsError extends ModelError {
     }
 }
 
+export class ModelInvalidError extends ModelError {
+    errCode: string = 'ERROR_MODEL_INVALID';
+
+    constructor(msg: string) {
+        super(msg, 400);
+    }
+}
