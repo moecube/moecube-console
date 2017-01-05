@@ -22,7 +22,7 @@ export class AppsComponent implements OnInit {
     }
 
     async getApps() {
-        this.apps = await this.appService.getApps();
+        this.apps = await this.appService.all();
     }
 
     async create_app() {

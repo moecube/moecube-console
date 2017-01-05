@@ -6,18 +6,29 @@ import {Observable} from 'rxjs/Rx';
 /**
  * Created by weijian on 2016/12/30.
  */
+
+function addJsonOptions(options?: RequestOptions): RequestOptions {
+    if (options) {
+        options.headers.append('Content-Type', 'application/json');
+    } else {
+        let headers = new Headers({'Content-Type': 'application/json'})
+        options = new RequestOptions({headers: headers});
+    }
+    return options;
+}
+
 @Injectable()
 export class AppService {
     constructor(private http: Http) {
 
     }
 
-    getApps(): Promise<App[]> {
-        return this.http.get('http://localhost:8000/apps').map((response) => response.json().map((app: any) => new App(app))).toPromise();
-    }
-
-    getApp(id: string): Promise<App> {
-        return this.http.get(`http://localhost:8000/apps/${id}`).map((response) => new App(response.json())).toPromise();
+    all(): Promise<App[]> {
+        return this.http.get('http://localhost:8000/apps')
+            .map((response) => {
+                return response.json().map((app: any) => new App(app));
+            }).catch(this.handleError)
+            .toPromise();
     }
 
     handleError(error: Response | any) {
@@ -32,8 +43,7 @@ export class AppService {
     }
 
     save(app: App): Promise<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: headers});
+        let options = addJsonOptions();
         return this.http.post(`http://localhost:8000/apps/${app.id}`, app, options)
             .map((response) => response.json())
             .catch(this.handleError)
@@ -41,7 +51,26 @@ export class AppService {
     }
 
     update(app: App) {
-
+        let options = addJsonOptions();
+        return this.http.patch(`http://localhost:8000/apps/${app.id}`, app, options)
+            .map((response) => response.json())
+            .catch(this.handleError)
+            .toPromise();
     }
+
+    remove(app: App) {
+        return this.http.delete(`http://localhost:8000/apps/${app.id}`)
+            .map((response) => response.json())
+            .catch(this.handleError)
+            .toPromise();
+    }
+
+    find(id: string): Promise<App> {
+        return this.http.get(`http://localhost:8000/apps/${id}`)
+            .map((response) => response.json)
+            .catch(this.handleError)
+            .toPromise();
+    }
+
 
 }
