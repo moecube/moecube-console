@@ -32,6 +32,7 @@ export class Model {
     static async findOne(query: Object): Promise<any|null> {
         let collection = await this.getCollection();
         let result = await collection.find(query).limit(1).next();
+        console.log(result, query,this.dbName);
         if (result) {
             return new this(result);
         } else {

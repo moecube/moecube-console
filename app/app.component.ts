@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.route.params
-            .switchMap((params: Params) => this.appService.getApp(params['id']))
+            .switchMap((params: Params) => this.appService.find(params['id']))
             .subscribe(app => {
                 this.app = app;
             });
