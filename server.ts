@@ -26,6 +26,7 @@ app.use(async(ctx, next) => {
         await next();
     } catch (err) {
         // will only respond with JSON
+        console.log(err.status);
         ctx.status = err.status || 500;
         ctx.body = {
             message: err.message,
@@ -33,10 +34,10 @@ app.use(async(ctx, next) => {
         if (err.errCode) {
             ctx.body['errCode'] = err.errCode;
         }
-        if (ctx.response.status >= 400) {
-            logger.warn(err);
-        } else if (ctx.response.status >= 500) {
+        if (ctx.response.status >= 500) {
             logger.error(err);
+        } else if (ctx.response.status >= 400) {
+            logger.warn(err);
         }
     }
 });
