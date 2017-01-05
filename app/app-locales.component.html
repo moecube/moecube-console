@@ -1,5 +1,3 @@
-<!--<h3 md-subheader>语言</h3>-->
-
 <md-tab-group *ngIf="app">
     <md-tab *ngFor="let locale of locales" [label]="locale">
         <form class="example-form" style="margin-top:16px;">
@@ -22,5 +20,11 @@
 
             <button md-raised-button color="primary">提交</button>
         </form>
+    </md-tab>
+
+    <md-tab #translate label="添加翻译">
+        <md-select placeholder="语言" [(ngModel)]="locale" name="locale" class="example-full-width">
+            <md-option *ngFor="let l of untranslated_locales()" [value]="l">{{l}}</md-option>
+        </md-select>
     </md-tab>
 </md-tab-group>

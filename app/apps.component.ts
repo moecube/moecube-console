@@ -38,4 +38,8 @@ export class AppsComponent implements OnInit {
             this.snackBar.open(error.toString());
         }
     }
+
+    test(event: any) {
+        console.log(event);
+    }
 }

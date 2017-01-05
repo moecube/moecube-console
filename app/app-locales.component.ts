@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import App, {I18n} from '../models/browserapp';
 import {AppService} from './app.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/Rx';
-import {MdIconRegistry} from '@angular/material';
+import {MdIconRegistry, MdTab} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
@@ -15,6 +15,8 @@ export class AppLocalesComponent implements OnInit {
     app: App;
     locales: string[];
     news: I18n<string> = {};
+    @ViewChild('translate')
+    translate: MdTab;
 
     constructor(private appService: AppService, private route: ActivatedRoute, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
     }
@@ -29,5 +31,9 @@ export class AppLocalesComponent implements OnInit {
                     this.news[locale] = JSON.stringify(news);
                 }
             });
+    }
+
+    untranslated_locales() {
+        return ['zh-CN', 'zh-TW', 'en-US', 'ja-JP'].filter(locale => !this.locales.includes(locale));
     }
 }

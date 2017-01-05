@@ -1,7 +1,6 @@
 .wrapper {
     min-height: 1000px;
-    padding-left: 20px;
-    padding-top: 20px;
+    padding: 20px 20px 0 20px;
 }
 
 md-sidenav {
