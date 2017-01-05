@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {AppService} from './app.service';
 import App from '../models/browserapp';
+import {MdSnackBar} from '@angular/material';
 @Component({
     moduleId: module.id,
     templateUrl: 'app.component.html',
@@ -10,7 +11,8 @@ import App from '../models/browserapp';
 export class AppComponent implements OnInit {
     app: App;
 
-    constructor(private route: ActivatedRoute, private appService: AppService) {
+    constructor(private route: ActivatedRoute, private appService: AppService,
+                private snackBar: MdSnackBar, private router: Router) {
     }
 
     ngOnInit() {
@@ -28,8 +30,16 @@ export class AppComponent implements OnInit {
         console.log(app, file);
     }
 
-    remove() {
-
+    async remove() {
+        if (confirm('确认删除')) {
+            try {
+                await this.appService.remove(this.app);
+                await this.router.navigate(['/apps']);
+                this.snackBar.open('删除成功', undefined, {duration: 2000});
+            } catch (e) {
+                this.snackBar.open(e.toString(), undefined, {duration: 2000});
+            }
+        }
     }
 
     unpublish() {

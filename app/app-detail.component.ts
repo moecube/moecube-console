@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import App from '../models/browserapp';
 import {AppService} from './app.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import 'rxjs/Rx';
-import {MdIconRegistry} from '@angular/material';
+import {MdIconRegistry, MdSnackBar} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
@@ -14,14 +14,22 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class AppDetailComponent implements OnInit {
     app: App;
 
-    constructor(private appService: AppService, private route: ActivatedRoute, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
+    constructor(private appService: AppService, private route: ActivatedRoute,
+                private snackBar: MdSnackBar) {
+    }
+
+    async submit() {
+        // TODO: 处理上传的数据
+        try {
+            await this.appService.update(this.app);
+            this.snackBar.open('编辑成功', undefined, {duration: 2000});
+        } catch (e) {
+            this.snackBar.open(e.toString(), undefined, {duration: 2000});
+        }
     }
 
     async ngOnInit() {
-        this.route.parent.params
-            .switchMap((params: Params) => this.appService.find(params['id']))
-            .subscribe(app => {
-                this.app = app;
-            });
+        let id = this.route.parent.snapshot.params['id'];
+        this.app = await this.appService.find(id);
     }
 }

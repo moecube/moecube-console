@@ -53,7 +53,7 @@ export class AppService {
     update(app: App) {
         let options = addJsonOptions();
         return this.http.patch(`http://localhost:8000/apps/${app.id}`, app, options)
-            .map((response) => response.json())
+            .map((response) => new App(response.json()))
             .catch(this.handleError)
             .toPromise();
     }
@@ -67,7 +67,7 @@ export class AppService {
 
     find(id: string): Promise<App> {
         return this.http.get(`http://localhost:8000/apps/${id}`)
-            .map((response) => response.json)
+            .map((response) => new App(response.json()))
             .catch(this.handleError)
             .toPromise();
     }

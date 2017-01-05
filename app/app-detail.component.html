@@ -1,6 +1,6 @@
 <div *ngIf="app">
     <!--<h3 md-subheader>基本信息</h3>-->
-    <form class="example-form">
+    <form class="example-form" (submit)="submit()">
 
         <md-select placeholder="类别" [(ngModel)]="app.category" name="category" class="example-full-width">
             <md-option *ngFor="let l of ['game','runtime','emulator','module']" [value]="l">{{l}}</md-option>
@@ -12,21 +12,21 @@
         </md-input-container>
 
         <md-input-container class="example-full-width">
-            <input md-input name="tags" placeholder="开发者" [(ngModel)]="app.author">
+            <input md-input name="author" placeholder="开发者" [(ngModel)]="app.author">
         </md-input-container>
 
         <md-input-container class="example-full-width">
-            <input md-input name="tags" placeholder="网站" [(ngModel)]="app.homepage">
+            <input md-input name="homepage" placeholder="网站" [(ngModel)]="app.homepage">
             <md-hint align="end">以 http:// 或 https:// 开头，没有可留空</md-hint>
         </md-input-container>
 
         <md-input-container class="example-full-width">
-            <input md-input name="tags" placeholder="聊天室" [(ngModel)]="app.conference">
+            <input md-input name="conference" placeholder="聊天室" [(ngModel)]="app.conference">
             <md-hint align="end">游戏类应用通常与 ID 相同，其他类型的应用留空</md-hint>
         </md-input-container>
 
         <md-input-container class="example-full-width">
-            <input md-input name="tags" placeholder="应用支持的语言" [(ngModel)]="locales">
+            <input md-input name="locales" placeholder="应用支持的语言" [(ngModel)]="locales">
             <md-hint align="end">JSON string[]，不会写请联系 zh99998@gmail.com</md-hint>
         </md-input-container>
 

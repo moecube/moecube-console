@@ -45,6 +45,7 @@ app.use(async(ctx, next) => {
 // 跨域
 app.use(async(ctx, next) => {
     ctx.set('Access-Control-Allow-Origin', '*');
+    ctx.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
     ctx.set('Access-Control-Allow-Headers', 'Content-Type');
     if (ctx.method === 'OPTIONS') {
         ctx.status = 204;
