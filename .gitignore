@@ -8,6 +8,7 @@
 node-debug.log
 !/node_modules/@types/
 !/node_modules/@types/mongorito/
+!/node_modules/@types/is-zip/
 !systemjs.config.js
 /mongodb_config.json
 

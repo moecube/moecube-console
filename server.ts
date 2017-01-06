@@ -26,7 +26,7 @@ app.use(async(ctx, next) => {
         await next();
     } catch (err) {
         // will only respond with JSON
-        console.log(err.status);
+        console.log(err);
         ctx.status = err.status || 500;
         ctx.body = {
             message: err.message,

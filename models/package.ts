@@ -17,6 +17,8 @@ export interface Action {
 
 export class Package extends Model {
     @field
+    appId: string;
+    @field
     version: string;
     @field
     locale: Locale[];
@@ -24,4 +26,8 @@ export class Package extends Model {
     platform: Platform[];
     @field
     actions: {[key: string]: Action};
+
+    static async findAllByApp(appId: string) {
+        return await Package.find({appId: appId});
+    }
 }
