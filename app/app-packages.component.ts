@@ -3,8 +3,7 @@ import App from '../models/browserapp';
 import {AppService} from './app.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/Rx';
-import {MdIconRegistry} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
+import {Package} from '../models/package';
 
 @Component({
     moduleId: module.id,
@@ -14,14 +13,17 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class AppPackagesComponent implements OnInit {
     app: App;
 
-    constructor(private appService: AppService, private route: ActivatedRoute, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
+    packages: Package[];
+
+    constructor(private appService: AppService, private route: ActivatedRoute) {
     }
 
     async ngOnInit() {
         this.route.parent.params
             .switchMap((params: Params) => this.appService.find(params['id']))
-            .subscribe(app => {
+            .subscribe(async(app) => {
                 this.app = app;
+                this.packages = await this.appService.allPackages(app.id);
             });
     }
 

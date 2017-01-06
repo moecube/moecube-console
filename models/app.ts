@@ -21,6 +21,8 @@ export class App extends Model {
     @field
     news: I18n<{title: string, url: string, image: string}[]>;
     @field
+    changelog: I18n<string>;
+    @field
     conference?: string;
     @field
     data: any;

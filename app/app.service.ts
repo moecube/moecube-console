@@ -3,6 +3,7 @@ import App from '../models/browserapp';
 import {Http, RequestOptions, Headers, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
+import {Package} from '../models/package';
 /**
  * Created by weijian on 2016/12/30.
  */
@@ -22,6 +23,16 @@ export class AppService {
     constructor(private http: Http) {
 
     }
+
+    async allPackages(appId: string): Promise<Package[]> {
+        return [new Package({
+            version: '1.06',
+            platforms: ['win32', 'darwin'],
+            locales: ['zh-CN', 'en-US'],
+            files: {'1.txt': 'hashA', '2.txt': 'hashB', '3.txt': 'hashC'},
+        })];
+    }
+
 
     all(): Promise<App[]> {
         return this.http.get('http://localhost:8000/apps')

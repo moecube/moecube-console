@@ -7,6 +7,9 @@ import {NotFound} from '../koa/errors';
 import {Package} from '../models/package';
 const router = new Router();
 
+router.get('/packages/all/:appId', async(ctx, next) => {
+
+});
 router.get('/packages/:id', async(ctx, next) => {
     let p: Package|null = await Package.findOne({id: ctx.params.id});
     if (!p) {

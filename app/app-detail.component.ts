@@ -1,10 +1,9 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import App from '../models/browserapp';
 import {AppService} from './app.service';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import 'rxjs/Rx';
-import {MdIconRegistry, MdSnackBar} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
     moduleId: module.id,
