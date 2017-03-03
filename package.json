@@ -1,0 +1,15 @@
+{
+  "name": "mycard-console-lazy",
+  "version": "0.0.1",
+  "dependencies": {
+    "@types/mustache": "^0.8.29",
+    "@types/node": "0.0.2",
+    "mustache": "^2.3.0"
+  },
+  "scripts": {
+    "start": "tsc && node main.js"
+  },
+  "devDependencies": {
+    "typescript": "^2.1.4"
+  }
+}
