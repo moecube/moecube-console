@@ -61,7 +61,9 @@ app.use(users.routes());
 app.use(apps.routes());
 app.use(packages.routes());
 Mongorito.connect(url).then(() => {
-    app.listen(8000);
+    app.listen(8001, () => {
+        console.log("app listening port 8001")
+    });
 });
 
 // function getKoaLogger (logger4js, options) {

@@ -21,6 +21,7 @@ router.get('/apps/:id', async(ctx, next) => {
 });
 
 router.post('/apps/:id', async(ctx, next) => {
+    console.log(ctx.request.body)
     if (!ctx.request.body.id || ctx.params.id !== ctx.request.body.id) {
         throw new ModelInvalidError('App id not same');
     }
