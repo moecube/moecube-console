@@ -14,18 +14,28 @@ export interface Action {
     open?: string;
 }
 
+export interface File {
+    path: string,
+    size: number,
+    hash: string,
+}
+
+
 
 export class Package extends Model {
+    @field
+    id: string;
     @field
     appId: string;
     @field
     version: string;
     @field
-    locale: Locale[];
+    locales: Locale[];
     @field
-    platform: Platform[];
+    platforms: Platform[];
     @field
-    actions: {[key: string]: Action};
+    files: File[];
+
 
     static async findAllByApp(appId: string) {
         return await Package.find({appId: appId});

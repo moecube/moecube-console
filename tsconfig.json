@@ -11,7 +11,7 @@
       "es2017",
       "dom"
     ],
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "skipLibCheck": true
   }

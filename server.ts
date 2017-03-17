@@ -1,5 +1,6 @@
 import Koa = require('koa');
 import index from './routes/index';
+import upload from './routes/upload';
 import users from './routes/users';
 import apps from './routes/apps';
 import packages from './routes/packages';
@@ -46,7 +47,7 @@ app.use(async(ctx, next) => {
 app.use(async(ctx, next) => {
     ctx.set('Access-Control-Allow-Origin', '*');
     ctx.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
-    ctx.set('Access-Control-Allow-Headers', 'Content-Type');
+    ctx.set('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With',);
     if (ctx.method === 'OPTIONS') {
         ctx.status = 204;
     } else {
@@ -59,6 +60,7 @@ app.use(bodyParser());
 app.use(index.routes());
 app.use(users.routes());
 app.use(apps.routes());
+app.use(upload.routes());
 app.use(packages.routes());
 Mongorito.connect(url).then(() => {
     app.listen(8001, () => {
