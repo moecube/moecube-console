@@ -45,6 +45,7 @@
     "@types/koa-router": "^7.0.21",
     "@types/log4js": "0.0.32",
     "@types/mongodb": "^2.1.36",
+    "@types/mongoose": "^4.7.8",
     "@types/node": "^6.0.55",
     "@types/pluralize": "0.0.27",
     "@types/tmp": "0.0.32",

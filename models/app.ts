@@ -15,6 +15,7 @@ interface Platform<T> {
 }
 interface Package{
     id: string;
+    name: string;
     platforms: Platform<string[]>;
     locales: I18n<string[]>;
     files: File[];

@@ -5,6 +5,7 @@
 import Router = require('koa-router');
 import {NotFound} from '../koa/errors';
 import {Package} from '../models/package';
+import {ModelInvalidError} from '../models/errors';
 import * as tmp from 'tmp';
 import {ChildProcess} from 'child_process';
 import fs = require('fs');
@@ -76,7 +77,21 @@ router.get('/packages/:id', async(ctx, next) => {
     }
     ctx.body = p;
 });
-router.post('/packages/:id', async(ctx, next) => {
+
+// router.post('/packages/:id', async(ctx, next) => {
+//     let p: Package|null = await Package.findOne({id: ctx.params.id});
+//     if (!p) {
+//         throw new NotFound(`Package ${ctx.params.id} Not Found`);
+//     }
+//     if (!ctx.request.body.id || ctx.request.body.id !== p.id) {
+//         throw new ModelInvalidError('Can not change AppID');
+//     }
+    
+//     Object.assign(p, ctx.request.body);
+//     ctx.body = await p.save();
+// })
+
+router.patch('/packages/:id', async(ctx, next) => {
     new Promise<string|Buffer>((resolve, reject) => {
         let downloadUrl = ctx.request.body.downloadUrl;
         tmp.tmpName((e, file) => {

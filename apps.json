@@ -1,0 +1,3934 @@
+[
+  {
+    "id": "th06",
+    "name": {
+      "zh-CN": "东方红魔乡",
+      "en-US": "The Embodiment of Scarlet Devil"
+    },
+    "description": {
+      "zh-CN": "　「东方红魔乡」是20世纪延长型完全2D射击游戏（STG）。<br/>　是以表现STG里最有意思的避弹和模式化为主的游戏。<br/>　看起来很可怕的弹幕也都被调整到了可以避开的程度，所以请不要气馁，多多挑战吧。<br/>　全6（+1）面，难度设置地稍微偏低。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2002-08-11" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th06-lang-zh-TW"
+      ],
+      "darwin": [
+        "th06-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "東方紅魔郷.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "東方紅魔郷.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.02h-1",
+      "darwin": "1.02h-1"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th6-图标/th06_105.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th6-图标/1024px-东方红魔乡cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th6-图标/1024px-东方红魔乡cover4.jpg"
+  },
+  {
+    "id": "th06-lang-zh-TW",
+    "category": "module",
+    "parent": "th06",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th06"
+      ],
+      "darwin": [
+        "th06",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th06.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th06.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th07",
+    "name": {
+      "zh-CN": "东方妖妖梦",
+      "en-US": "Perfect Cherry Blossom"
+    },
+    "description": {
+      "zh-CN": "　「东方妖妖梦　～ Perfect Cherry Blossom.」为少女弹幕射击游戏。<br/>　请享受提炼出的仅由弹幕与避弹组成的究极的形状美吧。<br/><br/>　＊本游戏包含过激的弹幕场景<br/>　　请小孩子，或者弹幕过敏症患者与医生联系。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2003-08-17" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th07-lang-zh-TW"
+      ],
+      "darwin": [
+        "th07-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th07.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th07.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th7-图标/th07_105.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th7-图标/800px-东方妖妖梦cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th7-图标/1024px-东方妖妖梦cover4.jpg"
+  },
+  {
+    "id": "th07-lang-zh-TW",
+    "category": "module",
+    "parent": "th07",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th07"
+      ],
+      "darwin": [
+        "wine",
+        "th07"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th07.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th07.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th075",
+    "name": {
+      "zh-CN": "东方萃梦想",
+      "en-US": "Immaterial and Missing Power"
+    },
+    "description": {
+      "zh-CN": "東方萃夢想　～ Immaterial and Missing Power.（とうほうすいむそう，Touhou Suimusou）本作是 东方Project官方游戏 系列的 第七点五作（Th7.5） ，也是发布在Windows平台上的 （新作）第一个小数点作。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        },
+        {
+          "name": "黄昏边境",
+          "url": "http://www.tasofro.net/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2004-12-30" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th075-lang-zh-TW"
+      ],
+      "darwin": [
+        "th075-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th075.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "config.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th075.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "config.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th75-图标/th075_ICON1.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th75-图标/800px-东方萃梦想booklet1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th75-图标/1024px-东方萃梦想cover4.jpg"
+  },
+  {
+    "id": "th075-lang-zh-TW",
+    "category": "module",
+    "parent": "th075",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th075"
+      ],
+      "darwin": [
+        "wine",
+        "th075"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th075c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "configCN.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th075c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "configCN.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th08",
+    "name": {
+      "zh-CN": "东方永夜抄",
+      "en-US": "Imperishable Night"
+    },
+    "description": {
+      "zh-CN": "　「东方永夜抄　～ Imperishable Night.」为少女弹幕射击游戏（STG）。<br/>　因为现在的作品总是含有某些使人厌倦的弹幕，所以本作以发现崭新的存在价值为目的。（稍微有些假）<br/><br/>　＊本游戏包含过激的弹幕场景<br/>　　请小孩子，或者弹幕过敏症患者与医生联系。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2004-08-15" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th08-lang-zh-CN"
+      ],
+      "darwin": [
+        "th08-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th08.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th08.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th8-图标/th08_105.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th8-图标/800px-东方永夜抄cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th8-图标/1024px-东方永夜抄cover4.jpg"
+  },
+  {
+    "id": "th08-lang-zh-CN",
+    "category": "module",
+    "parent": "th08",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th08"
+      ],
+      "darwin": [
+        "wine",
+        "th08"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th08.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th08.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th09",
+    "name": {
+      "zh-CN": "东方花映冢",
+      "en-US": "Phantasmagoria of Flower View"
+    },
+    "description": {
+      "zh-CN": "「东方花映塚　～ Phantasmagoria of Flower View.」为装作对战的弹幕射击游戏。<br/>披着Twinkle Star Sprites[1]的奇怪的弹幕游戏。为了被那样想而出手，以获得附带的了不起的瞩目<br/><br/>妖精们蠢蠢欲动的幻想乡中，最悠闲的人类与最沉醉于花中的妖怪们的弹幕开花宣言。<br/>打倒敌人之前不要倒下！　攻击过来的话就躲避！！<br/>对于能够见到幻想的人，比起尖锐的攻击还是绅士地回避更适合。那个已经很消极了<br/><br/>＊本游戏含有过激的弹幕场景<br/><br/>　小孩子，或者对弹幕过敏的人请做那个。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2005-08-14" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th09-lang-zh-TW"
+      ],
+      "darwin": [
+        "th09-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th09.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th09.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th9-图标/th09_105.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th9-图标/800px-东方花映塚cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th9-图标/1024px-东方花映塚cover4.jpg"
+  },
+  {
+    "id": "th09-lang-zh-TW",
+    "category": "module",
+    "parent": "th09",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th09"
+      ],
+      "darwin": [
+        "wine",
+        "th09"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th09c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th09c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th095",
+    "name": {
+      "zh-CN": "东方文花帖",
+      "en-US": "Shoot the Bullet"
+    },
+    "description": {
+      "zh-CN": "本款游戏是一款较为特殊的弹幕摄影游戏，也是第一款弹幕射击类的小数点作。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2005-12-30" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th095-lang-zh-TW"
+      ],
+      "darwin": [
+        "th095-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th095.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th095.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th95-图标/th095_105.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th95-图标/800px-东方文花帖cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th95-图标/1024px-东方文花帖cover4.jpg"
+  },
+  {
+    "id": "th095-lang-zh-TW",
+    "category": "module",
+    "parent": "th095",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th095"
+      ],
+      "darwin": [
+        "wine",
+        "th095"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th095c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th095c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th10",
+    "name": {
+      "zh-CN": "东方风神录",
+      "en-US": "Mountain of Faith"
+    },
+    "description": {
+      "zh-CN": "　「东方风神录　～ Mountain of Faith.」为少女弹幕射击游戏（STG）。<br/>　本作品是使顽固僵化了的游戏创作大脑变得灵活起来的，训练作者大脑这种类型的游戏（多半是假的）"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2007-08-17" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [
+        "directx"
+      ],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th10-lang-zh-CN-zh-TW"
+      ],
+      "darwin": [
+        "th10-lang-zh-CN-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th10.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th10.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th10-图标/th10_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th10-图标/800px-东方风神录cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th10-图标/1024px-东方风神录cover4.jpg"
+  },
+  {
+    "id": "th10-lang-zh-CN-zh-TW",
+    "category": "module",
+    "parent": "th10",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th10"
+      ],
+      "darwin": [
+        "wine",
+        "th10"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN",
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th10chs.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_chs.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th10chs.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_chs.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th105",
+    "name": {
+      "zh-CN": "东方绯想天",
+      "en-US": "Scarlet Weather Rhapsody"
+    },
+    "description": {
+      "zh-CN": "这是ZUN与黄昏边境合作制作的第二款游戏，也是东方Project的第二款格斗游戏。本作剧情模式有15个可用角色（一开始只有3个可用角色，其他角色需解锁），每个角色都有各自的剧情、对手与结局。对战模式则有15个可用角色（一开始只有13个可用角色，其他角色需解锁），在对战不同的角色的时候也分别有不同的对话。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        },
+        {
+          "name": "黄昏边境",
+          "url": "http://www.tasofro.net/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2008-05-25" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [
+        "directx"
+      ],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th105-lang-zh-CN"
+      ],
+      "darwin": [
+        "th105-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th105.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th105.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "network": {
+      "protocol": "maotama",
+      "port": 10800,
+      "servers": [
+        {
+          "id": "Hangzhou",
+          "url": "wss://wudizhanche.mycard.moe:10800/"
+        },
+        {
+          "id": "Beijing",
+          "url": "wss://lx7.mycard.moe:10801/"
+        }
+      ]
+    },
+    "conference": "th123",
+    "icon": "https://r.my-card.in/downloads/assets/th105-图标/th105_112.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th105-图标/800px-东方绯想天booklet1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th105-图标/1024px-东方绯想天cover4.jpg"
+  },
+  {
+    "id": "th105-lang-zh-CN",
+    "category": "module",
+    "parent": "th105",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th105"
+      ],
+      "darwin": [
+        "wine",
+        "th105"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th105.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th105.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th11",
+    "name": {
+      "zh-CN": "东方地灵殿",
+      "en-US": "Subterranean Animism"
+    },
+    "description": {
+      "zh-CN": "　「东方地灵殿　～ Subterranean Animism.」为少女弹幕射击游戏（STG）。<br/>　本次作品是由于作者无比地喜爱地下与温泉而制作的游戏。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2008-08-16" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [
+        "directx"
+      ],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th11-lang-zh-TW"
+      ],
+      "darwin": [
+        "th11-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th11.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th11.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th11-图标/th11_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th11-图标/800px-东方地灵殿cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th11-图标/1024px-东方地灵殿cover4.jpg"
+  },
+  {
+    "id": "th11-lang-zh-TW",
+    "category": "module",
+    "parent": "th11",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th11"
+      ],
+      "darwin": [
+        "wine",
+        "th11"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th11c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_c.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th11c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th12",
+    "name": {
+      "zh-CN": "东方星莲船",
+      "en-US": "Undefined Fantastic Object"
+    },
+    "description": {
+      "zh-CN": "　「东方星莲船　～ Undefined Fantastic Object.」为少女弹幕射击游戏（STG），<br/>　本次作品是适合沉浸于开放自由的心情中进行游玩的游戏。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2009-08-15" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [
+        "directx"
+      ],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th12-lang-zh-TW"
+      ],
+      "darwin": [
+        "th12-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th12.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th12.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th12-图标/th12_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th12-图标/800px-东方星莲船cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th12-图标/1024px-东方星莲船cover4.jpg"
+  },
+  {
+    "id": "th12-lang-zh-TW",
+    "category": "module",
+    "parent": "th12",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th12"
+      ],
+      "darwin": [
+        "wine",
+        "th12"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th12c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th12c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th123",
+    "name": {
+      "zh-CN": "东方非想天则",
+      "en-US": "Touhou Hisōtensoku"
+    },
+    "description": {
+      "zh-CN": "《东方非想天则 ～ 追寻特大型人偶之谜》由上海爱丽丝幻乐团与黄昏边境共同制作的格斗游戏，为东方 Project 的 12.3 作。<br><br>* 安装说明<br>- 平台会自动安装依赖项 Directx、东方绯想天 并自动设置关联。<br><br>* 联机说明<br>- 点 [开始] 运行游戏，并在 10800 端口建立主机<br>- 点 [联机] 获取 IP 地址和端口<br>- 把那个地址通过 QQ 等即时通讯工具告诉你的对手，对方可以直接加入，不需要有平台。<br>- 如果联机失败，请尝试关闭 Windows 防火墙及其他安全软件"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        },
+        {
+          "name": "黄昏边境",
+          "url": "http://www.tasofro.net/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2009-08-15" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [
+        "directx"
+      ],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th105",
+        "th123-lang-zh-CN"
+      ],
+      "darwin": [
+        "th105",
+        "th123-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th123.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th123.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "network": {
+      "protocol": "maotama",
+      "port": 10800,
+      "servers": [
+        {
+          "id": "杭州",
+          "url": "wss://wudizhanche.mycard.moe:10800/"
+        },
+        {
+          "id": "北京",
+          "url": "wss://lx7.mycard.moe:10801/"
+        }
+      ]
+    },
+    "conference": "th123",
+    "icon": "https://r.my-card.in/downloads/assets/th123-图标/th123_112.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th123-图标/800px-东方非想天则booklet1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th123-图标/1024px-东方非想天则cover4.jpg"
+  },
+  {
+    "id": "th123-lang-zh-CN",
+    "category": "module",
+    "parent": "th123",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th123"
+      ],
+      "darwin": [
+        "wine",
+        "th123"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th123_beta.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th123_beta.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th13",
+    "name": {
+      "zh-CN": "东方神灵庙",
+      "en-US": "Ten Desires"
+    },
+    "description": {
+      "zh-CN": "　「东方神灵庙　　～ Ten Desires.」为少女弹幕射击游戏（STG），<br/>　本次作品以悠闲地打倒敌人躲避子弹为内容。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2011-08-13" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th13-lang-zh-CN"
+      ],
+      "darwin": [
+        "th13-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th13.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th13.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th13-图标/th13_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th13-图标/1024px-东方神灵庙cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th13-图标/1280px-东方神灵庙cover4.jpg"
+  },
+  {
+    "id": "th13-lang-zh-CN",
+    "category": "module",
+    "parent": "th13",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th13"
+      ],
+      "darwin": [
+        "th13",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th13c.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th13c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th14",
+    "name": {
+      "zh-CN": "东方辉针城",
+      "en-US": "Double Dealing Character"
+    },
+    "description": {
+      "zh-CN": "　「东方辉针城　～ Double Dealing Character.」为少女弹幕射击游戏（STG），<br/>　本次作品以悠闲地打倒敌人躲避子弹为内容。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2013-08-12" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th14-lang-zh-CN"
+      ],
+      "darwin": [
+        "th14-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th14.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th14.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th14-图标/th14_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th14-图标/1024px-东方辉针城cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th14-图标/1280px-东方辉针城cover4.jpg"
+  },
+  {
+    "id": "th14-lang-zh-CN",
+    "category": "module",
+    "parent": "th14",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th14"
+      ],
+      "darwin": [
+        "th14",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th14c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th14c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_cn.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th15",
+    "name": {
+      "zh-CN": "东方绀珠传",
+      "en-US": "Legacy of Lunatic Kingdom"
+    },
+    "description": {
+      "zh-CN": "「东方绀珠传　～ Legacy of Lunatic Kingdom.」为，为了拯救人类而使用犯规的道具进行挑战的射击游戏。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2015-08-14" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th15.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th15.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th15-图标/th15_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th15-图标/1024px-东方绀珠传cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th15-图标/1280px-东方绀珠传cover4.jpg"
+  },
+  {
+    "id": "th125",
+    "name": {
+      "zh-CN": "东方文花帖DS",
+      "en-US": "Double Spoiler"
+    },
+    "description": {
+      "zh-CN": "• 游戏的目的<br/>　这是一款操作天狗族新闻记者「射命丸文」、<br/>　抓拍住在幻想乡的人类和妖怪、给予他们精神打击的游戏。<br/><br/>• 规则<br/>　在不接触敌弹和拍摄对象身体的前提下操作文给BOSS拍照<br/><br/>　为BOSS拍到规定数量的照片即可过关。<br/>　没有过关就不能保存最高分。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2010-03-14" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th125-lang-zh-CN"
+      ],
+      "darwin": [
+        "th125-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th125.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th125.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th125-图标/th125_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th125-图标/1024px-东方文花帖DScover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th125-图标/1280px-东方文花帖DScover4.jpg"
+  },
+  {
+    "id": "th125-lang-zh-CN",
+    "category": "module",
+    "parent": "th125",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th125"
+      ],
+      "darwin": [
+        "th125",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th125c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_c.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th125c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th128",
+    "name": {
+      "zh-CN": "妖精大战争 ～ 东方三月精",
+      "en-US": "Yōsei Daisensō ~ Tōhō Sangetsusei"
+    },
+    "description": {
+      "zh-CN": "本作的游戏系统很特殊，像是常规东方STG、东方文花帖、东方花映塚这几种游戏的结合。主角琪露诺可以像其他STG的自机一样连续发射子弹，也可以像花映塚一样进行蓄力，而蓄力的结果则是像文花帖中的相机一样有区域消弹效果。当然也是可以释放Bomb进行全屏幕攻击与消弹。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        },
+        {
+          "name": "比良坂真琴"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2010-08-14" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th128-lang-zh-CN"
+      ],
+      "darwin": [
+        "th128-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th128.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th128.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th128-图标/th128_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th128-图标/1024px-妖精大战争cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th128-图标/1280px-妖精大战争cover4.jpg"
+  },
+  {
+    "id": "th128-lang-zh-CN",
+    "category": "module",
+    "parent": "th128",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th128"
+      ],
+      "darwin": [
+        "th128",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th128c.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th128c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th135",
+    "name": {
+      "zh-CN": "东方心绮楼",
+      "en-US": "Hopeless Masquerade"
+    },
+    "description": {
+      "zh-CN": "这是ZUN与黄昏边境合作制作的第四款游戏，也是东方Project的第四款格斗游戏。<br/>游戏本体由黄昏边境制作，ZUN负责设定、对话和部分音乐与图像设计。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        },
+        {
+          "name": "黄昏边境",
+          "url": "http://www.tasofro.net/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2012-05-26" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th135-lang-zh-CN"
+      ],
+      "darwin": [
+        "th135-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th135.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th135.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th135-图标/icon.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th135-图标/1024px-东方心绮楼booklet1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th135-图标/1280px-东方心绮楼cover4.jpg"
+  },
+  {
+    "id": "th135-lang-zh-CN",
+    "category": "module",
+    "parent": "th135",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th135"
+      ],
+      "darwin": [
+        "th135",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th135c.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th135c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th143",
+    "name": {
+      "zh-CN": "弹幕天邪鬼",
+      "en-US": "Impossible Spell Card"
+    },
+    "description": {
+      "zh-CN": "本作是第一个标题完全不含东方的官方游戏。<br/>剧情是游戏东方辉针城的后日谈，主角鬼人正邪使用九种道具来逃避众人的追击。<br/>游戏一共分为十个关卡，总共有七十五个场景。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2014-05-11" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th143-lang-zh-CN"
+      ],
+      "darwin": [
+        "th143-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th143.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th143.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th143-图标/th143_IDI_ICON3.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th143-图标/1024px-弹幕天邪鬼cover1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th143-图标/1280px-弹幕天邪鬼cover4.jpg"
+  },
+  {
+    "id": "th143-lang-zh-CN",
+    "category": "module",
+    "parent": "th143",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th143"
+      ],
+      "darwin": [
+        "th143",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th143c.exe",
+          "args": [],
+          "env": {}
+        },
+        "custom": {
+          "execute": "custom_CN.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th143c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        },
+        "custom": {
+          "execute": "custom_CN.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th145",
+    "name": {
+      "zh-CN": "东方深秘录",
+      "en-US": "Urban Legend in Limbo"
+    },
+    "description": {
+      "zh-CN": "本作PC版剧情模式有14个可用角色（一开始只有1个可用角色，其他角色需解锁），每个角色都有各自的剧情、对手与结局。<br/>对战模式也有14个可用角色（一开始只有13个可用角色，其他角色需解锁），在对战不同的角色的时候也分别有不同的对话。 <br/>PS4版剧情模式和对战模式追加1个可用角色。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "上海爱丽丝幻乐团",
+          "url": "http://www16.big.or.jp/~zun/"
+        },
+        {
+          "name": "黄昏边境",
+          "url": "http://www.tasofro.net/"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2015-05-10" ,
+    "category": "game",
+    "tags": [
+      "touhou"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th145-lang-zh-CN"
+      ],
+      "darwin": [
+        "th145-lang-zh-CN"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th145.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th145.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "ja_JP.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.09",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou",
+    "icon": "https://r.my-card.in/downloads/assets/th145-图标/th145_101.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th145-图标/1024px-东方深秘录booklet1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th145-图标/1280px-东方深秘录cover4.jpg"
+  },
+  {
+    "id": "th145-lang-zh-CN",
+    "category": "module",
+    "parent": "th145",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th145"
+      ],
+      "darwin": [
+        "th145",
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th145c.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th145c.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th1",
+    "name": {
+      "zh-CN": "东方灵异传",
+      "en-US": "Highly Responsive to Prayers"
+    },
+    "description": {
+      "zh-CN": "  本作是东方Project官方游戏系列的第一作（Th1），也是发布在PC-98平台上的（旧作）第一个作品。<br>  本作与之后的所有游戏均不同，并非弹幕射击类游戏，而是一款打砖块游戏或者说是一款动作类游戏。对于没有掌握游戏玩法的人来说会很难。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "ZUNSoft"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "Amusement Makers",
+          "url": "http://www.kt.rim.or.jp/~aotaka/am/index.htm"
+        }
+      ]
+    },
+    "released_at": "1997-08-15" ,
+    "category": "game",
+    "tags": [
+      "touhou_pc98"
+    ],
+    "dependencies": {
+      "win32": [
+        "np2fmgen"
+      ],
+      "darwin": [
+        "np2fmgen"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th1.hdi",
+          "args": [],
+          "env": {},
+          "open": "np2fmgen"
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th1.hdi",
+          "args": [],
+          "env": {},
+          "open": "np2fmgen"
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou-pc98",
+    "icon": "https://r.my-card.in/downloads/assets/th1-图标/16px-Icon_th01.png",
+    "cover": "https://r.my-card.in/downloads/assets/th1-图标/东方灵异传封面.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th1-图标/Highly_Responsive_to_Prayers.png"
+  },
+  {
+    "id": "th2",
+    "name": {
+      "zh-CN": "东方封魔录",
+      "en-US": "Story of Eastern Wonderland"
+    },
+    "description": {
+      "zh-CN": "  本作是东方Project官方游戏系列的第二作（Th2），也是发布在PC-98平台上的（旧作）第二个作品。<br/>  本作是东方系列的第一款弹幕射击类游戏，奠定了东方系列主要游戏的型态。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "ZUNSoft"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "Amusement Makers",
+          "url": "http://www.kt.rim.or.jp/~aotaka/am/index.htm"
+        }
+      ]
+    },
+    "released_at": "1997-08-15" ,
+    "category": "game",
+    "tags": [
+      "touhou_pc98"
+    ],
+    "dependencies": {
+      "win32": [
+        "np2fmgen"
+      ],
+      "darwin": [
+        "np2fmgen"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th2-lang-zh-TW"
+      ],
+      "darwin": [
+        "th2-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th2.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "np2fmgen",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou-pc98",
+    "icon": "https://r.my-card.in/downloads/assets/th2-图标/16px-Icon_th02.png",
+    "cover": "https://r.my-card.in/downloads/assets/th2-图标/东方封魔录封面.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th2-图标/The_Story_of_Eastern_Wonderland.png"
+  },
+  {
+    "id": "th2-lang-zh-TW",
+    "category": "module",
+    "parent": "th2",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th2"
+      ],
+      "darwin": [
+        "th2"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th2_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th2_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th3",
+    "name": {
+      "zh-CN": "东方梦时空",
+      "en-US": "Phantasmagoria of Dim. Dream"
+    },
+    "description": {
+      "zh-CN": "  本作是 东方Project官方游戏 系列的 第三作（Th3） ，也是发布在PC-98平台上的 （旧作）第三个作品。<br/>  本作是东方系列的第一款弹幕射击对战类游戏，是一个允许双人对战的独特游戏，后作Th09东方花映塚与本作模式相似。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "ZUNSoft"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "Amusement Makers",
+          "url": "http://www.kt.rim.or.jp/~aotaka/am/index.htm"
+        }
+      ]
+    },
+    "released_at": "1997-12-29" ,
+    "category": "game",
+    "tags": [
+      "touhou_pc98"
+    ],
+    "dependencies": {
+      "win32": [
+        "np2fmgen"
+      ],
+      "darwin": [
+        "np2fmgen"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th3-lang-zh-TW"
+      ],
+      "darwin": [
+        "th3-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th3.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th3.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou-pc98",
+    "icon": "https://r.my-card.in/downloads/assets/th3-图标/16px-Icon_th03.png",
+    "cover": "https://r.my-card.in/downloads/assets/th3-图标/东方梦时空封面.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th3-图标/Phantasmagoria_of_Dim.Dream.png"
+  },
+  {
+    "id": "th3-lang-zh-TW",
+    "category": "module",
+    "parent": "th3",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th3"
+      ],
+      "darwin": [
+        "th3"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th3_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th3_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th4",
+    "name": {
+      "zh-CN": "东方幻想乡",
+      "en-US": "Lotus Land Story"
+    },
+    "description": {
+      "zh-CN": "  本作是东方Project官方游戏系列的第四作（Th4），也是发布在PC-98平台上的（旧作）第四个作品。<br/>  加入“低速模式”系统，可选择不同的自机，日后系列作的特征已大致具备。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "ZUNSoft"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "Amusement Makers",
+          "url": "http://www.kt.rim.or.jp/~aotaka/am/index.htm"
+        }
+      ]
+    },
+    "released_at": "1998-08-14" ,
+    "category": "game",
+    "tags": [
+      "touhou_pc98"
+    ],
+    "dependencies": {
+      "win32": [
+        "np2fmgen"
+      ],
+      "darwin": [
+        "np2fmgen"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th4-lang-zh-TW"
+      ],
+      "darwin": [
+        "th4-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th4.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th4.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou-pc98",
+    "icon": "https://r.my-card.in/downloads/assets/th4-图标/16px-Icon_th04.png",
+    "cover": "https://r.my-card.in/downloads/assets/th4-图标/1280px-东方幻想乡cover.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th4-图标/Lotus_Land_Story.png"
+  },
+  {
+    "id": "th4-lang-zh-TW",
+    "category": "module",
+    "parent": "th4",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th4"
+      ],
+      "darwin": [
+        "th4"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th4_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th4_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "th5",
+    "name": {
+      "zh-CN": "东方怪绮谈",
+      "en-US": "Mystic Square"
+    },
+    "description": {
+      "zh-CN": "  本作是东方Project官方游戏系列的第五作（Th5），也是发布在PC-98平台上的（旧作）第五个作品。<br/>  旧作的最后一作。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "ZUNSoft"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "Amusement Makers",
+          "url": "http://www.kt.rim.or.jp/~aotaka/am/index.htm"
+        }
+      ]
+    },
+    "released_at": "1998-12-30" ,
+    "category": "game",
+    "tags": [
+      "touhou_pc98"
+    ],
+    "dependencies": {
+      "win32": [
+        "np2fmgen"
+      ],
+      "darwin": [
+        "np2fmgen"
+      ]
+    },
+    "references": {
+      "win32": [
+        "th5-lang-zh-TW"
+      ],
+      "darwin": [
+        "th5-lang-zh-TW"
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th5.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th5.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "touhou-pc98",
+    "icon": "https://r.my-card.in/downloads/assets/th5-图标/16px-Icon_th05.png",
+    "cover": "https://r.my-card.in/downloads/assets/th5-图标/东方怪绮谈封面.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th5-图标/Mystic_Square.png"
+  },
+  {
+    "id": "th5-lang-zh-TW",
+    "category": "module",
+    "parent": "th5",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "th5"
+      ],
+      "darwin": [
+        "th5"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-TW"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "th5_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "th5_cn.hdi",
+          "args": [],
+          "open": "np2fmgen",
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "ygopro",
+    "name": {
+      "zh-CN": "YGOPro"
+    },
+    "description": {
+      "zh-CN": "YGOPro，是一款在Github上免费开源的《游戏王》决斗软件。原作者为Fluorohydride。YGOPro为全卡环境的游戏王，是最能提供完整游戏王体验的软件。在MyCard上，随时都有上百名在线玩家与你进行天梯匹配、双打、自定义游戏。不仅如此，YGOPro专属决斗数据库更会提供玩家排行榜、卡片统计等定制化服务。YGOPro的社区十分活跃，欢迎好的建议或需求去社区找管理员反馈，也可以发邮件到474078233@qq.com联系管理员。",
+      "en-US": "YGOPro is a fully automated Yugioh online dueling system with a complete collection of Yugioh card. It is open source at Github and free of charge. YGOPro is also highly customizeable, where you can change your card sleeves and backgrounds whenever you like. In addtion, MyCard provides essential YGOPro services such as Elo, player ranking, AI battle, and meta statistics that are meant to improve your playing experience. Install now to begin your duelist career!"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "Fluorohydride",
+          "url": "https://github.com/Fluorohydride/ygopro"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2011-06-03" ,
+    "category": "game",
+    "tags": [
+      "recommend"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": []
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "Fluorohydride",
+    "homepage": "https://github.com/Fluorohydride/ygopro",
+    "locales": [
+      "zh-CN",
+      "en-US",
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "ygopro.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "ygopro.app/Contents/MacOS/ygopro",
+          "args": [],
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.033.D-9",
+      "darwin": "1.033.D-9"
+    },
+    "files": {
+      "deck/*.ydk": {
+        "sync": true
+      },
+      "single/*.lua": {
+        "sync": true
+      },
+      "replay/*.yrp": {
+        "sync": true
+      }
+    },
+    "news": {
+      "zh-CN": [
+        {
+          "url": "https://bbs.ygobbs.com/t/【哲夫老板】关于某炼装上位卡组的一点点思考/83085/10",
+          "image": "http://pic.4j4j.cn/upload/pic/20140327/af650cf463.jpg",
+          "title": "关于某炼装上位卡组的一点点思考",
+          "text": "作者：哲夫老板。本文分析了一个最新炼装上位的构筑，同时讨论了炼装作为竞技卡组应该以及不应该投入的卡片。作者战队招新：EZ战队考试群号263911568。",
+          "updated_at": "2017-03-12"
+        },
+        {
+          "url": "https://bbs.ygobbs.com/t/YGOPro-竞技匹配积分长期活动详解/83049",
+          "image": "http://pic.4j4j.cn/upload/pic/20140327/af650cf463.jpg",
+          "title": "YGOPro-竞技匹配积分长期活动详解 ",
+          "text": "竞技匹配长期以及季度性活动出炉，奖励丰富！你想了解的竞技匹配的相关信息都在里面哦！",
+          "updated_at": "2017-03-12"
+        },
+        {
+          "url": "https://bbs.ygobbs.com/t/82917/",
+          "image": "http://image.tianjimedia.com/uploadImages/2012/159/1EF112986273.jpg",
+          "title": "还不快来加入我们？MC团队招人！",
+          "text": "为了创造更好的游戏环境，MyCard YGOPro团队需要有热情的玩家加入！有大厅管理/社区运营/QA测试员/C++技术人等职位！加入团队后还可以领取专属徽章哦！d",
+          "updated_at": "2017-02-19"
+        }
+      ],
+      "en-US": [
+        {
+          "url": "https://ygobbs.com/t/MyCard-V3-User-Guide/82335",
+          "image": "http://pic.4j4j.cn/upload/pic/20140327/af650cf463.jpg",
+          "title": "MyCard V3 User Guide",
+          "text": "This guide helps you to know MyCard better.",
+          "updated_at": "2017-02-19"
+        }
+      ]
+    },
+    "conference": "ygopro_china_north",
+    "data": {
+      "windbot": {
+        "zh-CN": [
+          "琪露诺",
+          "谜之剑士LV4",
+          "复制植物",
+          "尼亚",
+          "永远之魂"
+        ],
+        "en-US": [
+          "琪露诺",
+          "谜之剑士LV4",
+          "复制植物",
+          "尼亚",
+          "永远之魂"
+        ]
+      }
+    },
+    "icon": "https://r.my-card.in/downloads/assets/ygopro/ygopro.ico",
+    "cover": "https://r.my-card.in/downloads/assets/ygopro/ygopro.ico",
+    "background": "https://r.my-card.in/downloads/assets/ygopro/bg.jpg"
+  },
+  {
+    "id": "desmume",
+    "name": {
+      "zh-CN": "DeSmuME"
+    },
+    "description": {
+      "zh-CN": "A script engine for \"yu-gi-oh!\" and sample gui."
+    },
+    "category": "emulator",
+    "tags": [],
+    "dependencies": {
+      "win32": [],
+      "darwin": []
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "Fluorohydride",
+    "homepage": "https://github.com/Fluorohydride/ygopro",
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "DeSmuME_0.9.11_x86.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "DeSmuME.app/Contents/MacOS/DeSmuME",
+          "args": [],
+          "env": {}
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "ghost_trick",
+    "name": {
+      "zh-CN": "幽灵诡计",
+      "en-US": "Ghost Trick"
+    },
+    "category": "game",
+    "tags": [
+      "mysterious"
+    ],
+    "dependencies": {
+      "win32": [
+        "desmume"
+      ],
+      "darwin": [
+        "desmume"
+      ]
+    },
+    "references": {
+      "win32": [
+        "ghost_trick-lang-zh-CN"
+      ],
+      "darwin": [
+        "ghost_trick-lang-zh-CN"
+      ]
+    },
+    "author": "Fluorohydride",
+    "homepage": "https://github.com/Fluorohydride/ygopro",
+    "locales": [
+      "ja-JP"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "5017 - Ghost Trick (J).nds",
+          "args": [],
+          "env": {},
+          "open": "desmume"
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "5017 - Ghost Trick (J).nds",
+          "args": [],
+          "env": {},
+          "open": "desmume"
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": [],
+    "conference": "ds"
+  },
+  {
+    "id": "ghost_trick-lang-zh-CN",
+    "category": "module",
+    "tags": [
+      "language"
+    ],
+    "dependencies": {
+      "win32": [
+        "desmume",
+        "ghost_trick"
+      ],
+      "darwin": [
+        "desmume",
+        "ghost_trick"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "parent": "ghost_trick",
+    "author": "Fluorohydride",
+    "homepage": "https://github.com/Fluorohydride/ygopro",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "5017 - Ghost Trick (J).nds",
+          "args": [],
+          "env": {},
+          "open": "desmume"
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "5017 - Ghost Trick (J).nds",
+          "args": [],
+          "env": {},
+          "open": "desmume"
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "directx",
+    "name": {
+      "zh-CN": "DirectX 最终用户运行时",
+      "en-US": "DirectX End-User Runtime"
+    },
+    "description": {
+      "zh-CN": "A script engine for \"yu-gi-oh!\" and sample gui."
+    },
+    "category": "runtime",
+    "tags": [],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "author": "Fluorohydride",
+    "homepage": "https://github.com/Fluorohydride/ygopro",
+    "actions": {
+      "win32": {
+        "install": {
+          "execute": "DXSETUP.exe",
+          "args": [
+            "/silent"
+          ]
+        }
+      },
+      "darwin": {
+        "install": {
+          "execute": "DXSETUP.exe",
+          "args": [
+            "/silent"
+          ],
+          "open": "wine"
+        }
+      }
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "news": []
+  },
+  {
+    "id": "np2fmgen",
+    "name": {
+      "zh-CN": "Neko Project II"
+    },
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "description": {
+      "zh-CN": "np2fmgen"
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "category": "emulator",
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "np21nt.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "np21nt.exe",
+          "args": [],
+          "env": {},
+          "open": "wine"
+        }
+      }
+    }
+  },
+  {
+    "id": "wine",
+    "name": {
+      "zh-CN": "Wine"
+    },
+    "description": {
+      "zh-CN": "wine"
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "category": "emulator",
+    "actions": {
+      "win32": {},
+      "darwin": {
+        "main": {
+          "execute": "bin/wine.bin",
+          "args": [],
+          "env": {
+            "WINEDEBUG": "-all"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "test",
+    "name": {
+      "zh-CN": "测试"
+    },
+    "description": {
+      "zh-CN": "wine"
+    },
+    "version": {
+      "win32": "1.06",
+      "darwin": "1.06"
+    },
+    "category": "test",
+    "actions": {
+      "win32": {},
+      "darwin": {
+        "main": {
+          "execute": "bin/wine.bin",
+          "args": [],
+          "env": {
+            "WINEDEBUG": "-all"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "win32": [],
+      "darwin": []
+    },
+    "references": {
+      "win32": [],
+      "darwin": []
+    },
+    "price":{
+      "cny":6,
+      "usd":1
+    },
+    "conference": "test",
+    "icon": "https://r.my-card.in/downloads/assets/th135-图标/icon.ico",
+    "cover": "https://r.my-card.in/downloads/assets/th135-图标/1024px-东方心绮楼booklet1.jpg",
+    "background": "https://r.my-card.in/downloads/assets/th135-图标/1280px-东方心绮楼cover4.jpg"
+  },
+
+  {
+    "id": "oz",
+    "name": {
+      "zh-CN": "OZ大乱斗"
+    },
+    "description": {
+      "zh-CN": "　本作早在2007年开始制作，基本可以算是黑历史的作品，讲的是几个熊孩子打酱油的奇幻故事。相比续作略显简陋，如果你有兴趣的玩，也可以下来玩一玩。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "谢拉卡姗娜",
+          "url": "http://fuckoz.com"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2012-01-15" ,
+    "category": "game",
+    "tags": [
+      "recommend"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+      ],
+      "darwin": [
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "ＯＺ大乱斗.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "ＯＺ大乱斗.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "v2.00e",
+      "darwin": "v2.00e"
+    },
+    "news": [],
+    "conference": "oz",
+    "icon": "https://r.my-card.in/downloads/assets/oz/Icon%2016x16.png",
+    "cover": "https://r.my-card.in/downloads/assets/oz/MyCard%20logo%20OZ.jpg",
+    "background": "https://r.my-card.in/downloads/assets/oz/MyCard%20Background%20OZ.jpg"
+  },
+
+
+  {
+    "id": "ozns",
+    "name": {
+      "zh-CN": "OZ大乱斗NS"
+    },
+    "description": {
+      "zh-CN": "　这是一个小众向的同人RPG游戏，讲述的是几个女大学生的奇幻之旅；<br/>  本来只不过供几个小伙伴之间自娱自乐，素材来源也是杂七杂八，如果你真的热爱传统RPG，这个游戏还是值得一玩的。"
+    },
+    "developers": {
+      "zh-CN": [
+        {
+          "name": "谢拉卡姗娜",
+          "url": "http://fuckoz.com"
+        }
+      ]
+    },
+    "publishers": {
+      "zh-CN": [
+        {
+          "name": "",
+          "url": ""
+        }
+      ]
+    },
+    "released_at": "2017-02-20" ,
+    "category": "game",
+    "tags": [
+      "recommend"
+    ],
+    "dependencies": {
+      "win32": [],
+      "darwin": [
+        "wine"
+      ]
+    },
+    "references": {
+      "win32": [
+      ],
+      "darwin": [
+      ]
+    },
+    "author": "ZUN",
+    "homepage": "http://www.myacg.cc",
+    "locales": [
+      "zh-CN"
+    ],
+    "actions": {
+      "win32": {
+        "main": {
+          "execute": "Game.exe",
+          "args": [],
+          "env": {}
+        }
+      },
+      "darwin": {
+        "main": {
+          "execute": "Game.exe",
+          "args": [],
+          "open": "wine",
+          "env": {
+            "LANG": "zh_CN.UTF-8"
+          }
+        }
+      }
+    },
+    "version": {
+      "win32": "1.54e-1",
+      "darwin": "1.54e-1"
+    },
+    "news": [],
+    "conference": "oz",
+    "icon": "https://r.my-card.in/downloads/assets/ozns/Icon%2016x16.png",
+    "cover": "https://r.my-card.in/downloads/assets/ozns/MyCard%20logo%20NS.png",
+    "background": "https://r.my-card.in/downloads/assets/ozns/MyCard%20Background%20NS.jpg"
+  }
+]

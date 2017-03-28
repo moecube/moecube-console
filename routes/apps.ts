@@ -4,11 +4,25 @@
 import Router = require('koa-router');
 import {NotFound, InternalError} from '../koa/errors';
 import {App} from '../models/app';
+import {Package} from '../models/Package'
 import {ModelError, ModelInvalidError} from '../models/errors';
 const router = new Router();
 
 router.get('/apps', async(ctx, next) => {
-    ctx.body = await App.all();
+    let apps: App[]|null  = await App.all();
+    
+
+    apps = await Promise.all(apps.map(async app => {
+        if(app.packages && app.packages.length > 0) {
+            app.packages =  await Promise.all(app.packages.map(async id => {
+                return await Package.findOne({id})
+            }))
+        }
+
+        return app
+    }))
+
+    ctx.body = apps
 });
 
 router.get('/apps/:id', async(ctx, next) => {
@@ -45,8 +59,28 @@ router.patch('/apps/:id', async(ctx, next) => {
         throw new ModelInvalidError('Can not change AppID');
     }
     
-    Object.assign(app, ctx.request.body);
-    ctx.body = await app.save();
+    try {
+        if(ctx.request.body.packages.length > 0) {
+            ctx.request.body.packages = await Promise.all(ctx.request.body.packages.map(async _p=> {
+                const p: Package|null = await Package.findOne({ id: _p.id })
+
+                if(p) {
+                    Object.assign(p, _p)
+                    await p.save()
+                    return p.id
+                }
+
+                const newP = new Package(_p)
+                await newP.save()
+                return newP.id                 
+            }))
+        }
+
+        Object.assign(app, ctx.request.body);
+        ctx.body = await app.save();
+    } catch (error) {
+        ctx.throw(403, error)
+    }
 });
 
 router.delete('/apps/:id', async(ctx, next) => {

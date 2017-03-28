@@ -5,7 +5,8 @@ import users from './routes/users';
 import apps from './routes/apps';
 import packages from './routes/packages';
 import bodyParser = require('koa-bodyparser');
-import Mongorito = require('mongorito');
+import * as mongoose from 'mongoose'
+// import Mongorito = require('mongorito');
 import log4js = require('log4js');
 
 const logger = log4js.getLogger();
@@ -62,11 +63,18 @@ app.use(users.routes());
 app.use(apps.routes());
 app.use(upload.routes());
 app.use(packages.routes());
-Mongorito.connect(url).then(() => {
+
+mongoose.connect(url).then(() => {
     app.listen(8001, () => {
         console.log("app listening port 8001")
     });
-});
+})
+
+// Mongorito.connect(url).then(() => {
+//     app.listen(8001, () => {
+//         console.log("app listening port 8001")
+//     });
+// });
 
 // function getKoaLogger (logger4js, options) {
 //     if (typeof options === 'object') {

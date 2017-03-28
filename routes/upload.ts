@@ -5,8 +5,8 @@ import * as _fs from 'fs'
 import { promisifyAll} from 'bluebird'
 const fs:any  = promisifyAll(_fs)
 
-const busboy = require('async-busboy')
-const mime = require('mime')
+import * as busboy from 'async-busboy'
+import * as  mime from 'mime'
 
 const router = new Router();
 

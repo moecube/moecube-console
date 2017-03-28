@@ -15,9 +15,9 @@ export interface Action {
 }
 
 export interface File {
-    path: string,
-    size: number,
-    hash: string,
+    path: string;
+    size: number;
+    hash: string;
 }
 
 
@@ -25,6 +25,8 @@ export interface File {
 export class Package extends Model {
     @field
     id: string;
+    @field
+    name: string;
     @field
     appId: string;
     @field
