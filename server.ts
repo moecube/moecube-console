@@ -1,17 +1,19 @@
-import Koa = require('koa');
-import index from './routes/index';
-import upload from './routes/upload';
-import users from './routes/users';
-import apps from './routes/apps';
-import packages from './routes/packages';
-import bodyParser = require('koa-bodyparser');
-import * as mongoose from 'mongoose'
-// import Mongorito = require('mongorito');
-import log4js = require('log4js');
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+import * as Koa from 'koa'
+import * as log4js from 'log4js'
+import * as bodyParser from 'koa-bodyparser'
+import { mongodb } from './src/models/iridium'
+
+// import index from './routes/index';
+import upload from './src/routes/upload';
+// import users from './src/routes/users';
+import apps from './src/routes/app';
+// import packages from './routes/packages';
+
 
 const logger = log4js.getLogger();
-
-const url = require('./mongodb_config.json').dbSettings.connectionString;
 
 const app = new Koa();
 
@@ -58,91 +60,16 @@ app.use(async(ctx, next) => {
 
 
 app.use(bodyParser());
-app.use(index.routes());
-app.use(users.routes());
+// app.use(index.routes());
+// app.use(users.routes());
 app.use(apps.routes());
 app.use(upload.routes());
-app.use(packages.routes());
+// app.use(packages.routes());
 
-mongoose.connect(url).then(() => {
-    app.listen(8001, () => {
-        console.log("app listening port 8001")
-    });
+mongodb.connect().then(() => {
+  app.listen(8001, () => {
+    console.log("app listening port 8001")
+  });
 })
 
-// Mongorito.connect(url).then(() => {
-//     app.listen(8001, () => {
-//         console.log("app listening port 8001")
-//     });
-// });
 
-// function getKoaLogger (logger4js, options) {
-//     if (typeof options === 'object') {
-//         options = options || {}
-//     } else if (options) {
-//         options = { format: options }
-//     } else {
-//         options = {}
-//     }
-//
-//     var thislogger = logger4js
-//     var level = levels.toLevel(options.level, levels.INFO)
-//     var fmt = options.format || DEFAULT_FORMAT
-//     var nolog = options.nolog ? createNoLogCondition(options.nolog) : null
-//
-//     return co.wrap(function *(ctx, next) {
-//         // mount safety
-//         if (ctx.request._logging) return yield next()
-//
-//         // nologs
-//         if (nolog && nolog.test(ctx.originalUrl)) return yield next()
-//         if (thislogger.isLevelEnabled(level) || options.level === 'auto') {
-//             var start = new Date()
-//             var writeHead = ctx.response.writeHead
-//
-//             // flag as logging
-//             ctx.request._logging = true
-//
-//             // proxy for statusCode.
-//             ctx.response.writeHead = function (code, headers) {
-//                 ctx.response.writeHead = writeHead
-//                 ctx.response.writeHead(code, headers)
-//                 ctx.response.__statusCode = code
-//                 ctx.response.__headers = headers || {}
-//
-//                 // status code response level handling
-//                 if (options.level === 'auto') {
-//                     level = levels.INFO
-//                     if (code >= 300) level = levels.WARN
-//                     if (code >= 400) level = levels.ERROR
-//                 } else {
-//                     level = levels.toLevel(options.level, levels.INFO)
-//                 }
-//             }
-//
-//             yield next()
-//             // hook on end request to emit the log entry of the HTTP request.
-//             ctx.response.responseTime = new Date() - start
-//             // status code response level handling
-//             if (ctx.res.statusCode && options.level === 'auto') {
-//                 level = levels.INFO
-//                 if (ctx.res.statusCode >= 300) level = levels.WARN
-//                 if (ctx.res.statusCode >= 400) level = levels.ERROR
-//             }
-//             if (thislogger.isLevelEnabled(level)) {
-//                 var combinedTokens = assembleTokens(ctx, options.tokens || [])
-//                 if (typeof fmt === 'function') {
-//                     var line = fmt(ctx, function (str) {
-//                         return format(str, combinedTokens)
-//                     })
-//                     if (line) thislogger.log(level, line)
-//                 } else {
-//                     thislogger.log(level, format(fmt, combinedTokens))
-//                 }
-//             }
-//         } else {
-//             // ensure next gets always called
-//             yield next()
-//         }
-//     })
-// }

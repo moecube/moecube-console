@@ -1,17 +1,15 @@
-FROM node
+FROM node:alpine
 
-RUN apt-get update
-RUN apt-get install -y gdebi-core
-RUN wget https://repo.varnish-cache.org/pkg/5.0.0/varnish_5.0.0-1_amd64.deb
-RUN gdebi -n varnish_5.0.0-1_amd64.deb
-RUN rm varnish_5.0.0-1_amd64.deb
+MAINTAINER nanoo
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package.json /usr/src/app/
-COPY npm-shrinkwrap.json /usr/src/app/
-RUN npm install
-COPY . /usr/src/app
 
-CMD [ "./entrypoint.sh" ]
+#COPY package.json /usr/src/app
+#RUN npm install
+
+#COPY . /usr/src/app
+
+EXPOSE  8080
+CMD ["npm","start"]
