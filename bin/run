@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const {bundle} = require('../package/main')
+
+bundle(process.argv[2], process.argv[3])

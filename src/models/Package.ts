@@ -21,9 +21,11 @@ export interface Package {
   name: string;
   appId: string;
   version: string;
+  status: string;
+  type: string;
   locales: Locale[];
   platforms: Platform[];
-  files: File[];
+  files?: File[];
 }
 
 
@@ -36,6 +38,10 @@ export class PackageSchema extends Instance<Package, PackageSchema> implements P
   name: string;
   @Property(String, false)
   appId: string;
+  @Property(String, true)
+  type: string;
+  @Property(String, true)
+  status: string;
   @Property(String, false)
   version: string;
   @Property(Array, false)
@@ -44,6 +50,10 @@ export class PackageSchema extends Instance<Package, PackageSchema> implements P
   platforms: Platform[];
   @Property(Array, false)
   files: File[];
+
+  static onCreating(pack: Package){
+    pack.status = pack.status || 'init'
+  }
 
   handleUpdate(data: Package) {
     Object.assign(this, data)

@@ -47,7 +47,7 @@ export interface App {
   icon?: string;
   cover?: string;
   background?: string;
-  packages?: Package[];
+  // packages?: Package[];
   created_at: Date;
 }
 
@@ -98,14 +98,13 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   cover?: string;
   @Property(String, false)
   background?: string;
-  @Property(Array, false)
-  packages?: Package[];
+  // @Property(Array, false)
+  // packages?: Package[];
   @Property(Date, false)
   created_at: Date;
 
   static onCreating(app: App){
     app.created_at = new Date()
-    app.packages = []
   }
 
   handleUpdate(data: App) {
