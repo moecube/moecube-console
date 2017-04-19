@@ -128,10 +128,10 @@ router.post('/packages', async (ctx: Context, next) => {
   if (!_p.id) {
     ctx.throw(400, `id 参数缺失：${_p.id}`)
   }
-  if (!_p.platforms) {
+  if (!_p.platforms || _p.platforms.length == 0) {
     ctx.throw(400, `请填写支持的平台：${_p.id}`)
   }
-  else if (!_p.locales) {
+  else if (!_p.locales || _p.locales.length == 0) {
     ctx.throw(400, `请填写支持的语言：${_p.id}`)
   }
   else if (!_p.version) {
@@ -160,10 +160,10 @@ router.patch('/packages', async (ctx: Context, next) => {
   if (!_p.id) {
     ctx.throw(400, `id 参数缺失：${_p.id}`)
   }
-  if (!_p.platforms) {
+  if (!_p.platforms || _p.platforms.length == 0) {
     ctx.throw(400, `请填写支持的平台：${_p.id}`)
   }
-  else if (!_p.locales) {
+  else if (!_p.locales || _p.locales.length == 0) {
     ctx.throw(400, `请填写支持的语言：${_p.id}`)
   }
   else if (!_p.version) {
