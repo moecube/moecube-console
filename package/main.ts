@@ -43,18 +43,18 @@ export async function bundle(...args) {
       files.set(file, {
         path: file,
         hash: file_hash,
-        size: (await fs.statAsync(file)).size.toString()
+        size: (await fs.statAsync(file)).size
       })
 
       let sand_file = path.join(sand_path, `${file_hash}.tar.gz`)
 
+      await archiveSingle(sand_file, [file], package_path)
+
       archives.set(sand_file, {
         path: sand_file,
         hash: await caculateSHA256(sand_file),
-        size: (await fs.statAsync(sand_file)).size.toString()
+        size: (await fs.statAsync(sand_file)).size
       })
-
-      await archiveSingle(sand_file, [file], package_path)
     },
     onDir: async (files, _path, depth) => {
     },
@@ -68,7 +68,7 @@ export async function bundle(...args) {
 
   // TODO: 上传meta
   const fullHash = await caculateSHA256(fullFile)
-  const fullSize = (await fs.statAsync(fullFile)).size.toString()
+  const fullSize = (await fs.statAsync(fullFile)).size
 
   // TODO: 增量包
 

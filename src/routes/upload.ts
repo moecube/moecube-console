@@ -20,6 +20,12 @@ import config from '../../config'
 //   path: path.join(__dirname, '../../test/upload')
 // }
 
+const checkExtension = async (file) => {
+  const ext = mime.extension(file.mime);
+  if (['zip', 'gz', 'rar', '7z'].indexOf(ext) === -1) {
+    throw new Error('Unsupported file type');
+  }
+}
 
 import Router = require('koa-router');
 const ossStream = Client(new OSS({
@@ -36,10 +42,7 @@ const UploadImage = async (ctx: Context) => {
     const {files} = await busboy(ctx.req);
     ctx.body = await Promise.all(files.map(async file => {
 
-      const ext = mime.extension(file.mime);
-      if (['png', 'jpg', 'jpeg', 'gif', 'webp'].indexOf(ext) === -1) {
-        throw new Error('Unsupported image type');
-      }
+      await checkExtension(file)
 
       const filename = `test/${uuid.v1()}`;
 
@@ -86,23 +89,33 @@ export const UploadPackage = async (ctx: Context) => {
 
         file.on('close', async() => {
 
-          pack!.status = 'uploading'
-          await pack!.save()
 
-          resolve(pack!)
-          // 上传完， 打包
-          const bundled = await bundle(filename)
 
-          Object.assign(pack, bundled)
-          pack!.status = 'uploaded'
-          await pack!.save()
+          try {
+            pack.status = 'uploading'
+            await pack.save()
 
-          // 打包完，上传阿里云
+            resolve(pack)
+            // 上传完， 打包
+            const bundled = await bundle(filename)
 
+            Object.assign(pack, bundled)
+            pack.status = 'uploaded'
+
+            await mongodb.Packages.update({id: pack.id}, {$set: { status: 'deprecated' }}, {multi: true})
+            await pack.save()
+
+            // 打包完，上传阿里云
+
+          } catch (e) {
+            pack.status = 'failed'
+            await pack.save()
+          }
         })
+        
         file.on('error', async (error) => {
-          pack!.status = 'failed'
-          await pack!.save()
+          pack.status = 'failed'
+          await pack.save()
 
           reject(error)
         })
@@ -136,13 +149,21 @@ const uploadPackageUrl = async (ctx: Context) => {
     const { files } = await downloader.send('tellStatus', m.gid)
     const [file] = files
 
-    // 打包
-    const bundled = await bundle(path.basename(file.path))
+    try {
+      await checkExtension(file)
 
-    // 打包完， 上传阿里云
-    pack.files = bundled.files
-    pack.status = 'uploaded'
-    await pack.save()
+      // 打包
+      const bundled = await bundle(path.basename(file.path))
+
+      // 打包完， 上传阿里云
+      pack.files = bundled.files
+      pack.status = 'uploaded'
+      await pack.save()
+
+    } catch (e) {
+      pack.status = 'failed'
+      await pack.save()
+    }
   }
 
   downloader.onDownloadError = async(err) => {

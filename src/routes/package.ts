@@ -23,7 +23,7 @@ router.post('/v2/package/:id/update', async (ctx: Context, next) => {
   let sandSize = ctx.request.body.length * request_overhead
 
 
-  let pack = await mongodb.Packages.findOne({id: package_id, status: 'ready'})
+  let pack = await mongodb.Packages.findOne({id: package_id, status: 'uploaded'})
   let {fullSize, fullPath} = pack!
 
 
@@ -59,8 +59,6 @@ router.post('/v2/package/:id/update', async (ctx: Context, next) => {
 
   ctx.body = files
 })
-
-
 
 
 router.get('/v1/packages', async (ctx: Context, next) => {
