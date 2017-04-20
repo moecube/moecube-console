@@ -3,6 +3,7 @@ import * as path from 'path'
 import * as fs from 'fs-extra-promise'
 import {mongodb} from '../src/models/iridium'
 import {crawlPath, caculateSHA256, archive, archiveSingle, untar} from "./utils";
+import {Archive, File} from "../src/models/Package";
 
 const upload_path = path.join(__dirname, '../test/upload')
 const release_path = path.join(__dirname, '../test/release')
@@ -31,45 +32,51 @@ export async function bundle(...args) {
   // untar upload package
   await untar(uploadFile_path, package_path)
 
-  let hashes = new Map<string, object>();
-  // let hashes = {}
+  let files = new Map<string, File>();
+  let archives = new Map<string, Archive>();
+  // let files = {}
 
   await crawlPath(package_path, {
     onFile: async (file) => {
-      let hash = await caculateSHA256(file)
+      let file_hash = await caculateSHA256(file)
 
-      hashes.set(file, {
-        file: file,
-        hash: hash,
+      files.set(file, {
+        path: file,
+        hash: file_hash,
         size: (await fs.statAsync(file)).size.toString()
       })
 
-      // hashes[file] = {
-      //   file: file,
-      //   hash: hash,
-      //   size: (await fs.statAsync(file)).size.toString()
-      // }
-      let sand_file = path.join(sand_path, `${hash}.tar.gz`)
+      let sand_file = path.join(sand_path, `${file_hash}.tar.gz`)
+
+      archives.set(sand_file, {
+        path: sand_file,
+        hash: await caculateSHA256(sand_file),
+        size: (await fs.statAsync(sand_file)).size.toString()
+      })
 
       await archiveSingle(sand_file, [file], package_path)
     },
     onDir: async (files, _path, depth) => {
     },
   })
-  // TODO: 上传checksum: hashes
+  // TODO: 上传checksum: files
 
-  const full_file = path.join(full_path, `${package_id}.tar.gz`)
+  const fullFile = path.join(full_path, `${package_id}.tar.gz`)
 
-  await fs.removeAsync(full_file)
-  await archive(full_file, await fs.readdirAsync(package_path), package_path)
+  await fs.removeAsync(fullFile)
+  await archive(fullFile, await fs.readdirAsync(package_path), package_path)
 
   // TODO: 上传meta
-  const full_hash = await caculateSHA256(full_file)
-  const full_size = (await fs.statAsync(full_file)).size.toString()
+  const fullHash = await caculateSHA256(fullFile)
+  const fullSize = (await fs.statAsync(fullFile)).size.toString()
 
   // TODO: 增量包
 
   return {
-    files: Array.from(hashes.values())
+    files: Array.from(files.values()),
+    archives: Array.from(archives.values()),
+    fullFile,
+    fullSize,
+    fullHash
   }
 }

@@ -16,16 +16,26 @@ export interface File {
   hash: string;
 }
 
+export interface Archive {
+  path: string;
+  size: number;
+  hash: string;
+}
+
 export interface Package {
   id: string;
   name: string;
   appId: string;
+  fullSize: number;
+  fullHash: string;
+  fullPath: string;
   version: string;
   status: string;
   type: string;
   locales: Locale[];
   platforms: Platform[];
   files?: File[];
+  archives?: Archive[];
 }
 
 
@@ -38,6 +48,12 @@ export class PackageSchema extends Instance<Package, PackageSchema> implements P
   name: string;
   @Property(String, false)
   appId: string;
+  @Property(Number, false)
+  fullSize: number;
+  @Property(String, false)
+  fullHash: string;
+  @Property(String, false)
+  fullPath: string;
   @Property(String, true)
   type: string;
   @Property(String, true)
@@ -50,6 +66,8 @@ export class PackageSchema extends Instance<Package, PackageSchema> implements P
   platforms: Platform[];
   @Property(Array, false)
   files: File[];
+  @Property(Array, false)
+  archives: Archive[];
 
   static onCreating(pack: Package){
     pack.status = pack.status || 'init'

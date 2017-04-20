@@ -9,6 +9,7 @@ import { mongodb } from './src/models/iridium'
 // import index from './routes/index';
 import upload from './src/routes/upload';
 // import users from './src/routes/users';
+import package from './src/routes/package'
 import apps from './src/routes/app';
 // import packages from './routes/packages';
 
@@ -64,6 +65,7 @@ app.use(bodyParser());
 // app.use(users.routes());
 app.use(apps.routes());
 app.use(upload.routes());
+app.use(package.routes());
 // app.use(packages.routes());
 
 mongodb.connect().then(() => {

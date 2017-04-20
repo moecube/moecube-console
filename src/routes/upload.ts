@@ -86,23 +86,23 @@ export const UploadPackage = async (ctx: Context) => {
 
         file.on('close', async() => {
 
-          pack.status = 'uploading'
-          await pack.save()
+          pack!.status = 'uploading'
+          await pack!.save()
 
-          resolve(pack)
+          resolve(pack!)
           // 上传完， 打包
           const bundled = await bundle(filename)
 
-          pack.files = bundled.files
-          pack.status = 'uploaded'
-          await pack.save()
+          Object.assign(pack, bundled)
+          pack!.status = 'uploaded'
+          await pack!.save()
 
           // 打包完，上传阿里云
 
         })
         file.on('error', async (error) => {
-          pack.status = 'failed'
-          await pack.save()
+          pack!.status = 'failed'
+          await pack!.save()
 
           reject(error)
         })
@@ -167,11 +167,11 @@ const uploadPackageUrl = async (ctx: Context) => {
 
 }
 
-router.post('/upload/image', UploadImage)
+router.post('/v1/upload/image', UploadImage)
 
-router.post('/upload/package/:id', UploadPackage)
+router.post('/v1/upload/package/:id', UploadPackage)
 
-router.post('/upload/packageUrl', uploadPackageUrl)
+router.post('/v1/upload/packageUrl', uploadPackageUrl)
 
 export default router
 
