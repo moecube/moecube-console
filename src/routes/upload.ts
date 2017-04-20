@@ -20,12 +20,20 @@ import config from '../../config'
 //   path: path.join(__dirname, '../../test/upload')
 // }
 
-const checkExtension = async (file) => {
+const checkPackage = async (file) => {
   const ext = mime.extension(file.mime);
   if (['zip', 'gz', 'rar', '7z'].indexOf(ext) === -1) {
     throw new Error('Unsupported file type');
   }
 }
+
+const checkImage = async (file) => {
+  const ext = mime.extension(file.mime);
+  if (['png', 'jpg', 'jpeg', 'gif', 'webp'].indexOf(ext) === -1) {
+    throw new Error('Unsupported file type');
+  }
+}
+
 
 import Router = require('koa-router');
 const ossStream = Client(new OSS({
@@ -42,7 +50,7 @@ const UploadImage = async (ctx: Context) => {
     const {files} = await busboy(ctx.req);
     ctx.body = await Promise.all(files.map(async file => {
 
-      await checkExtension(file)
+      await checkImage(file)
 
       const filename = `test/${uuid.v1()}`;
 
@@ -112,7 +120,7 @@ export const UploadPackage = async (ctx: Context) => {
             await pack.save()
           }
         })
-        
+
         file.on('error', async (error) => {
           pack.status = 'failed'
           await pack.save()
@@ -150,7 +158,7 @@ const uploadPackageUrl = async (ctx: Context) => {
     const [file] = files
 
     try {
-      await checkExtension(file)
+      await checkPackage(file)
 
       // 打包
       const bundled = await bundle(path.basename(file.path))

@@ -1,10 +1,7 @@
 import Router = require('koa-router');
-import {toObjectID} from 'iridium'
 import {mongodb} from '../models/iridium'
 import {App, AppSchema} from "../models/App";
-import * as vercomp from 'vercomp'
 import {Context} from "koa";
-import {Package} from "../models/Package";
 const router = new Router();
 
 // router.get('/apps', async (ctx: Context, next) => {
@@ -24,20 +21,35 @@ const router = new Router();
 // });
 
 router.get('/v1/apps', async (ctx: Context, next) => {
-  ctx.body = await mongodb.Apps.find({}).toArray()
+  let payload = ctx.request.query
+  if((!payload.author && !payload.admin)) {
+    ctx.throw(400, 'params error')
+  }
+
+  let apps = {}
+  if(payload.admin == 'true') {
+    apps = await mongodb.Apps.find({}).toArray()
+  } else {
+    apps = await mongodb.Apps.find({author: payload.author}).toArray()
+  }
+  ctx.body = apps
 })
 
 router.post('/v1/app/:id', async (ctx: Context, next) => {
-  if (!ctx.request.body.id || ctx.params.id !== ctx.request.body.id) {
+  let payload = ctx.request.body
+  if(!payload.id) {
+    ctx.throw(400, 'params error')
+  }
+  if (ctx.params.id !== payload.id) {
     ctx.throw(400, "App is not same")
   }
-  let exists = await mongodb.Apps.findOne({id: ctx.request.body.id});
+  let exists = await mongodb.Apps.findOne({id: payload.id});
   if (exists) {
-    ctx.throw(400, "App id is exists")
+    ctx.throw(400, "App is exists")
   }
 
   try {
-    ctx.body = await mongodb.Apps.insert(ctx.request.body)
+    ctx.body = await mongodb.Apps.insert(payload)
   } catch (e) {
     ctx.throw(400, e)
   }
