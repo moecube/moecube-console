@@ -20,6 +20,10 @@ const router = new Router();
 //     })
 // });
 
+router.get('/v2/apps', async(ctx: Context, next) => {
+  ctx.body = await mongodb.Apps.find({}).toArray()
+})
+
 router.get('/v1/apps', async (ctx: Context, next) => {
   let payload = ctx.request.query
   if((!payload.author && !payload.admin)) {
