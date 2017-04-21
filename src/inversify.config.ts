@@ -1,6 +1,5 @@
-import { Container } from 'inversify'
-import TYPES from './types'
+import {Container} from 'inversify';
 
-const container = new Container()
+const container = new Container();
 
-export default container
+export default container;

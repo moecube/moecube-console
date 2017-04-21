@@ -1,5 +1,5 @@
-import {Core, Model, Instance, Collection, Index, Property, ObjectID} from 'iridium'
-import {handleImg} from '../utils'
+import {Collection, Index, Instance, Property} from 'iridium';
+import {handleImg} from '../utils';
 
 interface I18n<T> {
   [locale: string]: T;
@@ -9,7 +9,7 @@ interface Platform<T> {
   [platform: string]: T;
 }
 
-interface Package{
+interface Package {
   id: string;
   name: string;
   platforms: Platform<string[]>;
@@ -27,21 +27,21 @@ interface File {
 export interface App {
   id: string;
   name?: I18n<string>;
-  description?: I18n<string>
-  developers?: I18n<[{ name: string, url: string }]>
-  publishers?: I18n<[{ name: string, url: string }]>
+  description?: I18n<string>;
+  developers?: I18n<[{ name: string, url: string }]>;
+  publishers?: I18n<[{ name: string, url: string }]>;
   released_at?: string;
   category?: string;
   parent?: string;
-  tag?:  string[];
+  tag?: string[];
   dependencies?: Platform<string[]>;
   references?: Platform<string[]>;
   homepage?: string;
   locales?: string[];
-  actions?: Platform<{[key: string]: {execuate: string, args: string[], env: {[key: string]: string}}}>;
-  files?: {[key: string]: { sync: boolean}}
+  actions?: Platform<{ [key: string]: { execuate: string, args: string[], env: { [key: string]: string } } }>;
+  files?: { [key: string]: { sync: boolean } };
   version?: Platform<string>;
-  news?: I18n<{title: string, url: string, image: string}[]>;
+  news?: I18n<{ title: string, url: string, image: string }[]>;
   conference?: string;
   data?: any;
   icon?: string;
@@ -52,18 +52,18 @@ export interface App {
 }
 
 @Collection('apps')
-@Index({id: 1}, { unique: true })
+@Index({id: 1}, {unique: true})
 export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(String, true)
   id: string;
   @Property(Object, false)
   name?: I18n<string>;
   @Property(Object, false)
-  description?: I18n<string>
+  description?: I18n<string>;
   @Property(Object, false)
-  developers?: I18n<[{ name: string, url: string }]>
+  developers?: I18n<[{ name: string, url: string }]>;
   @Property(Object, false)
-  publishers?: I18n<[{ name: string, url: string }]>
+  publishers?: I18n<[{ name: string, url: string }]>;
   @Property(String, false)
   released_at?: string;
   @Property(String, false)
@@ -71,7 +71,7 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(String, false)
   parent?: string;
   @Property(Array, false)
-  tag?:  string[];
+  tag?: string[];
   @Property(Object, false)
   dependencies?: Platform<string[]>;
   @Property(Object, false)
@@ -81,13 +81,13 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(Array, false)
   locales?: string[];
   @Property(Object, false)
-  actions?: Platform<{[key: string]: {execuate: string, args: string[], env: {[key: string]: string}}}>;
+  actions?: Platform<{ [key: string]: { execuate: string, args: string[], env: { [key: string]: string } } }>;
   @Property(Object, false)
-  files?: {[key: string]: { sync: boolean}}
+  files?: { [key: string]: { sync: boolean } };
   @Property(Object, false)
   version?: Platform<string>;
   @Property(Object, false)
-  news?: I18n<{title: string, url: string, image: string}[]>;
+  news?: I18n<{ title: string, url: string, image: string }[]>;
   @Property(String, false)
   conference?: string;
   @Property(Object, false)
@@ -103,23 +103,23 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(Date, false)
   created_at: Date;
 
-  static onCreating(app: App){
-    app.created_at = new Date()
+  static onCreating(app: App) {
+    app.created_at = new Date();
   }
 
   handleUpdate(data: App) {
-    Object.assign(this, data)
+    Object.assign(this, data);
   }
 
   toJSON() {
-    this.Convert()
-    return JSON.parse(this)
+    this.Convert();
+    return {...<Object>this};
   }
 
   Convert() {
-      this.icon = handleImg(this.icon),
+    this.icon = handleImg(this.icon),
       this.cover = handleImg(this.cover),
-      this.background = handleImg(this.background)
+      this.background = handleImg(this.background);
   }
 }
 

@@ -1,5 +1,3 @@
-const TYPES = {
+const TYPES = {};
 
-}
-
-export default TYPES
+export default TYPES;

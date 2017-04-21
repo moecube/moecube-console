@@ -1,4 +1,4 @@
-import { URL } from 'url';
+import {URL} from 'url';
 
 export const handleImg = (img) => {
   if (img) {
@@ -12,8 +12,8 @@ export const handleImg = (img) => {
   } else {
     return 'https://cdn01.moecube.com/accounts/default_avatar.jpg';
   }
-}
+};
 
 export function renderChecksum(files: { path: string, hash?: string }[]) {
-  return files.map(({ path, hash }) => `${hash || ''}  ${path}`).join('\n');
+  return files.map(({path, hash}) => `${hash || ''}  ${path}`).join('\n');
 }

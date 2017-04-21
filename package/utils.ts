@@ -1,9 +1,8 @@
-import * as fs from 'fs-extra-promise'
-import * as _fs from 'fs'
-import * as crypto from 'crypto'
-import * as child_process from 'child_process'
-// import * as tar from 'tar-stream'
-// import * as fstream from 'fstream'
+import * as fs from 'fs-extra-promise';
+import * as _fs from 'fs';
+import * as crypto from 'crypto';
+import * as child_process from 'child_process';
+
 
 interface crawOptions {
   onDir: (files: string | string[], _path: string, depth: number) => Promise<void>;
@@ -12,32 +11,32 @@ interface crawOptions {
 
 export async function crawlPath(_path, options: crawOptions, depth = 0) {
   if (await isDir(_path)) {
-    depth += 1
-    const files = await fs.readdirAsync(_path)
-    await options.onDir(files, _path, depth)
+    depth += 1;
+    const files = await fs.readdirAsync(_path);
+    await options.onDir(files, _path, depth);
 
     if (files) {
       for (let fileName of files) {
-        const file = `${_path}/${fileName}`
+        const file = `${_path}/${fileName}`;
 
         if (await isDir(file)) {
-          await crawlPath(file, options, depth)
+          await crawlPath(file, options, depth);
         } else if (await isFile(file)) {
-          await options.onFile(file)
+          await options.onFile(file);
         }
       }
     }
   } else if (await isFile(_path)) {
-    await options.onFile(_path)
+    await options.onFile(_path);
   }
 }
 
 export async function isDir(path) {
-  return (await fs.lstatAsync(path)).isDirectory()
+  return (await fs.lstatAsync(path)).isDirectory();
 }
 
 export async function isFile(path) {
-  return (await fs.lstatAsync(path)).isFile()
+  return (await fs.lstatAsync(path)).isFile();
 }
 
 
@@ -54,14 +53,14 @@ export function archiveSingle(archive: string, files: string[], directory: strin
     let child = child_process.spawn("tar", ["-czf", archive, '-P', '-C', directory].concat(files), {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
-        resolve()
+        resolve();
       } else {
         reject(code);
       }
     });
     child.on('error', (error) => {
       reject(error);
-    })
+    });
   });
 }
 
@@ -70,14 +69,14 @@ export function archive(archive: string, files: string[], directory: string): Pr
     let child = child_process.spawn("tar", ["-vczf", archive, '-C', directory].concat(files), {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
-        resolve()
+        resolve();
       } else {
         reject(code);
       }
     });
     child.on('error', (error) => {
       reject(error);
-    })
+    });
   });
 }
 
@@ -86,14 +85,14 @@ export function untar(archive: string, directory: string): Promise<void> {
     let child = child_process.spawn("tar", ["-xvf", archive, '-C', directory], {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
-        resolve()
+        resolve();
       } else {
         reject(code);
       }
     });
     child.on('error', (error) => {
       reject(error);
-    })
+    });
   });
 }
 
@@ -102,7 +101,7 @@ export function caculateSHA256(file: string): Promise<string> {
     let input = _fs.createReadStream(file);
     const hash = crypto.createHash("sha256");
     hash.on("error", (error: Error) => {
-      reject(error)
+      reject(error);
     });
     input.on("error", (error: Error) => {
       reject(error);
