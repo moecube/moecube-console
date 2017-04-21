@@ -104,6 +104,19 @@ router.post('/v1/package', async (ctx: Context, next) => {
   else if (!_p.version) {
     ctx.throw(400, `请填写版本号：${_p.id}`)
   }
+
+  let exists_platform = await mongodb.Packages.find({ id: {$ne: _p.id}, appId: _p.appId, platforms: { $in: _p.platforms }, type: 'editing' }).count()
+  if(exists_platform) {
+    console.log(exists_platform)
+    ctx.throw(400, '平台已存在')
+  }
+
+  let exists_locales = await mongodb.Packages.find({ id: {$ne: _p.id}, appId: _p.appId, locales: { $in: _p.locales }, type: 'editing' }).count()
+  if(exists_locales) {
+    console.log(exists_locales)
+    ctx.throw(400, '语言已存在')
+  }
+
   await mongodb.Packages.update({id: _p.id}, {$set: { type: 'edited' }}, {multi: true})
 
   let _pack: Package = {
@@ -135,6 +148,19 @@ router.patch('/v1/package', async (ctx: Context, next) => {
   }
   else if (!_p.version) {
     ctx.throw(400, `请填写版本号：${_p.id}`)
+  }
+
+  let exists_platform = await mongodb.Packages.find({ id: {$ne: _p.id}, appId: _p.appId, platforms: { $in: _p.platforms }, type: 'editing' }).count()
+  if(exists_platform) {
+    console.log(exists_platform)
+    ctx.throw(400, '平台已存在')
+
+  }
+
+  let exists_locales = await mongodb.Packages.find({ id: {$ne: _p.id}, appId: _p.appId, locales: { $in: _p.locales }, type: 'editing' }).count()
+  if(exists_locales) {
+    console.log(exists_locales)
+    ctx.throw(400, '语言已存在')
   }
 
   if (p.status == 'init') {
