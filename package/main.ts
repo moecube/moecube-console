@@ -4,6 +4,7 @@ import * as fs from 'fs-extra-promise'
 import {mongodb} from '../src/models/iridium'
 import {crawlPath, caculateSHA256, archive, archiveSingle, untar} from "./utils";
 import {Archive, File} from "../src/models/Package";
+import {file} from "tmp";
 
 const upload_path = path.join(__dirname, '../test/upload')
 const release_path = path.join(__dirname, '../test/release')
@@ -36,6 +37,7 @@ export async function bundle(...args) {
   let archives = new Map<string, Archive>();
   // let files = {}
 
+
   await crawlPath(package_path, {
     onFile: async (file) => {
       let file_hash = await caculateSHA256(file)
@@ -50,32 +52,35 @@ export async function bundle(...args) {
 
       await archiveSingle(sand_file, [file], package_path)
 
+      let sand_hash = await caculateSHA256(sand_file)
+
       archives.set(sand_file, {
         path: sand_file,
-        hash: await caculateSHA256(sand_file),
+        hash: sand_hash,
         size: (await fs.statAsync(sand_file)).size
       })
+
+      await fs.renameAsync(sand_file, path.join(path.dirname(sand_file), `${sand_hash}.tar.gz`))
     },
     onDir: async (files, _path, depth) => {
     },
   })
-  // TODO: 上传checksum: files
 
-  const fullFile = path.join(full_path, `${package_id}.tar.gz`)
+  let filePath = path.join(full_path, `${package_id}.tar.gz`)
 
-  await fs.removeAsync(fullFile)
-  await archive(fullFile, await fs.readdirAsync(package_path), package_path)
+  await fs.removeAsync(filePath)
+  await archive(filePath, await fs.readdirAsync(package_path), package_path)
 
-  // TODO: 上传meta
-  const fullHash = await caculateSHA256(fullFile)
-  const fullSize = (await fs.statAsync(fullFile)).size
+  const fullHash = await caculateSHA256(filePath)
+  const fullSize = (await fs.statAsync(filePath)).size
 
-  // TODO: 增量包
+  let fullPath = path.join(path.dirname(filePath), `${fullHash}.tar.gz`)
+  await fs.renameAsync(filePath, fullPath)
 
   return {
     files: Array.from(files.values()),
     archives: Array.from(archives.values()),
-    fullFile,
+    fullPath,
     fullSize,
     fullHash
   }

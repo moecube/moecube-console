@@ -4,6 +4,7 @@ if(process.env.NODE_ENV !== 'production') {
 import * as Koa from 'koa'
 import * as log4js from 'log4js'
 import * as bodyParser from 'koa-bodyparser'
+import * as hbs from 'koa-hbs'
 import { mongodb } from './src/models/iridium'
 
 // import index from './routes/index';
@@ -17,6 +18,10 @@ import apps from './src/routes/app';
 const logger = log4js.getLogger();
 
 const app = new Koa();
+
+app.use(hbs.middleware({
+    viewPath: __dirname + '/views',
+}));
 
 app.use(async(ctx, next) => {
     const start = new Date();

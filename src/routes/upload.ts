@@ -118,6 +118,7 @@ export const UploadPackage = async (ctx: Context) => {
           } catch (e) {
             pack.status = 'failed'
             await pack.save()
+            console.log(e)
           }
         })
 
@@ -164,8 +165,11 @@ const uploadPackageUrl = async (ctx: Context) => {
       const bundled = await bundle(path.basename(file.path))
 
       // 打包完， 上传阿里云
-      pack.files = bundled.files
+
+      Object.assign(pack, bundled)
       pack.status = 'uploaded'
+
+      await mongodb.Packages.update({id: pack.id}, {$set: { status: 'deprecated' }}, {multi: true})
       await pack.save()
 
     } catch (e) {
@@ -178,6 +182,7 @@ const uploadPackageUrl = async (ctx: Context) => {
     // console.log(await downloader.send('tellStatus', err.gid))
     pack.status = 'failed'
     await pack.save()
+    console.log(err)
   }
 
 

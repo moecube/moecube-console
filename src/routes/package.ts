@@ -10,10 +10,28 @@ router.get('/v2/packages', async (ctx: Context, next) => {
   if (!ctx.request.query.appId) {
     ctx.throw(400, "appId must be required!")
   }
-  let packs = await mongodb.Packages.find({appId: ctx.request.query.appId, status: 'uploaded'})
+  let packs = await mongodb.Packages.find({appId: ctx.params.id, status: 'uploaded'})
   ctx.body = {
     [ctx.request.query.appId]: packs
   }
+})
+
+router.get('/v2/package/:id', async(ctx: Context, next) => {
+  //TODO
+})
+
+router.get('/v2/package/:id/meta', async(ctx: Context, next) => {
+
+  let {fullHash, fullSize, fullPath} = await mongodb.Packages.findOne({id: ctx.params.id, status: 'uploaded'}) || {}
+  if(!fullHash || !fullSize || !fullPath) {
+    ctx.throw(400, 'pack error')
+  }
+
+  await ctx['render']('update', {files: {
+    name: fullPath,
+    size: fullSize,
+    hash: fullHash
+  }})
 })
 
 router.post('/v2/package/:id/update', async (ctx: Context, next) => {
@@ -57,7 +75,7 @@ router.post('/v2/package/:id/update', async (ctx: Context, next) => {
     }]
   }
 
-  ctx.body = files
+  await ctx['render']('update', {files})
 })
 
 
