@@ -39,11 +39,12 @@ export async function bundle(...args) {
 
 
   await crawlPath(package_path, {
+    relative: true,
     onFile: async (file) => {
       let file_hash = await caculateSHA256(file)
 
       files.set(file, {
-        path: file,
+        path: path.relative(package_path,file),
         hash: file_hash,
         size: (await fs.statAsync(file)).size
       })
@@ -55,14 +56,17 @@ export async function bundle(...args) {
       let sand_hash = await caculateSHA256(sand_file)
 
       archives.set(sand_file, {
-        path: sand_file,
+        path: path.relative(sand_path, sand_file),
         hash: sand_hash,
         size: (await fs.statAsync(sand_file)).size
       })
 
       await fs.renameAsync(sand_file, path.join(path.dirname(sand_file), `${sand_hash}.tar.gz`))
     },
-    onDir: async (files, _path, depth) => {
+    onDir: async (_files, _path, depth) => {
+      files.set(_path, {
+        path: path.relative(package_path, _path),
+      })
     },
   })
 
@@ -80,7 +84,6 @@ export async function bundle(...args) {
   return {
     files: Array.from(files.values()),
     archives: Array.from(archives.values()),
-    fullPath,
     fullSize,
     fullHash
   }

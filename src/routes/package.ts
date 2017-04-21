@@ -4,33 +4,39 @@ import {mongodb} from '../models/iridium'
 import {Context} from "koa";
 import config from '../../config'
 import {Archive, Package} from "../models/Package";
+import {renderChecksum} from "../utils";
 const router = new Router();
 
 router.get('/v2/packages', async (ctx: Context, next) => {
   if (!ctx.request.query.appId) {
     ctx.throw(400, "appId must be required!")
   }
-  let packs = await mongodb.Packages.find({appId: ctx.params.id, status: 'uploaded'})
+  let packs = await mongodb.Packages.find({appId: ctx.request.query.appId, status: 'uploaded'}).toArray()
   ctx.body = {
     [ctx.request.query.appId]: packs
   }
 })
 
-router.get('/v2/package/:id', async(ctx: Context, next) => {
-  //TODO
+router.get('/v2/package/:id/checksum', async(ctx: Context, next) => {
+  let pack = await mongodb.Packages.findOne({id: ctx.params.id, status: 'uploaded'})
+  if(!pack) {
+    return ctx.throw(400, 'pack error')
+  }
+
+  ctx.body = renderChecksum(pack.files)
 })
 
 router.get('/v2/package/:id/meta', async(ctx: Context, next) => {
 
-  let {fullHash, fullSize, fullPath} = await mongodb.Packages.findOne({id: ctx.params.id, status: 'uploaded'}) || {}
-  if(!fullHash || !fullSize || !fullPath) {
-    ctx.throw(400, 'pack error')
+  let pack = await mongodb.Packages.findOne({id: ctx.params.id, status: 'uploaded'})
+  if(!pack) {
+    return ctx.throw(400, 'pack error')
   }
 
   await ctx['render']('update', {files: {
-    name: fullPath,
-    size: fullSize,
-    hash: fullHash
+    name: pack.id,
+    size: pack.fullSize,
+    hash: pack.fullHash
   }})
 })
 
@@ -69,7 +75,7 @@ router.post('/v2/package/:id/update', async (ctx: Context, next) => {
 
   if( sandSize <= fullSize ) {
     files = [{
-      path: pack.fullPath,
+      path: pack.id,
       size: pack.fullSize,
       hash: pack.fullHash
     }]

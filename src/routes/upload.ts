@@ -21,8 +21,9 @@ import config from '../../config'
 // }
 
 const checkPackage = async (file) => {
-  const ext = mime.extension(file.mime);
-  if (['zip', 'gz', 'rar', '7z'].indexOf(ext) === -1) {
+  // const ext = mime.extension(file.mime);
+  if (['zip', 'gz', 'rar', '7z', 'application/x-gzip'].indexOf(file.mime) === -1) {
+
     throw new Error('Unsupported file type');
   }
 }
@@ -77,10 +78,7 @@ export const UploadPackage = async (ctx: Context) => {
     const {files} = await busboy(ctx.req);
     ctx.body = await Promise.all(files.map(async file => {
 
-      const ext = mime.extension(file.mime);
-      if (['zip', 'gz', 'rar', '7z'].indexOf(ext) === -1) {
-        throw new Error('Unsupported file type');
-      }
+      await checkPackage(file)
 
       const filename = uuid.v1()
 
@@ -96,8 +94,6 @@ export const UploadPackage = async (ctx: Context) => {
         file.pipe(archive)
 
         file.on('close', async() => {
-
-
 
           try {
             pack.status = 'uploading'

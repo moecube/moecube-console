@@ -12,8 +12,8 @@ export interface Action {
 
 export interface File {
   path: string;
-  size: number;
-  hash: string;
+  size?: number;
+  hash?: string;
 }
 
 export interface Archive {
@@ -28,7 +28,6 @@ export interface Package {
   appId: string;
   fullSize: number;
   fullHash: string;
-  fullPath: string;
   version: string;
   status: string;
   type: string;
@@ -52,8 +51,6 @@ export class PackageSchema extends Instance<Package, PackageSchema> implements P
   fullSize: number;
   @Property(String, false)
   fullHash: string;
-  @Property(String, false)
-  fullPath: string;
   @Property(String, true)
   type: string;
   @Property(String, true)

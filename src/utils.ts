@@ -13,3 +13,7 @@ export const handleImg = (img) => {
     return 'https://cdn01.moecube.com/accounts/default_avatar.jpg';
   }
 }
+
+export function renderChecksum(files: { path: string, hash?: string }[]) {
+  return files.map(({ path, hash }) => `${hash || ''}  ${path}`).join('\n');
+}
