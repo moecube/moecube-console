@@ -21,9 +21,9 @@ import config from '../../config';
 // }
 
 const checkPackage = async (file) => {
-  if (['zip', 'gz', 'rar', '7z', 'application/x-gzip'].indexOf(file.mime) === -1) {
-
-    throw new Error('Unsupported file type');
+  if (['application/zip', 'application/gz', 'application/rar', 'application/7z', 'application/x-gzip'].indexOf(file.mime) === -1) {
+    console.log(file.mime)
+    throw new Error(`Unsupported file type: ${file.mime}`);
   }
 };
 
