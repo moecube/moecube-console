@@ -1,5 +1,5 @@
 import Router = require('koa-router');
-import {mongodb} from '../models/iridium';
+import {mongodb} from '../models/Iridium';
 import {App, AppSchema} from '../models/App';
 import {Context} from 'koa';
 const router = new Router();

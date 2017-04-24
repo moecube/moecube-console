@@ -1,4 +1,4 @@
-import {Collection, Index, Instance, Property} from 'iridium';
+import {Collection, Index, Instance, Property} from 'Iridium';
 import {handleImg} from '../utils';
 
 interface I18n<T> {

@@ -8,7 +8,7 @@ import * as fs from 'fs-extra-promise';
 import * as path from 'path';
 import * as Aria2 from 'aria2';
 import {bundle} from '../../package/main';
-import {mongodb} from '../models/iridium';
+import {mongodb} from '../models/Iridium';
 import {toObjectID} from 'iridium';
 import config from '../../config';
 

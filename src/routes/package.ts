@@ -1,6 +1,6 @@
 import Router = require('koa-router');
 import {toObjectID} from 'iridium';
-import {mongodb} from '../models/iridium';
+import {mongodb} from '../models/Iridium';
 import {Context} from 'koa';
 import config from '../../config';
 import {Archive, Package} from '../models/Package';
