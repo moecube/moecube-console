@@ -5,7 +5,7 @@ import * as Koa from 'koa';
 import * as log4js from 'log4js';
 import * as bodyParser from 'koa-bodyparser';
 import * as hbs from 'koa-hbs';
-import {mongodb} from './src/models/iridium';
+import {mongodb} from './src/models/Iridium';
 // import index from './routes/index';
 import upload from './src/routes/upload';
 // import users from './src/routes/users';
