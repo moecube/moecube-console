@@ -44,18 +44,18 @@ router.post('/v1/app/:id', async (ctx: Context, next) => {
 });
 
 router.patch('/v1/app/:id', async (ctx: Context, next) => {
-  let _app: App = ctx.request.body;
-  let app: AppSchema | null = await mongodb.Apps.findOne({id: ctx.params.id});
+  let _app = ctx.request.body;
+  let app = await mongodb.Apps.findOne({id: ctx.params.id});
   if (!app) {
-    ctx.throw(400, `App ${ctx.params.id} Not Found `);
+    return ctx.throw(400, `App ${ctx.params.id} Not Found `);
   }
-  if (!ctx.request.body.id || ctx.request.body.id !== app!.id) {
+  if (ctx.request.body.id || ctx.request.body.id !== app!.id) {
     ctx.throw(400, `Can not change AppID`);
   }
 
-  app!.handleUpdate(_app);
+  app.handleUpdate(_app);
 
-  ctx.body = await app!.save();
+  ctx.body = await app.save();
 });
 
 export default router;

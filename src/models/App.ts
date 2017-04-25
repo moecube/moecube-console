@@ -1,4 +1,4 @@
-import {Collection, Index, Instance, Property} from 'Iridium';
+import {Collection, Index, Instance, Property} from 'iridium';
 import {handleImg} from '../utils';
 
 interface I18n<T> {
@@ -113,7 +113,7 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
 
   toJSON() {
     this.Convert();
-    return JSON.parse(this);
+    return this;
   }
 
   Convert() {
