@@ -2,13 +2,12 @@ FROM node
 
 RUN apt-get update
 RUN apt-get install aria2 -y
-RUN npm install yarn -g
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app
-RUN yarn install
+RUN npm install
 
 COPY . /usr/src/app
 

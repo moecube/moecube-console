@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0cbce64-0ebc-4f60-8c2d-2fe9e214a8c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aria2.conf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/entrypoint.sh" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/routes/upload.ts" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dockerfile" afterPath="$PROJECT_DIR$/Dockerfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/App.ts" afterPath="$PROJECT_DIR$/src/models/App.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/app.ts" afterPath="$PROJECT_DIR$/src/routes/app.ts" />
     </list>
     <ignored path="mycard-console-backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -382,12 +375,12 @@
       <workItem from="1492741754173" duration="2869000" />
       <workItem from="1492753774887" duration="9061000" />
       <workItem from="1493001126170" duration="14186000" />
-      <workItem from="1493024480737" duration="4113000" />
+      <workItem from="1493024480737" duration="5407000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135990000" />
+    <option name="totallyTimeSpent" value="137284000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -791,7 +784,7 @@
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
