@@ -2,7 +2,7 @@ FROM node
 
 RUN apt-get update
 RUN apt-get install aria2 -y
-RUN apt-get curl
+RUN apt-get curl -y
 
 RUN curl --location --retry 5 --output ossutil 'https://github.com/mycard/ossutil/releases/download/1.0.0.Beta2/ossutil
 RUN chmod +x ossutil && mv ossutil /usr/local/bin/ossutil
