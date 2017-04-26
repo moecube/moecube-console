@@ -113,7 +113,8 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
 
   toJSON() {
     this.Convert();
-    return this;
+    // hack
+    return JSON.parse(this.toString());
   }
 
   Convert() {
