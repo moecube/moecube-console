@@ -7,18 +7,12 @@ import * as Client from 'aliyun-oss-upload-stream';
 import * as fs from 'fs-extra-promise';
 import * as path from 'path';
 import * as Aria2 from 'aria2';
+import Router = require('koa-router');
 import {bundle} from '../../package/main';
 import {mongodb} from '../models/Iridium';
 import {toObjectID} from 'iridium';
 import config from '../../config';
-
-// const Aria2Options = {
-//   host: 'localhost',
-//   port: 6800,
-//   secure: false,
-//   secret: '',
-//   path: path.join(__dirname, '../../test/upload')
-// }
+import {UploadOSS} from '../utils'
 
 const checkPackage = async (file) => {
   if (['application/zip', 'application/gz', 'application/rar', 'application/7z', 'application/x-gzip'].indexOf(file.mime) === -1) {
@@ -35,13 +29,13 @@ const checkImage = async (file) => {
 };
 
 
-import Router = require('koa-router');
 const ossStream = Client(new OSS({
   accessKeyId: process.env['OSS_ACCESS_ID'],
   secretAccessKey: process.env['OSS_ACCESS_KEY'],
   endpoint: process.env['OSS_ENDPOINT'],
   apiVersion: '2013-10-15'
 }));
+
 const router = new Router();
 
 const UploadImage = async (ctx: Context) => {
@@ -105,13 +99,15 @@ export const UploadPackage = async (ctx: Context) => {
             // 上传完， 打包
             const bundled = await bundle(filename);
 
+            // 打包完，上传阿里云
+            await UploadOSS(bundled.distPath)
+
             Object.assign(pack, bundled);
             pack!.status = 'uploaded';
 
             await mongodb.Packages.update({id: pack!.id}, {$set: {status: 'deprecated'}}, {multi: true});
             await pack!.save();
 
-            // 打包完，上传阿里云
 
           } catch (e) {
             pack!.status = 'failed';
@@ -166,6 +162,7 @@ const uploadPackageUrl = async (ctx: Context) => {
       const bundled = await bundle(path.basename(file.path));
 
       // 打包完， 上传阿里云
+      await UploadOSS(bundled.distPath)
 
       Object.assign(pack, bundled);
       pack!.status = 'uploaded';

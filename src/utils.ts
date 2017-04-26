@@ -1,4 +1,5 @@
 import {URL} from 'url';
+import * as child_process from 'child_process';
 
 export const handleImg = (img) => {
   if (img) {
@@ -16,4 +17,20 @@ export const handleImg = (img) => {
 
 export function renderChecksum(files: { path: string, hash?: string }[]) {
   return files.map(({path, hash}) => `${hash || ''}  ${path}`).join('\n');
+}
+
+export function UploadOSS(dist: string): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    let child = child_process.spawn('ossutil', ['cp', dist, 'oss://mycard/test-release'], {stdio: 'inherit'});
+    child.on('exit', (code) => {
+      if (code == 0) {
+        resolve();
+      } else {
+        reject(code);
+      }
+    });
+    child.on('error', (error) => {
+      reject(error);
+    });
+  });
 }

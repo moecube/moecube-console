@@ -80,6 +80,7 @@ export async function bundle(...args) {
   await fs.renameAsync(filePath, fullPath);
 
   return {
+    distPath: dist_path,
     files: Array.from(files.values()),
     archives: Array.from(archives.values()),
     fullSize,
