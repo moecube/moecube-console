@@ -20,12 +20,14 @@ export async function bundle(...args) {
   const archive_path = path.join(release_path, 'downloads', package_id);
   const package_path = path.join(app_path, package_id);
   const uploadFile_path = path.join(upload_path, package_id);
-  const full_path = path.join(archive_path, 'full');
-  const sand_path = path.join(archive_path, 'sand');
+  // const full_path = path.join(archive_path, 'full');
+  // const sand_path = path.join(archive_path, 'sand');
+  const dist_path = path.join(archive_path, 'dist');
   await fs.ensureDirAsync(archive_path);
   await fs.ensureDirAsync(package_path);
-  await fs.ensureDirAsync(full_path);
-  await fs.ensureDirAsync(sand_path);
+  // await fs.ensureDirAsync(full_path);
+  // await fs.ensureDirAsync(sand_path);
+  await fs.ensureDirAsync(dist_path);
 
   // untar upload package
   await untar(uploadFile_path, package_path);
@@ -45,14 +47,14 @@ export async function bundle(...args) {
         size: (await fs.statAsync(file)).size
       });
 
-      let sand_file = path.join(sand_path, `${file_hash}.tar.gz`);
+      let sand_file = path.join(dist_path, `${file_hash}.tar.gz`);
 
       await archiveSingle(sand_file, [file], package_path);
 
       let sand_hash = await caculateSHA256(sand_file);
 
       archives.set(sand_file, {
-        path: path.relative(sand_path, sand_file),
+        path: path.relative(dist_path, sand_file),
         hash: sand_hash,
         size: (await fs.statAsync(sand_file)).size
       });
@@ -66,7 +68,7 @@ export async function bundle(...args) {
     },
   });
 
-  let filePath = path.join(full_path, `${package_id}.tar.gz`);
+  let filePath = path.join(dist_path, `${package_id}.tar.gz`);
 
   await fs.removeAsync(filePath);
   await archive(filePath, await fs.readdirAsync(package_path), package_path);

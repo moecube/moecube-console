@@ -49,7 +49,7 @@ router.patch('/v1/app/:id', async (ctx: Context, next) => {
   if (!app) {
     return ctx.throw(400, `App ${ctx.params.id} Not Found `);
   }
-  if (ctx.request.body.id || ctx.request.body.id !== app!.id) {
+  if (!ctx.request.body.id || ctx.request.body.id !== app.id) {
     ctx.throw(400, `Can not change AppID`);
   }
 
