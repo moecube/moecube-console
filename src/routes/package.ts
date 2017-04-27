@@ -15,9 +15,7 @@ router.get('/v2/packages', async (ctx: Context, next) => {
     appId: ctx.request.query.appId,
     status: 'uploaded'
   }).toArray();
-  ctx.body = {
-    [ctx.request.query.appId]: packs
-  };
+  ctx.body = packs
 });
 
 router.get('/v2/package/:id/checksum', async (ctx: Context, next) => {

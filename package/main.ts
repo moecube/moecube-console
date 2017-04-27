@@ -63,7 +63,7 @@ export async function bundle(...args) {
     },
     onDir: async (_files, _path, depth) => {
       files.set(_path, {
-        path: path.relative(package_path, _path),
+        path: path.relative(package_path, _path) || '.',
       });
     },
   });

@@ -5,13 +5,14 @@ import * as fetch from 'isomorphic-fetch';
 import * as _ from 'lodash';
 import {XmlDocument} from 'xmldoc';
 
+
 // 配置
 const old_apps_json = 'https://api.moecube.com/apps.json';
 const new_apps_json = 'http://114.215.243.95:8001/v2/apps';
 const old_metalinks = (package_id) => `https://cdn01.moecube.com/release/metalinks/${package_id}.meta4`;
-const new_metalinks = (package_id) => `https://cdn01.moecube.com/release/metalinks/${package_id}.meta4`; // 修改
+const new_metalinks = (package_id) => `http://127.0.0.1:8001/v2/package/${package_id}/meta`; // 修改
 const old_checksums = (package_id) => `https://cdn01.moecube.com/release/checksums/${package_id}`;
-const new_checksums = (package_id) => `https://cdn01.moecube.com/release/checksums/${package_id}`; // 修改
+const new_checksums = (package_id) => `http://127.0.0.1:8001/v2/package/${package_id}/checksum`; // 修改
 
 
 async function test_checksums() {
@@ -72,7 +73,7 @@ async function test_apps_json() {
 }
 
 async function main() {
-  await test_apps_json();
+  // await test_apps_json();
   await test_checksums();
   await test_download();
   await test_update();
