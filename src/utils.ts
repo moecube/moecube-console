@@ -21,7 +21,7 @@ export function renderChecksum(files: { path: string, hash?: string }[]) {
 
 export function UploadOSS(dist: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    let child = child_process.spawn('ossutil', ['cp', dist, 'oss://mycard/test-release'], {stdio: 'inherit'});
+    let child = child_process.spawn('ossutil', ['cp', '--recursive', dist, 'oss://mycard/test-release'], {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
         resolve();

@@ -1,7 +1,9 @@
 import Router = require('koa-router');
 import {mongodb} from '../models/Iridium';
-import {App, AppSchema} from '../models/App';
+import {App} from '../models/App';
 import {Context} from 'koa';
+import * as joi from 'joi';
+import {promisify as py} from 'bluebird';
 const router = new Router();
 
 router.get('/v2/apps', async (ctx: Context, next) => {
@@ -24,7 +26,12 @@ router.get('/v1/apps', async (ctx: Context, next) => {
 });
 
 router.post('/v1/app/:id', async (ctx: Context, next) => {
-  let payload = ctx.request.body;
+  let payload: App = {
+    id: ctx.request.body.id,
+    name: ctx.request.body.name,
+    author: ctx.request.body.author,
+    status: 'editing',
+  };
   if (!payload.id) {
     ctx.throw(400, 'params error');
   }
@@ -37,7 +44,7 @@ router.post('/v1/app/:id', async (ctx: Context, next) => {
   }
 
   try {
-    ctx.body = await mongodb.Apps.insert(payload);
+    ctx.body = await mongodb.Apps.create(payload);
   } catch (e) {
     ctx.throw(400, e);
   }
@@ -49,8 +56,21 @@ router.patch('/v1/app/:id', async (ctx: Context, next) => {
   if (!app) {
     return ctx.throw(400, `App ${ctx.params.id} Not Found `);
   }
-  if (!ctx.request.body.id || ctx.request.body.id !== app.id) {
+  if (!_app.id || _app.id !== app.id) {
     ctx.throw(400, `Can not change AppID`);
+  }
+  if (_app.status == 'ready') {
+    try {
+      await py(joi.validate)(_app, joi.object().keys({
+        action: joi.object().keys({
+          win32: joi.object().required(),
+          darwin: joi.object().required()
+        }).required(),
+      }).required());
+    } catch (e) {
+      e.message = '资料尚未填写完毕或格式有误';
+      return ctx.throw(e);
+    }
   }
 
   app.handleUpdate(_app);

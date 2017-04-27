@@ -26,6 +26,8 @@ interface File {
 
 export interface App {
   id: string;
+  status: string;
+  author: string;
   name?: I18n<string>;
   description?: I18n<string>;
   developers?: I18n<[{ name: string, url: string }]>;
@@ -48,7 +50,7 @@ export interface App {
   cover?: string;
   background?: string;
   // packages?: Package[];
-  created_at: Date;
+  created_at?: Date;
 }
 
 @Collection('apps')
@@ -56,6 +58,10 @@ export interface App {
 export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(String, true)
   id: string;
+  @Property(String, true)
+  status: string;
+  @Property(String, true)
+  author: string;
   @Property(Object, false)
   name?: I18n<string>;
   @Property(Object, false)
