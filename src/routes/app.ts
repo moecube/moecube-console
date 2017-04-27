@@ -6,6 +6,8 @@ import * as joi from 'joi';
 import {promisify as py} from 'bluebird';
 const router = new Router();
 
+let validate: any = py(joi.validate);
+
 router.get('/v2/apps', async (ctx: Context, next) => {
   ctx.body = await mongodb.Apps.find({}).toArray();
 });
@@ -61,11 +63,8 @@ router.patch('/v1/app/:id', async (ctx: Context, next) => {
   }
   if (_app.status == 'ready') {
     try {
-      await py(joi.validate)(_app, joi.object().keys({
-        action: joi.object().keys({
-          win32: joi.object().required(),
-          darwin: joi.object().required()
-        }).required(),
+      await validate(_app, joi.object().keys({
+        action: joi.object().required(),
       }).required());
     } catch (e) {
       e.message = '资料尚未填写完毕或格式有误';
