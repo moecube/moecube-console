@@ -117,7 +117,7 @@ export const UploadPackage = async (ctx: Context) => {
             await pack!.save();
 
             // 上传完，干掉本地目录
-            await fs.removeAsync(bundled.distPath);
+            await fs.unlinkAsync(bundled.distPath);
 
 
           } catch (e) {
@@ -182,7 +182,7 @@ const uploadPackageUrl = async (ctx: Context) => {
       await pack!.save();
 
       // 上传完，干掉本地目录
-      await fs.removeAsync(bundled.distPath);
+      await fs.unlinkAsync(bundled.distPath);
 
     } catch (e) {
       console.log(e);

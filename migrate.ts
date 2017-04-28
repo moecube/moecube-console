@@ -108,8 +108,7 @@ async function main() {
     for (let app  of _.sampleSize(data, 2)) {
       if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
         apps[app['id']] = app;
-        await createApp(app).catch(error => {
-        });
+        await createApp(app)
         await updateApp(app);
       }
     }
