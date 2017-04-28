@@ -24,6 +24,8 @@ interface File {
 }
 
 
+
+
 export interface App {
   id: string;
   status: string;
@@ -41,7 +43,7 @@ export interface App {
   homepage?: string;
   locales?: string[];
   actions?: Platform<{ [key: string]: { execuate: string, args: string[], env: { [key: string]: string } } }>;
-  files?: { [key: string]: { sync: boolean } };
+  files?: { [key: string]: { sync: boolean, ignore: boolean } };
   version?: Platform<string>;
   news?: I18n<{ title: string, url: string, image: string }[]>;
   conference?: string;
@@ -49,7 +51,6 @@ export interface App {
   icon?: string;
   cover?: string;
   background?: string;
-  // packages?: Package[];
   created_at?: Date;
 }
 
@@ -89,7 +90,7 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(Object, false)
   actions?: Platform<{ [key: string]: { execuate: string, args: string[], env: { [key: string]: string } } }>;
   @Property(Object, false)
-  files?: { [key: string]: { sync: boolean } };
+  files?: { [key: string]: { sync: boolean, ignore: boolean} };
   @Property(Object, false)
   version?: Platform<string>;
   @Property(Object, false)

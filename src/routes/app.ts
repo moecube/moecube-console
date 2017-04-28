@@ -4,7 +4,10 @@ import {App} from '../models/App';
 import {Context} from 'koa';
 import * as joi from 'joi';
 import {promisify as py} from 'bluebird';
+import {dot} from '../utils';
 const router = new Router();
+
+const isTest = process.env['ENV'] !== 'production';
 
 let validate: any = py(joi.validate);
 
@@ -19,10 +22,20 @@ router.get('/v1/apps', async (ctx: Context, next) => {
   }
 
   let apps = {};
-  if (payload.admin == 'true') {
-    apps = await mongodb.Apps.find({}).toArray();
+  if (isTest || payload.admin == 'true') {
+    apps = await mongodb.Apps.find({}).map(app => {
+      if (app.files) {
+        app.files = Object.assign({}, ...Object.keys(app.files).map(key => ({[key.replace(new RegExp(dot, 'g'), '.')]: app.files![key]})));
+      }
+      return app;
+    });
   } else {
-    apps = await mongodb.Apps.find({author: payload.author}).toArray();
+    apps = await mongodb.Apps.find({author: payload.author}).map(app => {
+      if (app.files) {
+        app.files = Object.assign({}, ...Object.keys(app.files).map(key => ({[key.replace(new RegExp(dot, 'g'), '.')]: app.files![key]})));
+      }
+      return app;
+    });
   }
   ctx.body = apps;
 });
@@ -70,6 +83,9 @@ router.patch('/v1/app/:id', async (ctx: Context, next) => {
       e.message = '资料尚未填写完毕或格式有误';
       return ctx.throw(e);
     }
+  }
+  if (_app.files && Object.keys(_app.files).length > 0) {
+    _app.files = Object.assign({}, ...Object.keys(_app.files).map(key => ({[key.replace(new RegExp('\\.', 'g'), dot)]: _app.files[key]})));
   }
 
   app.handleUpdate(_app);

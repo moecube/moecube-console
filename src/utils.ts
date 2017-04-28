@@ -1,6 +1,8 @@
 import {URL} from 'url';
 import * as child_process from 'child_process';
 
+export const dot = '__<DOT>__';
+
 export const handleImg = (img) => {
   if (img) {
     let url: URL;
