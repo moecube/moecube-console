@@ -79,6 +79,9 @@ export async function bundle(...args) {
   let fullPath = path.join(path.dirname(filePath), `${fullHash}.tar.gz`);
   await fs.renameAsync(filePath, fullPath);
 
+  await fs.removeAsync(uploadFile_path)
+  await fs.removeAsync(package_path)
+
   return {
     distPath: dist_path,
     files: Array.from(files.values()),

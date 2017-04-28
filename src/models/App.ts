@@ -9,21 +9,32 @@ interface Platform<T> {
   [platform: string]: T;
 }
 
-interface Package {
-  id: string;
+// interface Package {
+//   id: string;
+//   name: string;
+//   platforms: Platform<string[]>;
+//   locales: I18n<string[]>;
+//   files: File[];
+// }
+//
+// interface File {
+//   path: string;
+//   size: number;
+//   hash: string;
+// }
+
+interface Trailer {
+  type: string;
+  url: string;
+  poster: string;
+}
+
+interface Achievement {
   name: string;
-  platforms: Platform<string[]>;
-  locales: I18n<string[]>;
-  files: File[];
+  description: string;
+  image: string;
+  progress_max: number;
 }
-
-interface File {
-  path: string;
-  size: number;
-  hash: string;
-}
-
-
 
 
 export interface App {
@@ -37,7 +48,7 @@ export interface App {
   released_at?: string;
   category?: string;
   parent?: string;
-  tag?: string[];
+  tags?: string[];
   dependencies?: Platform<string[]>;
   references?: Platform<string[]>;
   homepage?: string;
@@ -52,6 +63,8 @@ export interface App {
   cover?: string;
   background?: string;
   created_at?: Date;
+  trailer?: Trailer[];
+  achievements?: Achievement[];
 }
 
 @Collection('apps')
@@ -78,7 +91,7 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(String, false)
   parent?: string;
   @Property(Array, false)
-  tag?: string[];
+  tags?: string[];
   @Property(Object, false)
   dependencies?: Platform<string[]>;
   @Property(Object, false)
@@ -90,7 +103,7 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   @Property(Object, false)
   actions?: Platform<{ [key: string]: { execuate: string, args: string[], env: { [key: string]: string } } }>;
   @Property(Object, false)
-  files?: { [key: string]: { sync: boolean, ignore: boolean} };
+  files?: { [key: string]: { sync: boolean, ignore: boolean } };
   @Property(Object, false)
   version?: Platform<string>;
   @Property(Object, false)
@@ -105,10 +118,13 @@ export class AppSchema extends Instance<App, AppSchema> implements App {
   cover?: string;
   @Property(String, false)
   background?: string;
-  // @Property(Array, false)
-  // packages?: Package[];
   @Property(Date, false)
-  created_at: Date;
+  created_at?: Date;
+  @Property(Array, false)
+  trailer?: Trailer[];
+  @Property(Array, false)
+  achievements?: Achievement[];
+
 
   static onCreating(app: App) {
     app.created_at = new Date();

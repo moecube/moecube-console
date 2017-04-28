@@ -28,9 +28,13 @@ async function test_download() {
 
   const app: any = _.sample(apps);
   console.log(`正在测试 ${app.id} 的 下载`);
+
+
   const metalink = await (await fetch(config.new_metalinks(app.id))).text();
   const xml = new XmlDocument(metalink);
   const url = xml.valueWithPath('file.url');
+
+
   const response = await fetch(url, {method: 'HEAD'});
   if (!response.ok) {
     throw `${app.id} 的 下载地址 ${url} 返回 ${response.statusText}`;

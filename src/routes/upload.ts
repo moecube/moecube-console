@@ -108,6 +108,9 @@ export const UploadPackage = async (ctx: Context) => {
             await mongodb.Packages.update({id: pack!.id}, {$set: {status: 'deprecated'}}, {multi: true});
             await pack!.save();
 
+            // 上传完，干掉本地目录
+            await fs.removeAsync(bundled.distPath)
+
 
           } catch (e) {
             pack!.status = 'failed';
@@ -169,6 +172,9 @@ const uploadPackageUrl = async (ctx: Context) => {
 
       await mongodb.Packages.update({id: pack!.id}, {$set: {status: 'deprecated'}}, {multi: true});
       await pack!.save();
+
+      // 上传完，干掉本地目录
+      await fs.removeAsync(bundled.distPath)
 
     } catch (e) {
       pack!.status = 'failed';
