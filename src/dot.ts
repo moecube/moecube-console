@@ -1,1 +1,1 @@
-export const dot = '&&';
+export const dot = '__<DOT>__';
