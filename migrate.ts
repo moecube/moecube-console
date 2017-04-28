@@ -103,17 +103,21 @@ async function updateApp(app) {
 async function main() {
 
   let {data} = await axios.get(config.old_apps_json);
+  let newApps = await axios.get(config.new_apps_json);
+
+  newApps.data.map(app => {
+    apps[app['id']] = app;
+  })
 
   try {
     for (let app  of data) {
-      if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
-        apps[app['id']] = app;
+      if (!['ygopro', 'desmume', 'test'].includes(app['id']) && !apps[app['id']]) {
         await createApp(app)
       }
     }
 
-    for (let app  of _.sampleSize(data, 2)) {
-      if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
+    for (let app  of _.sampleSize(data, 1)) {
+      if (['ygopro', 'desmume', 'test'].includes(app['id'])) {
         await updateApp(app);
       }
     }

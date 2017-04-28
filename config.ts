@@ -7,7 +7,7 @@ export default {
   upload_path: path.join(__dirname, './test/upload'),
   download_path: path.join(__dirname, './test/release/downloads'),
   new_apps_json: `${baseUrl}/v2/apps`,
-  upload_url: `${testUrl}/v1/upload/packageUrl`,
+  upload_url: `${baseUrl}/v1/upload/packageUrl`,
   old_apps_json: 'https://api.moecube.com/apps.json',
   new_package: `${baseUrl}/v1/package/`,
   new_app: (appId) => `${baseUrl}/v1/app/${appId}`,

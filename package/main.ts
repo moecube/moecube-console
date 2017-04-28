@@ -70,7 +70,6 @@ export async function bundle(...args) {
 
   let filePath = path.join(dist_path, `${package_id}.tar.gz`);
 
-  await fs.removeAsync(filePath);
   await archive(filePath, await fs.readdirAsync(package_path), package_path);
 
   const fullHash = await caculateSHA256(filePath);
@@ -79,6 +78,7 @@ export async function bundle(...args) {
   let fullPath = path.join(path.dirname(filePath), `${fullHash}.tar.gz`);
   await fs.renameAsync(filePath, fullPath);
 
+  await fs.removeAsync(filePath);
   await fs.removeAsync(uploadFile_path)
   await fs.removeAsync(package_path)
 
