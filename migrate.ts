@@ -41,12 +41,11 @@ async function updatePackage(app, pack) {
   const rawUrl = xml.valueWithPath('file.url');
   const url = rawUrl.replace('https://r.my-card.in/dist/', 'https://r.my-card.in/release/dist/');
 
-  if (app.name == 'th1') {
-    return await axios.post(config.upload_url, {
-      _id: pack._id,
-      url
-    });
-  }
+  console.log(pack._id, url);
+  return await axios.post(config.upload_url, {
+    _id: pack._id,
+    url
+  });
 }
 
 async function createApp(app) {
@@ -106,9 +105,9 @@ async function main() {
   let {data} = await axios.get(config.old_apps_json);
 
   try {
-    for (let app of _.sampleSize(data, 5)) {
-      if (!['ygopro', 'desmume', 'test'].includes(app.id)) {
-        apps[app.id] = app;
+    for (let app  of _.sampleSize(data, 2)) {
+      if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
+        apps[app['id']] = app;
         await createApp(app).catch(error => {
         });
         await updateApp(app);

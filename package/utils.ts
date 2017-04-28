@@ -3,13 +3,12 @@ import * as _fs from 'fs';
 import * as crypto from 'crypto';
 import * as child_process from 'child_process';
 
-
-interface crawOptions {
+interface CrawOptions {
   onDir: (files: string | string[], _path: string, depth: number) => Promise<void>;
   onFile: (file: string) => Promise<void>;
 }
 
-export async function crawlPath(_path, options: crawOptions, depth = 0) {
+export async function crawlPath(_path, options: CrawOptions, depth = 0) {
   if (await isDir(_path)) {
     depth += 1;
     const files = await fs.readdirAsync(_path);
@@ -50,7 +49,7 @@ export function archiveSingle(archive: string, files: string[], directory: strin
   //   .pipe(dir)
   // return tar.pack(file).pipe(_fs.createWriteStream(archive))
   return new Promise<void>((resolve, reject) => {
-    let child = child_process.spawn("tar", ["-czf", archive, '-P', '-C', directory].concat(files), {stdio: 'inherit'});
+    let child = child_process.spawn('tar', ['-czf', archive, '-P', '-C', directory].concat(files), {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
         resolve();
@@ -66,7 +65,7 @@ export function archiveSingle(archive: string, files: string[], directory: strin
 
 export function archive(archive: string, files: string[], directory: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    let child = child_process.spawn("tar", ["-vczf", archive, '-C', directory].concat(files), {stdio: 'inherit'});
+    let child = child_process.spawn('tar', ['-vczf', archive, '-C', directory].concat(files), {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
         resolve();
@@ -82,7 +81,7 @@ export function archive(archive: string, files: string[], directory: string): Pr
 
 export function untar(archive: string, directory: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    let child = child_process.spawn("tar", ["-xvf", archive, '-C', directory], {stdio: 'inherit'});
+    let child = child_process.spawn('tar', ['-xvf', archive, '-C', directory], {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
         resolve();
@@ -99,17 +98,17 @@ export function untar(archive: string, directory: string): Promise<void> {
 export function caculateSHA256(file: string): Promise<string> {
   return new Promise((resolve, reject) => {
     let input = _fs.createReadStream(file);
-    const hash = crypto.createHash("sha256");
-    hash.on("error", (error: Error) => {
+    const hash = crypto.createHash('sha256');
+    hash.on('error', (error: Error) => {
       reject(error);
     });
-    input.on("error", (error: Error) => {
+    input.on('error', (error: Error) => {
       reject(error);
     });
     hash.on('readable', () => {
       let data = hash.read();
       if (data) {
-        resolve((<Buffer>data).toString("hex"));
+        resolve((<Buffer>data).toString('hex'));
       }
     });
     input.pipe(hash);

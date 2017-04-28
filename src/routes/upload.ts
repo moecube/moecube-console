@@ -7,12 +7,19 @@ import * as Client from 'aliyun-oss-upload-stream';
 import * as fs from 'fs-extra-promise';
 import * as path from 'path';
 import * as Aria2 from 'aria2';
-import Router = require('koa-router');
 import {bundle} from '../../package/main';
 import {mongodb} from '../models/Iridium';
 import {toObjectID} from 'iridium';
 import config from '../../config';
-import {UploadOSS} from '../utils'
+import {UploadOSS} from '../utils';
+import Router = require('koa-router');
+
+const checkFilePath = async (file) => {
+  if (['gz', 'rar', 'zip', '7z', 'x-gzip'].indexOf(mime.lookup(file.path)) === -1) {
+    console.log(file);
+    throw new Error(`Unsupported file type: ${mime.lookup(file.path)}`);
+  }
+};
 
 const checkPackage = async (file) => {
   if (['application/zip', 'application/gz', 'application/rar', 'application/7z', 'application/x-gzip'].indexOf(file.mime) === -1) {
@@ -100,7 +107,7 @@ export const UploadPackage = async (ctx: Context) => {
             const bundled = await bundle(filename);
 
             // 打包完，上传阿里云
-            await UploadOSS(bundled.distPath)
+            await UploadOSS(bundled.distPath);
 
             Object.assign(pack, bundled);
             pack!.status = 'uploaded';
@@ -109,7 +116,7 @@ export const UploadPackage = async (ctx: Context) => {
             await pack!.save();
 
             // 上传完，干掉本地目录
-            await fs.removeAsync(bundled.distPath)
+            await fs.removeAsync(bundled.distPath);
 
 
           } catch (e) {
@@ -159,13 +166,13 @@ const uploadPackageUrl = async (ctx: Context) => {
     const [file] = files;
 
     try {
-      await checkPackage(file);
 
+      await checkFilePath(file);
       // 打包
       const bundled = await bundle(path.basename(file.path));
 
       // 打包完， 上传阿里云
-      await UploadOSS(bundled.distPath)
+      await UploadOSS(bundled.distPath);
 
       Object.assign(pack, bundled);
       pack!.status = 'uploaded';
@@ -174,9 +181,10 @@ const uploadPackageUrl = async (ctx: Context) => {
       await pack!.save();
 
       // 上传完，干掉本地目录
-      await fs.removeAsync(bundled.distPath)
+      await fs.removeAsync(bundled.distPath);
 
     } catch (e) {
+      console.log(e);
       pack!.status = 'failed';
       await pack!.save();
     }
