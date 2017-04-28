@@ -15,9 +15,9 @@ import {UploadOSS} from '../utils';
 import Router = require('koa-router');
 
 const checkFilePath = async (file) => {
-  if (['gz', 'rar', 'zip', '7z', 'x-gzip'].indexOf(mime.lookup(file.path)) === -1) {
+  if (['.gz', '.rar', '.zip', '.7z'].indexOf(path.extname(file.path)) === -1) {
     console.log(file);
-    throw new Error(`Unsupported file type: ${mime.lookup(file.path)}`);
+    throw new Error(`Unsupported file type: ${path.extname(file.path)}`);
   }
 };
 
@@ -81,6 +81,7 @@ export const UploadPackage = async (ctx: Context) => {
       await checkPackage(file);
 
       const filename = uuid.v1();
+
 
       const archive_path = path.join(__dirname, '../../test/upload');
       await fs.ensureDirAsync(archive_path);
