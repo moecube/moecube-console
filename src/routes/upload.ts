@@ -117,7 +117,7 @@ export const UploadPackage = async (ctx: Context) => {
             await pack!.save();
 
             // 上传完，干掉本地目录
-            await fs.removeAsync(bundled.distPath);
+            await fs.removeAsync(bundled.archivePath);
 
 
           } catch (e) {
@@ -187,12 +187,13 @@ const uploadPackageUrl = async (ctx: Context) => {
         await pack!.save();
 
         // 上传完，干掉本地目录
-        await fs.removeAsync(bundled.distPath);
+        await fs.removeAsync(bundled.archivePath);
       } catch (e) {
         console.trace(e);
         pack!.status = 'failed';
         await pack!.save();
       }
+      await downloader.close();
     }
   };
 
@@ -204,6 +205,7 @@ const uploadPackageUrl = async (ctx: Context) => {
     if (ctx.request.body.url == url.uri) {
       pack!.status = 'failed';
       await pack!.save();
+      await downloader.close();
       console.log(err);
     }
   };

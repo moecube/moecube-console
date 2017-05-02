@@ -82,6 +82,7 @@ export async function bundle(...args) {
   await fs.removeAsync(package_path);
 
   return {
+    archivePath: archive_path,
     distPath: dist_path,
     files: Array.from(files.values()),
     archives: Array.from(archives.values()),
