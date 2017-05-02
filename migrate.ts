@@ -9,6 +9,8 @@ const locales = ['zh-CN', 'zh-TW', 'en-US', 'ja-JP'];
 const languagePack = ['zh-CN', 'en-US'];
 const platforms = ['win32', 'darwin'];
 
+let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 const lang = {
   'en-US': {
     'en-US': 'English',
@@ -124,10 +126,9 @@ async function main() {
     for (let i = 0, t = 0; i <= data.length; i++, t += 60000) {
       let app = data[i];
       if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
-        setTimeout(async () => {
-          console.log(`正在处理${app['id']}`);
-          await updateApp(app);
-        }, t);
+        await wait(t);
+        console.log(`正在处理${app['id']}`);
+        await updateApp(app);
       }
     }
   } catch (e) {

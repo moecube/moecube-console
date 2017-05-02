@@ -190,12 +190,14 @@ const uploadPackageUrl = async (ctx: Context) => {
       pack!.status = 'failed';
       await pack!.save();
     }
+    await downloader.close()
   };
 
   downloader.onDownloadError = async (err) => {
     // console.log(await downloader.send('tellStatus', err.gid))
     pack!.status = 'failed';
     await pack!.save();
+    await downloader.close()
     console.log(err);
   };
 
