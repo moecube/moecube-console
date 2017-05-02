@@ -184,7 +184,7 @@ const uploadPackageUrl = async (ctx: Context) => {
       // 上传完，干掉本地目录
       await fs.removeAsync(bundled.distPath);
     } catch (e) {
-      console.log(e);
+      console.trace(e);
       pack!.status = 'failed';
       await pack!.save();
     }

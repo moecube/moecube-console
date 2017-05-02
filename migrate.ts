@@ -1,7 +1,6 @@
 import axios from 'axios';
 import config from './config';
 import * as uuid from 'uuid';
-import * as _ from 'lodash';
 import {XmlDocument} from 'xmldoc';
 
 
@@ -107,20 +106,26 @@ async function main() {
 
   newApps.data.map(app => {
     apps[app['id']] = app;
-  })
+  });
 
   try {
     for (let app  of data) {
       if (!['ygopro', 'desmume', 'test'].includes(app['id']) && !apps[app['id']]) {
-        await createApp(app)
+        await createApp(app);
       }
     }
 
-    for (let app  of _.sampleSize(data, 1)) {
-      if (['ygopro', 'desmume', 'test'].includes(app['id'])) {
+    for (let app  of data) {
+      if (['th10'].includes(app['id'])) {
         await updateApp(app);
       }
     }
+
+    // for (let app  of _.sampleSize(data, 1)) {
+    //   if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
+    //     await updateApp(app);
+    //   }
+    // }
   } catch (e) {
     console.trace(e);
   }
