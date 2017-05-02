@@ -188,8 +188,8 @@ const uploadPackageUrl = async (ctx: Context) => {
       } catch (e) {
         console.trace(e);
         pack!.status = 'failed';
-        _next();
         await pack!.save();
+        _next();
       }
     };
 
