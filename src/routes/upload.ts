@@ -14,6 +14,11 @@ import config from '../../config';
 import {UploadOSS} from '../utils';
 import Router = require('koa-router');
 
+const downloader = new Aria2;
+
+downloader.open();
+
+
 const checkFilePath = async (file) => {
   if (['.gz', '.rar', '.zip', '.7z'].indexOf(path.extname(file.path)) === -1) {
     console.log(file);
@@ -148,14 +153,11 @@ const uploadPackageUrl = async (ctx: Context) => {
   }
   // testUrl: https://r.my-card.in/release/dist/0c16a3ecb115fd7cf575ccdd64f62a8f3edc635b087950e4ed4f3f781972bbfd.tar.gz
 
-  const downloader = new Aria2;
   let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
   if (!pack) {
     return ctx.throw(400, 'pack not exists');
   }
 
-
-  await downloader.open();
 
   downloader.onDownloadStart = async () => {
     pack!.status = 'uploading';
@@ -183,8 +185,6 @@ const uploadPackageUrl = async (ctx: Context) => {
 
       // 上传完，干掉本地目录
       await fs.removeAsync(bundled.distPath);
-      await fs.removeAsync(bundled.pckagePath);
-      await fs.removeAsync(bundled.uploadFilePath);
     } catch (e) {
       console.trace(e);
       pack!.status = 'failed';

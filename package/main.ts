@@ -75,12 +75,13 @@ export async function bundle(...args) {
   const fullHash = await caculateSHA256(filePath);
   const fullSize = (await fs.statAsync(filePath)).size;
 
-  let fullPath = path.join(path.dirname(filePath), `${fullHash}.tar.gz`);
+  let fullPath = path.join(dist_path, `${fullHash}.tar.gz`);
   await fs.renameAsync(filePath, fullPath);
 
+  await fs.removeAsync(uploadFile_path);
+  await fs.removeAsync(package_path);
+
   return {
-    uploadFilePath: uploadFile_path,
-    pckagePath: package_path,
     distPath: dist_path,
     files: Array.from(files.values()),
     archives: Array.from(archives.values()),
