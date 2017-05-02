@@ -12,12 +12,7 @@ import {mongodb} from '../models/Iridium';
 import {toObjectID} from 'iridium';
 import config from '../../config';
 import {UploadOSS} from '../utils';
-import Queue from '../serives/Queue';
 import Router = require('koa-router');
-
-const downloader = new Aria2;
-let DownloadQueue = new Queue;
-downloader.open();
 
 const checkFilePath = async (file) => {
   if (['.gz', '.rar', '.zip', '.7z'].indexOf(path.extname(file.path)) === -1) {
@@ -152,11 +147,15 @@ const uploadPackageUrl = async (ctx: Context) => {
     ctx.throw(400, 'params error');
   }
   // testUrl: https://r.my-card.in/release/dist/0c16a3ecb115fd7cf575ccdd64f62a8f3edc635b087950e4ed4f3f781972bbfd.tar.gz
+
+  const downloader = new Aria2;
   let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
   let _gid;
   if (!pack) {
     return ctx.throw(400, 'pack not exists');
   }
+
+  await downloader.open();
 
   downloader.onDownloadStart = async (gid) => {
     _gid = gid;
