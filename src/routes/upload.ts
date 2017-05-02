@@ -171,8 +171,10 @@ const uploadPackageUrl = async (ctx: Context) => {
     try {
 
       await checkFilePath(file);
+      let filename = path.join(path.dirname(file), uuid.v1())
+      await fs.renameAsync(filename, file);
       // 打包
-      const bundled = await bundle(path.basename(file.path));
+      const bundled = await bundle(path.basename(filename));
 
       // 打包完， 上传阿里云
       await UploadOSS(bundled.distPath);

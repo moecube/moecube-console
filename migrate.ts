@@ -103,7 +103,7 @@ async function main() {
 
   let {data} = await axios.get(config.old_apps_json);
   let newApps = await axios.get(config.new_apps_json);
-  
+
   newApps.data.map(app => {
     apps[app['id']] = app;
   });
@@ -121,7 +121,7 @@ async function main() {
     //   }
     // }
 
-    for (let i = 0, t = 0; i <= data.length; i += 1, t += 60000) {
+    for (let i = 0, t = 0; i <= data.length; i++, t += 60000) {
       let app = data[i];
       if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
         setTimeout(async () => {
