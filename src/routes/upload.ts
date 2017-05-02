@@ -165,7 +165,7 @@ const uploadPackageUrl = async (ctx: Context) => {
   };
 
   downloader.onDownloadComplete = async (m) => {
-    if (m.gid = _gid) {
+    if (m.gid == _gid) {
       const {files} = await downloader.send('tellStatus', m.gid);
       const [file] = files;
 
@@ -196,7 +196,7 @@ const uploadPackageUrl = async (ctx: Context) => {
 
   downloader.onDownloadError = async (err) => {
     // console.log(await downloader.send('tellStatus', err.gid))
-    if (err.gid = _gid) {
+    if (err.gid == _gid) {
       pack!.status = 'failed';
       await pack!.save();
       console.log(err);
