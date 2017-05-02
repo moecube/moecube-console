@@ -152,18 +152,20 @@ const uploadPackageUrl = async (ctx: Context) => {
     ctx.throw(400, 'params error');
   }
   // testUrl: https://r.my-card.in/release/dist/0c16a3ecb115fd7cf575ccdd64f62a8f3edc635b087950e4ed4f3f781972bbfd.tar.gz
-  DownloadQueue.run(async (queue, _next) => {
-    let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
-    if (!pack) {
-      return ctx.throw(400, 'pack not exists');
-    }
+  let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
+  let _gid;
+  if (!pack) {
+    return ctx.throw(400, 'pack not exists');
+  }
 
-    downloader.onDownloadStart = async () => {
-      pack!.status = 'uploading';
-      await pack!.save();
-    };
+  downloader.onDownloadStart = async (gid) => {
+    _gid = gid;
+    pack!.status = 'uploading';
+    await pack!.save();
+  };
 
-    downloader.onDownloadComplete = async (m) => {
+  downloader.onDownloadComplete = async (m) => {
+    if (m.gid = _gid) {
       const {files} = await downloader.send('tellStatus', m.gid);
       const [file] = files;
 
@@ -184,23 +186,22 @@ const uploadPackageUrl = async (ctx: Context) => {
 
         // 上传完，干掉本地目录
         await fs.removeAsync(bundled.distPath);
-        _next();
       } catch (e) {
         console.trace(e);
         pack!.status = 'failed';
         await pack!.save();
-        _next();
       }
-    };
+    }
+  };
 
-    downloader.onDownloadError = async (err) => {
-      // console.log(await downloader.send('tellStatus', err.gid))
+  downloader.onDownloadError = async (err) => {
+    // console.log(await downloader.send('tellStatus', err.gid))
+    if (err.gid = _gid) {
       pack!.status = 'failed';
       await pack!.save();
       console.log(err);
-      _next();
-    };
-  });
+    }
+  };
 
   ctx.body = await new Promise((resolve, reject) => {
 
