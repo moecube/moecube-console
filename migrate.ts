@@ -1,7 +1,6 @@
 import axios from 'axios';
 import config from './config';
 import * as uuid from 'uuid';
-import * as _ from 'lodash'
 import {XmlDocument} from 'xmldoc';
 
 
@@ -104,7 +103,7 @@ async function main() {
 
   let {data} = await axios.get(config.old_apps_json);
   let newApps = await axios.get(config.new_apps_json);
-
+  
   newApps.data.map(app => {
     apps[app['id']] = app;
   });
@@ -116,15 +115,19 @@ async function main() {
       }
     }
 
-    // for (let app  of data) {
-    //   if (['th10'].includes(app['id'])) {
+    // for (let app  of _.sampleSize(data, 1)) {
+    //   if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
     //     await updateApp(app);
     //   }
     // }
 
-    for (let app  of _.sampleSize(data, 1)) {
+    for (let i = 0, t = 0; i <= data.length; i += 1, t += 60000) {
+      let app = data[i];
       if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
-        await updateApp(app);
+        setTimeout(async () => {
+          console.log(`正在处理${app['id']}`);
+          await updateApp(app);
+        }, t);
       }
     }
   } catch (e) {

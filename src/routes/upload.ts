@@ -118,6 +118,8 @@ export const UploadPackage = async (ctx: Context) => {
 
             // 上传完，干掉本地目录
             await fs.removeAsync(bundled.distPath);
+            await fs.removeAsync(bundled.pckagePath);
+            await fs.removeAsync(bundled.uploadFilePath);
 
 
           } catch (e) {
@@ -183,6 +185,8 @@ const uploadPackageUrl = async (ctx: Context) => {
 
       // 上传完，干掉本地目录
       await fs.removeAsync(bundled.distPath);
+      await fs.removeAsync(bundled.pckagePath);
+      await fs.removeAsync(bundled.uploadFilePath);
     } catch (e) {
       console.trace(e);
       pack!.status = 'failed';
