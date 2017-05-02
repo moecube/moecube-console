@@ -152,7 +152,6 @@ const uploadPackageUrl = async (ctx: Context) => {
     ctx.throw(400, 'params error');
   }
   // testUrl: https://r.my-card.in/release/dist/0c16a3ecb115fd7cf575ccdd64f62a8f3edc635b087950e4ed4f3f781972bbfd.tar.gz
-
   DownloadQueue.run(async (ctx, _next) => {
     let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
     if (!pack) {
@@ -201,7 +200,7 @@ const uploadPackageUrl = async (ctx: Context) => {
       console.log(err);
       _next();
     };
-
+  });
 
     ctx.body = await new Promise((resolve, reject) => {
 
@@ -215,7 +214,6 @@ const uploadPackageUrl = async (ctx: Context) => {
 
       downloader.send('addUri', [ctx.request.body.url], {dir: config.upload_path});
     });
-  });
 };
 
 router.post('/v1/upload/image', UploadImage);
