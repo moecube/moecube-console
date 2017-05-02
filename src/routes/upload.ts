@@ -149,26 +149,28 @@ const uploadPackageUrl = async (ctx: Context) => {
   // testUrl: https://r.my-card.in/release/dist/0c16a3ecb115fd7cf575ccdd64f62a8f3edc635b087950e4ed4f3f781972bbfd.tar.gz
 
   const downloader = new Aria2;
+  await downloader.open();
+
   let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
-  let _gid;
   if (!pack) {
     return ctx.throw(400, 'pack not exists');
   }
 
-  await downloader.open();
-
   downloader.onDownloadStart = async ({gid}) => {
-    _gid = gid;
-    console.log(gid);
-    pack!.status = 'uploading';
-    await pack!.save();
+    const {files} = await downloader.send('tellStatus', gid);
+    const [file] = files;
+    const [url] = file.uris;
+    if (ctx.request.body.url == url.uri) {
+      pack!.status = 'uploading';
+      await pack!.save();
+    }
   };
 
-  downloader.onDownloadComplete = async (m) => {
-    if (m.gid == _gid) {
-      const {files} = await downloader.send('tellStatus', m.gid);
-      const [file] = files;
-
+  downloader.onDownloadComplete = async ({gid}) => {
+    const {files} = await downloader.send('tellStatus', gid);
+    const [file] = files;
+    const [url] = file.uris;
+    if (ctx.request.body.url == url.uri) {
       try {
 
         await checkFilePath(file);
@@ -195,8 +197,11 @@ const uploadPackageUrl = async (ctx: Context) => {
   };
 
   downloader.onDownloadError = async (err) => {
-    // console.log(await downloader.send('tellStatus', err.gid))
-    if (err.gid == _gid) {
+    const {files} = await downloader.send('tellStatus', err.gid);
+    const [file] = files;
+    const [url] = file.uris;
+
+    if (ctx.request.body.url == url.uri) {
       pack!.status = 'failed';
       await pack!.save();
       console.log(err);
