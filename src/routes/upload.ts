@@ -12,12 +12,12 @@ import {mongodb} from '../models/Iridium';
 import {toObjectID} from 'iridium';
 import config from '../../config';
 import {UploadOSS} from '../utils';
+import Queue from '../serives/Queue';
 import Router = require('koa-router');
 
 const downloader = new Aria2;
-
+let DownloadQueue = new Queue;
 downloader.open();
-
 
 const checkFilePath = async (file) => {
   if (['.gz', '.rar', '.zip', '.7z'].indexOf(path.extname(file.path)) === -1) {
@@ -153,68 +153,69 @@ const uploadPackageUrl = async (ctx: Context) => {
   }
   // testUrl: https://r.my-card.in/release/dist/0c16a3ecb115fd7cf575ccdd64f62a8f3edc635b087950e4ed4f3f781972bbfd.tar.gz
 
-  let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
-  if (!pack) {
-    return ctx.throw(400, 'pack not exists');
-  }
-
-
-  downloader.onDownloadStart = async () => {
-    pack!.status = 'uploading';
-    await pack!.save();
-  };
-
-  downloader.onDownloadComplete = async (m) => {
-    const {files} = await downloader.send('tellStatus', m.gid);
-    const [file] = files;
-
-    try {
-
-      await checkFilePath(file);
-      // 打包
-      const bundled = await bundle(path.basename(file.path));
-
-      // 打包完， 上传阿里云
-      await UploadOSS(bundled.distPath);
-
-      Object.assign(pack, bundled);
-      pack!.status = 'uploaded';
-
-      await mongodb.Packages.update({id: pack!.id}, {$set: {status: 'deprecated'}}, {multi: true});
-      await pack!.save();
-
-      // 上传完，干掉本地目录
-      await fs.removeAsync(bundled.distPath);
-    } catch (e) {
-      console.trace(e);
-      pack!.status = 'failed';
-      await pack!.save();
+  DownloadQueue.run(async (ctx, _next) => {
+    let pack = await mongodb.Packages.findOne({_id: toObjectID(ctx.request.body._id)});
+    if (!pack) {
+      return ctx.throw(400, 'pack not exists');
     }
-    await downloader.close()
-  };
 
-  downloader.onDownloadError = async (err) => {
-    // console.log(await downloader.send('tellStatus', err.gid))
-    pack!.status = 'failed';
-    await pack!.save();
-    await downloader.close()
-    console.log(err);
-  };
+    downloader.onDownloadStart = async () => {
+      pack!.status = 'uploading';
+      await pack!.save();
+    };
 
+    downloader.onDownloadComplete = async (m) => {
+      const {files} = await downloader.send('tellStatus', m.gid);
+      const [file] = files;
 
-  ctx.body = await new Promise((resolve, reject) => {
+      try {
 
-    downloader.onmessage = m => {
-      if (m['error']) {
-        reject(m['error']);
-      } else {
-        resolve(m);
+        await checkFilePath(file);
+        // 打包
+        const bundled = await bundle(path.basename(file.path));
+
+        // 打包完， 上传阿里云
+        await UploadOSS(bundled.distPath);
+
+        Object.assign(pack, bundled);
+        pack!.status = 'uploaded';
+
+        await mongodb.Packages.update({id: pack!.id}, {$set: {status: 'deprecated'}}, {multi: true});
+        await pack!.save();
+
+        // 上传完，干掉本地目录
+        await fs.removeAsync(bundled.distPath);
+        _next();
+      } catch (e) {
+        console.trace(e);
+        pack!.status = 'failed';
+        _next();
+        await pack!.save();
       }
     };
 
-    downloader.send('addUri', [ctx.request.body.url], {dir: config.upload_path});
-  });
+    downloader.onDownloadError = async (err) => {
+      // console.log(await downloader.send('tellStatus', err.gid))
+      pack!.status = 'failed';
+      await pack!.save();
+      console.log(err);
+      _next();
+    };
 
+
+    ctx.body = await new Promise((resolve, reject) => {
+
+      downloader.onmessage = m => {
+        if (m['error']) {
+          reject(m['error']);
+        } else {
+          resolve(m);
+        }
+      };
+
+      downloader.send('addUri', [ctx.request.body.url], {dir: config.upload_path});
+    });
+  });
 };
 
 router.post('/v1/upload/image', UploadImage);
