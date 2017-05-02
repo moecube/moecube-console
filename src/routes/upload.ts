@@ -157,8 +157,9 @@ const uploadPackageUrl = async (ctx: Context) => {
 
   await downloader.open();
 
-  downloader.onDownloadStart = async (gid) => {
+  downloader.onDownloadStart = async ({gid}) => {
     _gid = gid;
+    console.log(gid);
     pack!.status = 'uploading';
     await pack!.save();
   };
