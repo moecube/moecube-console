@@ -118,8 +118,6 @@ export const UploadPackage = async (ctx: Context) => {
 
             // 上传完，干掉本地目录
             await fs.removeAsync(bundled.distPath);
-            await fs.removeAsync(bundled.pckagePath);
-            await fs.removeAsync(bundled.uploadFilePath);
 
 
           } catch (e) {
@@ -171,10 +169,8 @@ const uploadPackageUrl = async (ctx: Context) => {
     try {
 
       await checkFilePath(file);
-      let filename = path.join(path.dirname(file), uuid.v1())
-      await fs.renameAsync(filename, file);
       // 打包
-      const bundled = await bundle(path.basename(filename));
+      const bundled = await bundle(path.basename(file.path));
 
       // 打包完， 上传阿里云
       await UploadOSS(bundled.distPath);
