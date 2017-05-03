@@ -94,10 +94,10 @@ async function updateApp(app) {
       ...other,
     });
 
+
   let {data} = await createPackage(app);
 
   await updatePackage(app, data);
-
 }
 
 
@@ -110,29 +110,29 @@ async function main() {
     apps[app['id']] = app;
   });
 
-  try {
-    for (let app  of data) {
-      if (!['ygopro', 'desmume', 'test'].includes(app['id']) && !apps[app['id']]) {
-        await createApp(app);
-      }
+  for (let app  of data) {
+    if (!['ygopro', 'desmume', 'test'].includes(app['id']) && !apps[app['id']]) {
+      await createApp(app);
     }
+  }
 
-    // for (let app  of _.sampleSize(data, 1)) {
-    //   if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
-    //     await updateApp(app);
-    //   }
-    // }
+  for (let i = 0, t = 0, w = true; i <= data.length; i++, t = 180000) {
 
-    for (let i = 0, t = 0; i <= data.length; i++, t += 60000) {
+    try {
       let app = data[i];
       if (!['ygopro', 'desmume', 'test'].includes(app['id'])) {
-        await wait(t);
+        if (w) {
+          await wait(t);
+        }
         console.log(`正在处理${app['id']}`);
         await updateApp(app);
+        w = true;
       }
+    } catch (e) {
+      console.log(e);
+      w = false;
+      continue;
     }
-  } catch (e) {
-    console.trace(e);
   }
 }
 
