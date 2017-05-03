@@ -12,7 +12,7 @@ export default {
   new_package: `${baseUrl}/v1/package/`,
   new_app: (appId) => `${baseUrl}/v1/app/${appId}`,
   old_metalinks: (package_id) => `https://cdn01.moecube.com/release/metalinks/${package_id}.meta4`,
-  new_metalinks: (package_id) => `${baseUrl}/${package_id}/meta`,
+  new_metalinks: (package_id) => `${baseUrl}/v2/package-legacy/${package_id}/meta`,
   old_checksums: (package_id) => `https://cdn01.moecube.com/release/checksums/${package_id}`,
-  new_checksums: (package_id) => `${baseUrl}/${package_id}/checksum`,
+  new_checksums: (package_id) => `${baseUrl}/v2/package-legacy/${package_id}/checksum`,
 };

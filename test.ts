@@ -11,15 +11,24 @@ async function test_checksums() {
   const apps: any[] = (await (await fetch(config.new_apps_json)).json())
     .filter(i => !['ygopro', 'desmume'].includes(i.id)); // 排除 ygopro 和 desmume
 
-  for (let app of _.sampleSize(apps, 5)) {
+  let oldMaps = new Set();
+
+  for (let app of apps) {
     console.log(`正在测试 ${app.id} 的 checksum`);
     const old_checksum = await (await fetch(config.old_checksums(app.id))).text();
     const new_checksum = await (await fetch(config.new_checksums(app.id))).text();
-    if (old_checksum !== new_checksum) {
-      console.log('旧', old_checksum);
-      console.log('新', new_checksum);
-      throw `应用 ${app.id} 的 checksum 不一致`;
-    }
+
+    old_checksum.split('\n').forEach(line => {
+      oldMaps.add(line);
+    });
+
+    new_checksum.split('\n').forEach(line => {
+      if (!oldMaps.has(line)) {
+        console.log('旧', old_checksum);
+        console.log('新', new_checksum);
+        throw `应用 ${app.id} 的 checksum 不一致`;
+      }
+    });
   }
 }
 async function test_download() {
@@ -71,9 +80,14 @@ async function test_apps_json() {
 
 async function main() {
   // await test_apps_json();
-  await test_checksums();
-  await test_download();
-  await test_update();
+
+  try {
+    await test_checksums();
+    await test_download();
+    await test_update();
+  } catch (e) {
+    console.log(e);
+  }
 
   console.log('ok');
 }

@@ -2,7 +2,6 @@ import Router = require('koa-router');
 import {toObjectID} from 'iridium';
 import {mongodb} from '../models/Iridium';
 import {Context} from 'koa';
-import config from '../../config';
 import {Archive, Package} from '../models/Package';
 import {renderChecksum} from '../utils';
 const router = new Router();
@@ -15,7 +14,16 @@ router.get('/v2/packages', async (ctx: Context, next) => {
     appId: ctx.request.query.appId,
     status: 'uploaded'
   }).toArray();
-  ctx.body = packs
+  ctx.body = packs;
+});
+
+router.get('/v2/package-legacy/:id/checksum', async (ctx: Context, next) => {
+  let pack = await mongodb.Packages.findOne({appId: ctx.params.id, status: 'uploaded'});
+  if (!pack) {
+    return ctx.throw(400, 'pack error');
+  }
+
+  ctx.body = renderChecksum(pack.files);
 });
 
 
@@ -31,6 +39,22 @@ router.get('/v2/package/:id/checksum', async (ctx: Context, next) => {
 router.get('/v2/package/:id/meta', async (ctx: Context, next) => {
 
   let pack = await mongodb.Packages.findOne({id: ctx.params.id, status: 'uploaded'});
+  if (!pack) {
+    return ctx.throw(400, 'pack error');
+  }
+
+  await ctx['render']('update', {
+    files: {
+      name: pack.id,
+      size: pack.fullSize,
+      hash: pack.fullHash
+    }
+  });
+});
+
+router.get('/v2/package-legacy/:id/meta', async (ctx: Context, next) => {
+
+  let pack = await mongodb.Packages.findOne({appId: ctx.params.id, status: 'uploaded'});
   if (!pack) {
     return ctx.throw(400, 'pack error');
   }
