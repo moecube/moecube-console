@@ -81,7 +81,7 @@ export function archive(archive: string, files: string[], directory: string): Pr
 
 export function untar(archive: string, directory: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    let child = child_process.spawn('tar', ['-xvf', archive, '-C', directory], {stdio: 'inherit'});
+    let child = child_process.spawn('tar', ['-xf', archive, '-C', directory], {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
         resolve();
