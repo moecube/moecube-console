@@ -65,7 +65,7 @@ export function archiveSingle(archive: string, files: string[], directory: strin
 
 export function archive(archive: string, files: string[], directory: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    let child = child_process.spawn('tar', ['-vczf', archive, '-C', directory].concat(files), {stdio: 'inherit'});
+    let child = child_process.spawn('tar', ['-czf', archive, '-C', directory].concat(files), {stdio: 'inherit'});
     child.on('exit', (code) => {
       if (code == 0) {
         resolve();

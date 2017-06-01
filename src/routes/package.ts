@@ -142,26 +142,18 @@ router.post('/v1/package', async (ctx: Context, next) => {
     ctx.throw(400, `请填写版本号：${_p.id}`);
   }
 
-  let existsPlatform = await mongodb.Packages.find({
+  let existsPlatform = await mongodb.Packages.findOne({
     id: {$ne: _p.id},
     appId: _p.appId,
-    platforms: {$in: _p.platforms},
+    $and: [{
+      platforms: {$in: _p.platforms},
+      locales: {$in: _p.locales}
+    }],
     type: 'editing'
-  }).count();
+  });
   if (existsPlatform) {
     console.log(existsPlatform);
-    ctx.throw(400, '平台已存在');
-  }
-
-  let existsLocales = await mongodb.Packages.find({
-    id: {$ne: _p.id},
-    appId: _p.appId,
-    locales: {$in: _p.locales},
-    type: 'editing'
-  }).count();
-  if (existsLocales) {
-    console.log(existsLocales);
-    ctx.throw(400, '语言已存在');
+    ctx.throw(400, '平台语言已存在');
   }
 
   await mongodb.Packages.update({id: _p.id}, {$set: {type: 'edited'}}, {multi: true});

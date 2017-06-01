@@ -3,7 +3,7 @@
  */
 import * as fetch from 'isomorphic-fetch';
 import * as _ from 'lodash';
-import {XmlDocument} from 'xmldoc';
+import { XmlDocument } from 'xmldoc';
 import config from './config';
 
 
@@ -18,11 +18,11 @@ async function test_checksums() {
     const old_checksum = await (await fetch(config.old_checksums(app.id))).text();
     const new_checksum = await (await fetch(config.new_checksums(app.id))).text();
 
-    old_checksum.split('\n').forEach(line => {
+    new_checksum.split('\n').forEach(line => {
       oldMaps.add(line);
     });
 
-    new_checksum.split('\n').forEach(line => {
+    old_checksum.split('\n').forEach(line => {
       if (!oldMaps.has(line)) {
         console.log('旧', old_checksum);
         console.log('新', new_checksum);
@@ -44,7 +44,7 @@ async function test_download() {
   const url = xml.valueWithPath('file.url');
 
 
-  const response = await fetch(url, {method: 'HEAD'});
+  const response = await fetch(url, { method: 'HEAD' });
   if (!response.ok) {
     throw `${app.id} 的 下载地址 ${url} 返回 ${response.statusText}`;
   }
