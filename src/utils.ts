@@ -64,7 +64,7 @@ export class Queue {
 
   async run(task: Function) {
     this.queue.push(task);
-    await this.next();
+    return await this.next();
   }
 
   async next() {
@@ -73,11 +73,11 @@ export class Queue {
       if (!task) {
         return;
       }
-      await task(this, () => {
+      this.running++;
+      return await task(this, () => {
         this.running--;
         this.next();
       });
-      this.running++;
     }
   }
 }

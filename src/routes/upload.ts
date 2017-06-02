@@ -189,9 +189,8 @@ const uploadPackageUrl = async (ctx: Context) => {
         let bundled;
         await queue.run(async (ctx, next) => {
           bundled = await bundle(path.basename(file.path));
-          this.next();
+          next();
         });
-
 
         // 打包完， 上传阿里云
         await UploadOSS(bundled.distPath);
