@@ -67,40 +67,17 @@ export class Queue {
     await this.next();
   }
 
-  next() {
-    return new Promise((res, rej) => {
-      while (this.running < this.concurrency && this.queue.length) {
-        let task: Function | undefined = this.queue.shift();
-        if (!task) {
-          return rej();
-        }
-        this.running++;
-        return res(task(this, () => {
-          this.running--;
-          this.next();
-        }));
+  async next() {
+    while (this.running < this.concurrency && this.queue.length) {
+      let task: Function | undefined = this.queue.shift();
+      if (!task) {
+        return;
       }
-    });
+      this.running++;
+      await task(this, () => {
+        this.running--;
+        this.next();
+      });
+    }
   }
 }
-
-
-const queue = new Queue({ concurrency: 1 });
-
-async function main() {
-  let bundle = 1;
-
-  await queue.run(async (ctx, next) => {
-    bundle = await add(bundle);
-    next();
-  });
-  console.log(bundle);
-}
-
-async function add (number): Promise<number> {
-  await new Promise(resolve => setTimeout(() => resolve(number++), 5000));
-
-  return number;
-}
-
-main();
