@@ -114,3 +114,4 @@ export function caculateSHA256(file: string): Promise<string> {
     input.pipe(hash);
   });
 }
+

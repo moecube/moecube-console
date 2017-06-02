@@ -1,4 +1,4 @@
-import {URL} from 'url';
+import { URL } from 'url';
 import * as child_process from 'child_process';
 
 export const dot = '__<DOT>__';
@@ -18,12 +18,12 @@ export const handleImg = (img) => {
 };
 
 export function renderChecksum(files: { path: string, hash?: string }[]) {
-  return files.map(({path, hash}) => `${hash || ''}  ${path}`).join('\n');
+  return files.map(({ path, hash }) => `${hash || ''}  ${path}`).join('\n');
 }
 
 export function UploadOSS(dist: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    let child = child_process.spawn('ossutil', ['cp', '--recursive', dist, 'oss://mycard/test-release'], {stdio: 'inherit'});
+    let child = child_process.spawn('ossutil', ['cp', '--recursive', dist, 'oss://mycard/test-release'], { stdio: 'inherit' });
     child.on('exit', (code) => {
       if (code == 0) {
         resolve();
@@ -35,4 +35,50 @@ export function UploadOSS(dist: string): Promise<void> {
       reject(error);
     });
   });
+}
+
+type QueueParams = {
+  concurrency: number;
+};
+
+export class Queue {
+  concurrency: number;
+  running: number;
+  queue: Array<Function>;
+
+  constructor(params: QueueParams) {
+    Object.assign(this, params);
+    this.running = 0;
+    this.queue = [];
+  }
+
+  set(args: QueueParams): Queue {
+    Object.assign(this, args);
+    return this;
+  }
+
+  push(task: Function): Queue {
+    this.queue.push(task);
+    return this;
+  }
+
+  run(task: Function): Queue {
+    this.queue.push(task);
+    this.next();
+    return this;
+  }
+
+  next() {
+    while (this.running < this.concurrency && this.queue.length) {
+      let task: Function | undefined = this.queue.shift();
+      if (!task) {
+        return;
+      }
+      task(this, () => {
+        this.running--;
+        this.next();
+      });
+      this.running++;
+    }
+  }
 }
