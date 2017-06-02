@@ -62,19 +62,18 @@ export class Queue {
     return this;
   }
 
-  run(task: Function): Queue {
+  async run(task: Function) {
     this.queue.push(task);
-    this.next();
-    return this;
+    await this.next();
   }
 
-  next() {
+  async next() {
     while (this.running < this.concurrency && this.queue.length) {
       let task: Function | undefined = this.queue.shift();
       if (!task) {
         return;
       }
-      task(this, () => {
+      await task(this, () => {
         this.running--;
         this.next();
       });

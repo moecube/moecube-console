@@ -112,7 +112,7 @@ export const UploadPackage = async (ctx: Context) => {
 
             // 上传完， 打包
             let bundled;
-            queue.run(async (ctx, next) => {
+            await queue.run(async (ctx, next) => {
               bundled = await bundle(filename);
               this.next();
             });
@@ -187,7 +187,7 @@ const uploadPackageUrl = async (ctx: Context) => {
 
         // 打包
         let bundled;
-        queue.run(async (ctx, next) => {
+        await queue.run(async (ctx, next) => {
           bundled = await bundle(path.basename(file.path));
           this.next();
         });
