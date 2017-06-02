@@ -9,7 +9,7 @@ import config from './config';
 
 async function test_checksums() {
   const apps: any[] = (await (await fetch(config.new_apps_json)).json())
-    .filter(i => !['ygopro', 'desmume'].includes(i.id)); // 排除 ygopro 和 desmume
+    // .filter(i => !['ygopro', 'desmume'].includes(i.id)); // 排除 ygopro 和 desmume
 
   let oldMaps = new Set();
 

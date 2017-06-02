@@ -39,7 +39,7 @@ async function createPackage(app) {
   });
 }
 
-async function createYgoproPackage(app) {
+async function createCustomPackage(app) {
   return await axios.post(config.new_package, {
     id: uuid.v1(),
     appId: app.id,
@@ -64,8 +64,9 @@ async function updatePackage(app, pack) {
 }
 
 
-async function updateYogoproPackage(app, pack) {
-  let metalink = `${app.id}-${pack.platforms[0]}-${pack.locales[0]}`.replace('osx', 'darwin');
+async function updateCustomPackage(app, pack) {
+  let metalink = `${app.id}-${pack.platforms[0]}`.replace('osx', 'darwin');
+  console.log(config.old_metalinks(metalink));  
   let { data } = await axios.get(config.old_metalinks(metalink));
   const xml = new XmlDocument(data);
   const rawUrl = xml.valueWithPath('file.url');
@@ -86,13 +87,23 @@ async function handleYgopro(app) {
         app.platforms = [platform];
         app.locales = [locale];
         console.log('正在处理yogopro', app.platforms, app.locales);
-         let { data } = await createYgoproPackage(app);
-        await updateYogoproPackage(app, data);
-        await wait(180000);
+        let { data } = await createCustomPackage(app);
+        await updateCustomPackage(app, data);
+        // await wait(180000);
       } catch (e) {
-        console.log(e.response.data);
+        console.log(e);
       }
     }
+  }
+}
+
+async function handleDesume(app) {
+  for (let platform of platforms) {
+    app.platforms = [platform];
+    app.locales = locales;
+    console.log('正在处理desume', app.platforms, app.locales);
+    let { data } = await createCustomPackage(app);
+    await updateCustomPackage(app, data);
   }
 }
 
@@ -156,7 +167,7 @@ async function main() {
   });
 
   for (let app of data) {
-    if (!['desmume', 'test'].includes(app['id']) && !apps[app['id']]) {
+    if (!['test'].includes(app['id']) && !apps[app['id']]) {
       await createApp(app);
     }
   }
@@ -179,10 +190,16 @@ async function main() {
 
       //   await updatePackage(app, data);
       // }
-      if (app['id'] == 'ygopro') {
+      // if (app['id'] == 'ygopro') {
+      //   await updateApp(app);
+
+      //   await handleYgopro(app);
+      // }
+
+      if (app['id'] == 'desmume') {
         await updateApp(app);
 
-        handleYgopro(app);
+        await handleDesume(app);
       }
     } catch (e) {
       console.log(e.response.data);

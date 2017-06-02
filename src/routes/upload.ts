@@ -104,37 +104,43 @@ export const UploadPackage = async (ctx: Context) => {
 
         file.on('close', async () => {
 
-          try {
-            pack!.status = 'uploading';
-            await pack!.save();
 
-            resolve(pack!);
+          await queue.run(async (ctx, next) => {
 
-            // 上传完， 打包
-            let bundled;
-            await queue.run(async (ctx, next) => {
+            try {
+              pack!.status = 'uploading';
+              await pack!.save();
+
+              resolve(pack!);
+
+              // 上传完， 打包
+              let bundled;
+
               bundled = await bundle(filename);
-              this.next();
-            });
 
-            // 打包完，上传阿里云
-            await UploadOSS(bundled.distPath);
+              // 打包完，上传阿里云
+              await UploadOSS(bundled.distPath);
 
-            Object.assign(pack, bundled);
-            pack!.status = 'uploaded';
+              Object.assign(pack, bundled);
+              pack!.status = 'uploaded';
 
-            await mongodb.Packages.update({ id: pack!.id }, { $set: { status: 'deprecated' } }, { multi: true });
-            await pack!.save();
+              await mongodb.Packages.update({ id: pack!.id }, { $set: { status: 'deprecated' } }, { multi: true });
+              await pack!.save();
 
-            // 上传完，干掉本地目录
-            await fs.removeAsync(bundled.archivePath);
+              // 上传完，干掉本地目录
+              await fs.removeAsync(bundled.archivePath);
 
 
-          } catch (e) {
-            pack!.status = 'failed';
-            await pack!.save();
-            console.log(e);
-          }
+            } catch (e) {
+              pack!.status = 'failed';
+              await pack!.save();
+              console.log(e);
+            }
+
+            next();
+          });
+
+
         });
 
         file.on('error', async (error) => {
@@ -181,33 +187,37 @@ const uploadPackageUrl = async (ctx: Context) => {
     const [file] = files;
     const [url] = file.uris;
     if (ctx.request.body.url == url.uri) {
-      try {
 
-        await checkFilePath(file);
 
-        // 打包
-        let bundled;
-        await queue.run(async (ctx, next) => {
-          bundled = await bundle(path.basename(file.path));
-          next();
-        });
+      await queue.run(async (ctx, next) => {
+        try {
+          await checkFilePath(file);
 
-        // 打包完， 上传阿里云
-        await UploadOSS(bundled.distPath);
+          // 打包
+          const bundled = await bundle(path.basename(file.path));
 
-        Object.assign(pack, bundled);
-        pack!.status = 'uploaded';
+          await UploadOSS(bundled.distPath);
 
-        await mongodb.Packages.update({ id: pack!.id }, { $set: { status: 'deprecated' } }, { multi: true });
-        await pack!.save();
+          Object.assign(pack, bundled);
+          pack!.status = 'uploaded';
 
-        // 上传完，干掉本地目录
-        await fs.removeAsync(bundled.archivePath);
-      } catch (e) {
-        console.trace(e);
-        pack!.status = 'failed';
-        await pack!.save();
-      }
+          await mongodb.Packages.update({ id: pack!.id }, { $set: { status: 'deprecated' } }, { multi: true });
+          await pack!.save();
+
+          // 上传完，干掉本地目录
+          await fs.removeAsync(bundled.archivePath);
+
+        } catch (e) {
+          console.trace(e);
+          pack!.status = 'failed';
+          await pack!.save();
+        }
+        next();
+      });
+
+      // 打包完， 上传阿里云
+
+
       await downloader.close();
     }
   };
